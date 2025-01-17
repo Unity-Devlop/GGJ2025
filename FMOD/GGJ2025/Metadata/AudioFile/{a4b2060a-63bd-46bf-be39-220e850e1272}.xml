@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{a4b2060a-63bd-46bf-be39-220e850e1272}">
+		<property name="assetPath">
+			<value>SFX/achievement-video-game-type-1-230515.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.1755102040816328</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e3dfefe9-004c-4cbe-b4cf-864e7dba598e}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f53539899ba74f558e1a66fbfdf6e4f5, type: 3}
+  m_Name: New Fight Debug SO
+  m_EditorClassIdentifier: 
+  data:
+    self:
+      teamData:
+        trainerId: 0
+        <playerData>k__BackingField:
+          id: 0
+          <trainerId>k__BackingField: 0
+          level: 86
+          baseHealth: 43
+          currentHealth: 43
+          basePower: 40
+          baseDefense: 28
+          baseAdaptability: 65
+          baseSpeed: 63
+          additionalPower: 0
+          additionalDefense: 0
+          additionalAdaptability: 0
+          additionalSpeed: 0
+        <package>k__BackingField:
+          _items: []
+        <battlePokemonList>k__BackingField:
+        - id: 1
+          <trainerId>k__BackingField: 0
+          level: 64
+          baseHealth: 69
+          currentHealth: -78
+          basePower: 98
+          baseDefense: 33
+          baseAdaptability: 18
+          baseSpeed: 89
+          additionalPower: 0
+          additionalDefense: 0
+          additionalAdaptability: 0
+          additionalSpeed: 0
+        - id: 1
+          <trainerId>k__BackingField: 0
+          level: 28
+          baseHealth: 92
+          currentHealth: -61
+          basePower: 58
+          baseDefense: 98
+          baseAdaptability: 29
+          baseSpeed: 45
+          additionalPower: 0
+          additionalDefense: 0
+          additionalAdaptability: 0
+          additionalSpeed: 0
+        <candidatePokemonList>k__BackingField: []
+        <currentBuffList>k__BackingField: []
+    enemy:
+      teamData:
+        trainerId: 1
+        <playerData>k__BackingField:
+          id: 0
+          <trainerId>k__BackingField: 1
+          level: 49
+          baseHealth: 23
+          currentHealth: 23
+          basePower: 97
+          baseDefense: 66
+          baseAdaptability: 50
+          baseSpeed: 83
+          additionalPower: 0
+          additionalDefense: 0
+          additionalAdaptability: 0
+          additionalSpeed: 0
+        <package>k__BackingField:
+          _items: []
+        <battlePokemonList>k__BackingField:
+        - id: 1
+          <trainerId>k__BackingField: 1
+          level: 74
+          baseHealth: 89
+          currentHealth: 43
+          basePower: 99
+          baseDefense: 96
+          baseAdaptability: 66
+          baseSpeed: 62
+          additionalPower: 0
+          additionalDefense: 0
+          additionalAdaptability: 0
+          additionalSpeed: 0
+        - id: 1
+          <trainerId>k__BackingField: 1
+          level: 59
+          baseHealth: 3
+          currentHealth: -65
+          basePower: 69
+          baseDefense: 94
+          baseAdaptability: 14
+          baseSpeed: 31
+          additionalPower: 0
+          additionalDefense: 0
+          additionalAdaptability: 0
+          additionalSpeed: 0
+        - id: 1
+          <trainerId>k__BackingField: 1
+          level: 25
+          baseHealth: 28
+          currentHealth: -79
+          basePower: 4
+          baseDefense: 76
+          baseAdaptability: 41
+          baseSpeed: 50
+          additionalPower: 0
+          additionalDefense: 0
+          additionalAdaptability: 0
+          additionalSpeed: 0
+        <candidatePokemonList>k__BackingField: []
+        <currentBuffList>k__BackingField: []

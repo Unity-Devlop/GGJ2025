@@ -1,0 +1,61 @@
+{
+  "bigmap": {
+    "playerPos": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    }
+  },
+  "newGame": false,
+  "teamData": {
+    "trainerId": 0,
+    "playerData": {
+      "id": 0,
+      "level": 0,
+      "baseHealth": 0,
+      "currentHealth": 0,
+      "basePower": 0,
+      "baseDefense": 0,
+      "baseAdaptability": 0,
+      "baseSpeed": 0,
+      "additionalPower": 0,
+      "additionalDefense": 0,
+      "additionalAdaptability": 0,
+      "additionalSpeed": 0,
+      "guid": "00000000-0000-0000-0000-000000000000",
+      "trainerId": 0
+    },
+    "package": {
+      "_items": [
+        {
+          "idx": 0,
+          "id": 6,
+          "count": 1
+        },
+        {
+          "idx": 1,
+          "id": 7,
+          "count": 1
+        },
+        {
+          "idx": 2,
+          "id": 8,
+          "count": 1
+        },
+        {
+          "idx": 3,
+          "id": 9,
+          "count": 1
+        },
+        {
+          "idx": 4,
+          "id": 10,
+          "count": 1
+        }
+      ]
+    },
+    "battlePokemonList": [],
+    "candidatePokemonList": [],
+    "currentBuffList": []
+  }
+}

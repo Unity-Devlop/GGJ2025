@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{68a0d25e-f692-402f-b1fa-93a85b637137}">
+		<property name="assetPath">
+			<value>SFX/power-up-type-1-230548.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.6979591836734693</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e3dfefe9-004c-4cbe-b4cf-864e7dba598e}</destination>
+		</relationship>
+	</object>
+</objects>

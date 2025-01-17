@@ -1,0 +1,26 @@
+{
+    "name": "GameCore",
+    "rootNamespace": "GameCore",
+    "references": [
+        "UnityToolkit",
+        "MagicOnion.Client",
+        "MagicOnion.Abstractions",
+        "MagicOnion.Serialization.MemoryPack",
+        "MagicOnion.Serialization.MessagePack",
+        "MagicOnion.Shared",
+        "MagicOnion.Unity",
+        "MessagePack",
+        "MessagePack.Annotations",
+        "Luban.Runtime",
+        "Cysharp.Net.Http.YetAnotherHttpHandler"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

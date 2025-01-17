@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f289e8e36c74a269784e1657b939b73, type: 3}
+  m_Name: GameConfigItem
+  m_EditorClassIdentifier: 
+  homeScene:
+    m_AssetGUID: 3a014e498a28d487a80653f650226e67
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  playScene:
+    m_AssetGUID: 3a8c3d8dfd43e40c583f33a6a63c4b48
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  playMgrPrefab:
+    m_AssetGUID: 544d81f960556411a86cf7f95d21d2bb
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  homeMgrPrefab:
+    m_AssetGUID: 83c8eac9cd21d4d22b96214e7bf80278
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  gameEntry:
+    m_AssetGUID: 840cfd7408b44477ab7cc9523f8ab5bc
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

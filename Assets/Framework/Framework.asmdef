@@ -1,0 +1,19 @@
+{
+    "name": "Framework",
+    "rootNamespace": "",
+    "references": [
+        "Unity.ResourceManager",
+        "Unity.Addressables",
+        "UniTask.Addressables",
+        "UniTask"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
