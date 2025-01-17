@@ -1,0 +1,17 @@
+{
+    "name": "WitchFish",
+    "rootNamespace": "",
+    "references": [
+        "GUID:3a0c5c43b445414b806a911e6fc91c84",
+        "GUID:9baea0ba6357e4d09ba61789a936bcc7"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
