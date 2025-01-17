@@ -15,30 +15,25 @@ MonoBehaviour:
   homeScene:
     m_AssetGUID: 3a014e498a28d487a80653f650226e67
     m_SubObjectName: 
-    m_SubObjectGUID: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   playScene:
     m_AssetGUID: 3a8c3d8dfd43e40c583f33a6a63c4b48
     m_SubObjectName: 
-    m_SubObjectGUID: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   playMgrPrefab:
-    m_AssetGUID: 544d81f960556411a86cf7f95d21d2bb
+    m_AssetGUID: cb3b58a00e44d54498939f93068f2ef4
     m_SubObjectName: 
-    m_SubObjectGUID: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   homeMgrPrefab:
     m_AssetGUID: 83c8eac9cd21d4d22b96214e7bf80278
     m_SubObjectName: 
-    m_SubObjectGUID: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   gameEntry:
     m_AssetGUID: 840cfd7408b44477ab7cc9523f8ab5bc
     m_SubObjectName: 
-    m_SubObjectGUID: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
