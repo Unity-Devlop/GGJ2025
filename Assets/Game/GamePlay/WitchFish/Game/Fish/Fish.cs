@@ -12,7 +12,8 @@ namespace WitchFish
             MoveToWait,
             Wait,
             MoveToJump,
-            Jump
+            Jump,
+            ReturnToLand,
         }
 
         public float moveSpeed = 1f;
