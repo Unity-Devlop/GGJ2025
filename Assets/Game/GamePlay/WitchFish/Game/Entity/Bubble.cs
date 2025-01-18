@@ -11,7 +11,7 @@ namespace WitchFish
         public float maxTop = 8.0f;
         public bool Enabled = false;
         public GameObject Item;
-        public Vector3 TargetPos = new Vector3(-7.29f,3.58f,0);
+        public Transform target;
 
         private Sprite itemIcon;
 
@@ -42,7 +42,7 @@ namespace WitchFish
             }
             else
             {
-                var item = Instantiate(Item, TargetPos , Quaternion.identity);
+                var item = Instantiate(Item, target.transform.position , Quaternion.identity);
                 item.GetComponent<Item>().Bind(Type);
             }
             Destroy(gameObject);
