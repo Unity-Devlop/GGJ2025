@@ -6,7 +6,9 @@ namespace WitchFish.UI
 {
     public class ItemIconUI : MonoBehaviour
     {
-        public ItemEnum id { get;private set; }
+        [Sirenix.OdinInspector.ReadOnly, Sirenix.OdinInspector.ShowInInspector]
+        public ItemEnum id { get; private set; }
+
         private Image _image;
 
         private void Awake()

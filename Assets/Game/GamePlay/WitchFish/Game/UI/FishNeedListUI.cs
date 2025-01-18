@@ -9,7 +9,10 @@ namespace WitchFish.UI
     public class FishNeedListUI : MonoBehaviour
     {
         public GameObject iconPrefab;
+
+        [Sirenix.OdinInspector.ReadOnly, Sirenix.OdinInspector.ShowInInspector]
         private List<ItemIconUI> _itemIconUis;
+
         private Canvas _canvas;
 
         private void Awake()
@@ -23,8 +26,8 @@ namespace WitchFish.UI
         public void Bind(Fish fish)
         {
             this._fish = fish;
-            fish.OnAdd += OnAdd;
-            fish.OnRemove += OnRemove;
+            // fish.OnAdd += OnAdd;
+            // fish.OnRemove += OnRemove;
         }
 
         private void Update()
@@ -38,24 +41,46 @@ namespace WitchFish.UI
             {
                 _canvas.enabled = true;
             }
-        }
 
-        private void OnAdd(ItemEnum obj)
-        {
-            var icon = Instantiate(iconPrefab, transform).GetComponent<ItemIconUI>();
-            icon.Bind(obj);
-            _itemIconUis.Add(icon);
-        }
-
-        private void OnRemove(ItemEnum obj)
-        {
-            int index = _itemIconUis.FindIndex(icon => icon.id == obj);
-            if (index == -1)
+            while (_fish.needList.Count > _itemIconUis.Count)
             {
-                return;
+                var ui = Instantiate(iconPrefab, transform).GetComponent<ItemIconUI>();
+                _itemIconUis.Add(ui);
             }
-            GameObject.Destroy(_itemIconUis[index].gameObject);
-            _itemIconUis.RemoveAt(index);
+
+            while (_itemIconUis.Count > _fish.needList.Count)
+            {
+                var last = _itemIconUis.Count - 1;
+                var lastUI = _itemIconUis[last];
+                _itemIconUis.Remove(lastUI);
+                Destroy(lastUI.gameObject);
+            }
+
+            for (int i = 0; i < _fish.needList.Count; i++)
+            {
+                var need = _fish.needList[i];
+                var ui = _itemIconUis[i];
+                ui.Bind(need);
+            }
+            
         }
+
+        // private void OnAdd(ItemEnum obj)
+        // {
+        //     var icon = Instantiate(iconPrefab, transform).GetComponent<ItemIconUI>();
+        //     icon.Bind(obj);
+        //     _itemIconUis.Add(icon);
+        // }
+        //
+        // private void OnRemove(ItemEnum obj)
+        // {
+        //     int index = _itemIconUis.FindIndex(icon => icon.id == obj);
+        //     if (index == -1)
+        //     {
+        //         return;
+        //     }
+        //     GameObject.Destroy(_itemIconUis[index].gameObject);
+        //     _itemIconUis.RemoveAt(index);
+        // }
     }
 }

@@ -17,7 +17,9 @@ namespace WitchFish
         public float spawnWaitTime = 0.5f;
         public float moveSpeed = 1f;
         public float beginAngryWaitTime = 0.5f;
+
         public float maxWaitTime = 3f;
+
         // public TMP_Text debugText;
         public StateMachine<Fish> stateMachine { get; private set; }
 
@@ -28,9 +30,11 @@ namespace WitchFish
 
         [SerializeField] private FishTypeEnum type = FishTypeEnum.普通鱼;
 
+        [Sirenix.OdinInspector.ShowInInspector, Sirenix.OdinInspector.ReadOnly]
         internal List<ItemEnum> needList;
-        public event Action<ItemEnum> OnAdd = delegate { };
-        public event Action<ItemEnum> OnRemove = delegate { };
+
+        // public event Action<ItemEnum> OnAdd = delegate { };
+        // public event Action<ItemEnum> OnRemove = delegate { };
 
         [NonSerialized] public RaycastHit2D[] hit2Ds;
 
@@ -77,22 +81,22 @@ namespace WitchFish
             GetComponentInChildren<FishNeedListUI>().Bind(this);
         }
 
-        internal void InvokeAddEvent()
-        {
-            foreach (var itemEnum in needList)
-            {
-                OnAdd(itemEnum);
-            }
-        }
+        // internal void InvokeAddEvent()
+        // {
+        //     foreach (var itemEnum in needList)
+        //     {
+        //         OnAdd(itemEnum);
+        //     }
+        // }
 
-        public void InvokeRemoveEvent()
-        {
-            if (needList == null) return;
-            foreach (var itemEnum in needList)
-            {
-                OnRemove(itemEnum);
-            }
-        }
+        // public void InvokeRemoveEvent()
+        // {
+        //     if (needList == null) return;
+        //     foreach (var itemEnum in needList)
+        //     {
+        //         OnRemove(itemEnum);
+        //     }
+        // }
 
         private void Update()
         {
@@ -152,7 +156,7 @@ namespace WitchFish
                 if (needList.Contains(item.id))
                 {
                     needList.Remove(item.id);
-                    OnRemove?.Invoke(item.id);
+                    // OnRemove?.Invoke(item.id);
                     GameMgr.Singleton.DeSpawn(item);
                 }
             }
@@ -176,7 +180,7 @@ namespace WitchFish
         private void DebugRandomRemove()
         {
             int idx = UnityEngine.Random.Range(0, needList.Count);
-            OnRemove?.Invoke(needList[idx]);
+            // OnRemove?.Invoke(needList[idx]);
             needList.RemoveAt(idx);
         }
 

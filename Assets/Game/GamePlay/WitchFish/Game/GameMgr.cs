@@ -207,6 +207,7 @@ namespace WitchFish
 
         private int CalNeedNumber()
         {
+            // return 4;
             if (lakeFishCount.Value is >= 0 and < 6)
             {
                 return 1;
@@ -260,7 +261,7 @@ namespace WitchFish
         private void FillNeedList(Fish fish)
         {
             int needNumber = CalNeedNumber();
-            fish.InvokeRemoveEvent();
+            // fish.InvokeRemoveEvent();
             fish.needList = new List<ItemEnum>(needNumber);
             for (int i = 0; i < needNumber; i++)
             {
@@ -279,7 +280,7 @@ namespace WitchFish
                 }
             }
 
-            fish.InvokeAddEvent();
+            // fish.InvokeAddEvent();
         }
 
         public Vector3 GetWaitPosition()
