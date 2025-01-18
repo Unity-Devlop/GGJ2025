@@ -5,7 +5,7 @@ namespace WitchFish
 {
     public class Bubble : MonoBehaviour
     {
-        public ItemType Type;
+        public ItemEnum Type;
         public float speed = 1f;
        
         public float maxTop = 8.0f;
