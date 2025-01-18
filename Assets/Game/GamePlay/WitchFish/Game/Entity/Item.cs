@@ -9,6 +9,29 @@ namespace WitchFish
     {
         public ItemType itemType;
 
+        private Collider2D _collider;
+        private Rigidbody2D _rigidbody2D;
+
+        private void Awake()
+        {
+            _rigidbody2D = GetComponent<Rigidbody2D>();
+            _collider = GetComponent<Collider2D>();
+        }
+
+        private void OnMouseDown()
+        {
+            GameLogger.Log.Information("{collider} isTrigger=true", _collider);
+            _rigidbody2D.isKinematic = true;
+            _collider.isTrigger = true;
+        }
+
+        private void OnMouseUp()
+        {
+            GameLogger.Log.Information("{collider} isTrigger=false", _collider);
+            _rigidbody2D.isKinematic = false;
+            _collider.isTrigger = false;
+        }
+
         private void OnMouseDrag()
         {
             Vector3 mousePos = Input.mousePosition;
@@ -17,7 +40,7 @@ namespace WitchFish
             //将鼠标位置转化为世界坐标
             Vector3 objectPos = Global.cameraSystem.mainCamera.ScreenToWorldPoint(mousePos);
             //限制该世界坐标高度不能小于初始高度
-            objectPos.y = Math.Clamp(objectPos.y,GameMgr.Singleton.minY,GameMgr.Singleton.maxY);
+            objectPos.y = Math.Clamp(objectPos.y, GameMgr.Singleton.minY, GameMgr.Singleton.maxY);
             //限制该世界坐标深度为物体初始深度
             objectPos.z = 0;
             //给物体赋值坐标

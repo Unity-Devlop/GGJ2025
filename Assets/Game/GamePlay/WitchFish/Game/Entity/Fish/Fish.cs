@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Game;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -43,7 +44,9 @@ namespace WitchFish
             // hit2D = Physics2D.Raycast(transform.position, new Vector2(-1, 0), 1);
             hit2Ds = Physics2D.RaycastAll(transform.position, GameMgr.Singleton.direction,
                 GameMgr.Singleton.rayDistance);
+#if UNITY_EDITOR
             Debug.DrawRay(transform.position, GameMgr.Singleton.direction, Color.red);
+#endif
             if (stateMachine.running)
             {
                 debugText.text = stateMachine.currentState.GetType().Name.Replace("State", "");
@@ -51,10 +54,14 @@ namespace WitchFish
             }
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            
+            if(other.TryGetComponent(out Item item)){
+                GameLogger.Log.Information("{item}", item.ToString());
+            }
         }
+        
+        
 
         private void OnDisable()
         {
