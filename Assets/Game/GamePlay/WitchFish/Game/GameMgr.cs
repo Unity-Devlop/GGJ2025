@@ -12,7 +12,9 @@ namespace WitchFish
     {
         [SerializeField] private Transform fishSpawnPoint;
         [SerializeField] private Transform fishWaitingFoodPoint;
+
         [SerializeField] private Transform fishJumpPoint;
+
         // private List<Transform> _fishJumpTrailLst;
         // public IReadOnlyList<Transform> fishJumpTrailLst => _fishJumpTrailLst;
         [SerializeField] private float fishSpawnInterval;
@@ -34,7 +36,7 @@ namespace WitchFish
         public float rayDistance = 2;
 
         public Vector3 direction = new Vector3(-1, 0, 0);
-        
+
         public float maxY = 10;
         public float minY = -10;
 
@@ -62,8 +64,21 @@ namespace WitchFish
         {
             var obj = GameObject.Instantiate(fishPrefab, fishSpawnPoint.position, Quaternion.identity);
             var fish = obj.GetComponent<Fish>();
+            SetupFish(fish);
             currentLandFishList.Add(fish);
             fish.stateMachine.Run<FishSpawnState>();
+        }
+
+
+
+        public class FishConfig
+        {
+        }
+
+        public List<ItemEnum> itemGenerateRate;
+
+        private void SetupFish(Fish fish)
+        {
         }
 
         public Vector3 GetWaitPosition()
@@ -85,6 +100,11 @@ namespace WitchFish
         public bool CloseToFinalWaitPoint(Fish owner)
         {
             return Vector3.Distance(owner.transform.position, fishWaitingFoodPoint.position) <= 0.1f;
+        }
+
+        public void DeSpawn(Item item)
+        {
+            GameObject.Destroy(item.gameObject, Time.deltaTime);
         }
 
         public void DeSpawn(Fish owner)

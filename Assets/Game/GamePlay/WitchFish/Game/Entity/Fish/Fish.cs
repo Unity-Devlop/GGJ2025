@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Game;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityToolkit;
+using WitchFish.UI;
+using Debug = UnityEngine.Debug;
 
 namespace WitchFish
 {
@@ -18,12 +21,20 @@ namespace WitchFish
         public StateMachine<Fish> stateMachine { get; private set; }
         public Rigidbody2D rb2D { get; private set; }
 
-        public List<ItemType> needList;
-        
+        [SerializeField] private FishTypeEnum type = FishTypeEnum.普通鱼;
+
+        [SerializeField] private List<ItemEnum> needList;
+        public event Action<ItemEnum> OnAdd = delegate { };
+        public event Action<ItemEnum> OnRemove = delegate { };
+
+        [NonSerialized] public RaycastHit2D[] hit2Ds;
+        public Vector2 jumpForce = new Vector2(-5, 5);
+
+
         private void Awake()
         {
             rb2D = GetComponent<Rigidbody2D>();
-            
+
             stateMachine = new StateMachine<Fish>(this);
 
             stateMachine.Add<FishSpawnState>();
@@ -33,10 +44,16 @@ namespace WitchFish
             stateMachine.Add<FishMoveToJumpState>();
             stateMachine.Add<FishJumpState>();
             stateMachine.Add<FishLakeReturnState>();
+            GetComponentInChildren<FishNeedListUI>().Bind(this);
         }
 
-        public RaycastHit2D[] hit2Ds;
-        public Vector2 jumpForce = new Vector2(-5, 5);
+        private void Start()
+        {
+            foreach (var itemEnum in needList)
+            {
+                OnAdd(itemEnum);
+            }
+        }
 
 
         private void Update()
@@ -56,12 +73,22 @@ namespace WitchFish
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if(other.TryGetComponent(out Item item)){
-                GameLogger.Log.Information("{item}", item.ToString());
+            if (!other.TryGetComponent(out Item item)) return;
+            GameLogger.Log.Information("{item}", item.ToString());
+
+            OnFeedItem(item);
+        }
+
+        private void OnFeedItem(Item item)
+        {
+            if (needList.Contains(item.id))
+            {
+                needList.Remove(item.id);
+                OnRemove?.Invoke(item.id);
+                GameMgr.Singleton.DeSpawn(item);
             }
         }
-        
-        
+
 
         private void OnDisable()
         {
@@ -71,8 +98,22 @@ namespace WitchFish
             }
         }
 
+
+#if UNITY_EDITOR
+
+
+        [Conditional("UNITY_EDITOR")]
         [Sirenix.OdinInspector.Button]
-        public void OnFeed()
+        private void DebugRandomRemove()
+        {
+            int idx = UnityEngine.Random.Range(0, needList.Count);
+            OnRemove?.Invoke(needList[idx]);
+            needList.RemoveAt(idx);
+        }
+
+        [Conditional("UNITY_EDITOR")]
+        [Sirenix.OdinInspector.Button]
+        private void DebugFeedToJump()
         {
             // TODO 喂东西给我
             if (stateMachine.currentState is FishLandWaitState)
@@ -84,4 +125,6 @@ namespace WitchFish
             }
         }
     }
+
+#endif
 }

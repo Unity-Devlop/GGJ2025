@@ -1,16 +1,17 @@
 using System;
 using Game;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace WitchFish
 {
     [RequireComponent(typeof(Rigidbody2D))]
     public class Item : MonoBehaviour
     {
-        public ItemType itemType;
-
         private Collider2D _collider;
         private Rigidbody2D _rigidbody2D;
+        public ItemStateEnum state = ItemStateEnum.在框子外;
+        public ItemEnum id;
 
         private void Awake()
         {
