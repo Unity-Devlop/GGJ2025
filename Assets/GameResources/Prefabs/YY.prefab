@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2682284006767752948
 Transform:
   m_ObjectHideFlags: 0
@@ -96,7 +96,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.046453, y: 0}
+  m_Offset: {x: -3.2723129, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -107,7 +107,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 17.87777, y: 1}
+  m_Size: {x: 11.42605, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &6726606935621014967
 GameObject:
@@ -158,6 +158,8 @@ MonoBehaviour:
   bubblePrefab: {fileID: 960176513239132198}
   RectLakeBottom: {fileID: 6558905688821855349}
   BubbleCreatePerSec: 5
+  bubbleSpeed: 1
+  maxTop: 8
 --- !u!1001 &8638576044278275209
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -182,6 +184,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1821269470453298377, guid: d5912f2a64f5f405085412fde12e6c2e, type: 3}
+      propertyPath: Item
+      value: 
+      objectReference: {fileID: 4810914925031358661, guid: 6b457479fde4d4c2e99d89ef46e0fdc3, type: 3}
     - target: {fileID: 8547283649653170859, guid: d5912f2a64f5f405085412fde12e6c2e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
