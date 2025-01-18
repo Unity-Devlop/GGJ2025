@@ -11,6 +11,7 @@ namespace WitchFish
 {
     public class BigFish : MonoBehaviour
     {
+        public GameObject panel;
         [SerializeField] private TMP_Text _text;
         private int IndexChat = 0;
         private List<string> whenJumpInLake = new List<string>()
@@ -75,10 +76,11 @@ namespace WitchFish
             }
         }
 
-        private void OnMouseDown()
+        public void OnMouseDown()
         {
-            //Global.cameraSystem.SetToMenuCamera();
-            //Time.timeScale = 0f; // Pause the game
+            Global.cameraSystem.SetToMenuCamera();
+            panel.gameObject.SetActive(true);
+
         }
 
         IEnumerator SpeakInterval()

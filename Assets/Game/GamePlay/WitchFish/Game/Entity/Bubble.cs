@@ -73,6 +73,16 @@ namespace WitchFish
         private void OnMouseDown()
         {
             Explore();
+            if(Type == ItemEnum.语音)
+            {
+                PlayVideo();
+            }
+        }
+
+        void PlayVideo()
+        {
+            // play
+            GameMgr.Singleton.PlayVideoIndex++;
         }
 
     }
