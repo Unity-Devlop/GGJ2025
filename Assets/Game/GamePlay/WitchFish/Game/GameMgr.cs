@@ -158,6 +158,7 @@ namespace WitchFish
 
 
         public List<GameObject> lakeFishPrefabList;
+        public float jumpDestroyTime = 70f;
 
         [Sirenix.OdinInspector.Button]
         private void SpawnFish()
