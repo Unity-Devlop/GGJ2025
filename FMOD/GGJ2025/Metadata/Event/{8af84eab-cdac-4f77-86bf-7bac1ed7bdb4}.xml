@@ -62,9 +62,9 @@
 	<object class="EventAutomatableProperties" id="{e04becca-9f92-41cb-9965-2d9ca27a72dd}" />
 	<object class="MarkerTrack" id="{579c7878-d081-4f74-82c5-4824a7eb9a88}" />
 	<object class="Timeline" id="{7a0426cb-a5d5-4d0a-bd92-4ee29824e5bc}">
-		<property name="isProxyEnabled">
-			<value>false</value>
-		</property>
+		<relationship name="markers">
+			<destination>{42217a9c-accb-4222-b6c5-d3111965be4e}</destination>
+		</relationship>
 	</object>
 	<object class="ActionSheet" id="{d687f818-8070-4b3f-9fed-a73f42044149}">
 		<relationship name="modules">
@@ -93,6 +93,20 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{82a0f9fd-6a50-44a6-9310-94342eb68f7b}" />
+	<object class="LoopRegion" id="{42217a9c-accb-4222-b6c5-d3111965be4e}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="length">
+			<value>190</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{7a0426cb-a5d5-4d0a-bd92-4ee29824e5bc}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{579c7878-d081-4f74-82c5-4824a7eb9a88}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{d65d4db1-8c4a-44cd-a18b-fe7820366249}">
 		<relationship name="effects">
 			<destination>{e52918bc-9528-44e0-88cd-96f9627f3bf7}</destination>
