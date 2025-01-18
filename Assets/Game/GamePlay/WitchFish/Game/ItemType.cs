@@ -1,6 +1,6 @@
 namespace WitchFish
 {
-    public enum FishFoodEnum
+    public enum ItemType
     {
         蟹黄堡,
         破皮鞋,

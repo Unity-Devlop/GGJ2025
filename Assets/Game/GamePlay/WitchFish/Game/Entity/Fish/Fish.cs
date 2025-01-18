@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -15,6 +16,9 @@ namespace WitchFish
         public TMP_Text debugText;
         public StateMachine<Fish> stateMachine { get; private set; }
         public Rigidbody2D rb2D { get; private set; }
+
+        public List<ItemType> needList;
+        
         private void Awake()
         {
             rb2D = GetComponent<Rigidbody2D>();
@@ -45,6 +49,11 @@ namespace WitchFish
                 debugText.text = stateMachine.currentState.GetType().Name.Replace("State", "");
                 stateMachine.OnUpdate();
             }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            
         }
 
         private void OnDisable()
