@@ -14,6 +14,7 @@ namespace WitchFish
         public Vector3 initPos = new Vector3(0,0,0);
         public Collider2D TargetFish = null;
         public string colliderName = string.Empty;
+        int cuoCount = 0;
         // Start is called before the first frame update
         void Start()
         {
@@ -29,7 +30,7 @@ namespace WitchFish
         public int GetRandomExcluding(int min, int max, List<ItemEnum> exclude)
         {
             int randomValue = min;
-            while (!exclude.Contains( (ItemEnum)randomValue) )
+            while (exclude.Contains( (ItemEnum)randomValue) )
             {
                 randomValue = Random.Range(min, max + 1);
             }
@@ -41,13 +42,23 @@ namespace WitchFish
         {
             if(other.gameObject.name == "SoapCollider")
             {
-                isCleaningFish = true;
+
                 initPos = transform.position;
                 TargetFish = other;
             }
 
   
 
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.gameObject.name == "SoapCollider" )
+            {
+                TargetFish = null;
+                isCleaningFish = false;
+                cuoCount = 0;
+            }
         }
 
         private void OnTriggerStay2D(Collider2D collision)
@@ -60,19 +71,23 @@ namespace WitchFish
 
             float verticalMovement = transform.position.y - initPos.y;
             var relavite = Mathf.Abs(verticalMovement);
-
-            if (relavite > 0.3f)
+            float horizontalMovemenet = transform.position.x - initPos.x;
+            var relavitex = Mathf.Abs(verticalMovement);
+            if (relavite > 0.4f || relavitex > 0.4f)
             {
-                Debug.LogError($"搓一次");
-                initPos = transform.position;
-                // todo fsx
-                var fish = collision.transform.parent.GetComponent<Fish>();
-                var lastneedList = new List<ItemEnum>();
-                lastneedList.AddRange(fish.needList);
-                for (int i = 0; i < lastneedList.Count; i++)
+
+                cuoCount++;
+                if (cuoCount > 10)
                 {
-                    fish.needList.Remove(lastneedList[i]);
-                    fish.needList.Add((ItemEnum)GetRandomExcluding((int)ItemEnum.蟹黄堡, (int)ItemEnum.核弹, lastneedList));
+                    initPos = transform.position;
+                    // todo fsx
+                    var fish = collision.transform.parent.GetComponent<Fish>();
+                    var lastneedList = new List<ItemEnum>();
+                    lastneedList.AddRange(fish.needList);
+                        fish.needList.Remove(lastneedList[0]);
+                    var newitem = (ItemEnum)GetRandomExcluding((int)ItemEnum.蟹黄堡, (int)ItemEnum.核弹, lastneedList);
+                        fish.needList.Add(newitem);
+                    cuoCount = 0;
                 }
             }
         }
