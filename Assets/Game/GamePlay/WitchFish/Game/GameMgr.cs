@@ -111,6 +111,10 @@ namespace WitchFish
                     {
                         item.OnMouseDrag();
                     }
+                    if(hit.collider.TryGetComponent(out Soap soap))
+                    {
+                        soap.OnMouseDrag();
+                    }
                 }
             }
 
@@ -312,6 +316,8 @@ namespace WitchFish
         public void DeSpawnLake(Fish owner)
         {
             lakeFishCount.Value += 1;
+            Core.Event.Send<EventFishJumpInLakePush>(new EventFishJumpInLakePush { pa = GameMgr.Singleton.lakeFishCount.ToString() });
+
             _currentLakeFishWaitList.Remove(owner);
             GameObject.Destroy(owner.gameObject, Time.deltaTime);
         }
@@ -331,6 +337,9 @@ namespace WitchFish
         {
             lakeFishCount.Value += 1;
             DeSpawn(fish);
+            Core.Event.Send<EventFishJumpInLakePush>(new EventFishJumpInLakePush { pa = GameMgr.Singleton.lakeFishCount.ToString() });
+
+
         }
 
         async void OnSendFishPush(EventFishDiePush push)

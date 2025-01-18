@@ -220,20 +220,21 @@ MonoBehaviour:
   minFishCountToSpawnLakeFish: 0
   id2Sprite:
     list:
-    - key: 0
-      value: {fileID: 484644775, guid: 3b09101f3b3354e0e93acb67838df08c, type: 3}
-    - key: 1
-      value: {fileID: 235642230, guid: 3b09101f3b3354e0e93acb67838df08c, type: 3}
-    - key: 2
-      value: {fileID: 1084995682, guid: 3b09101f3b3354e0e93acb67838df08c, type: 3}
-    - key: 3
-      value: {fileID: -909545429, guid: 3b09101f3b3354e0e93acb67838df08c, type: 3}
-    - key: 4
-      value: {fileID: 253363269, guid: 3b09101f3b3354e0e93acb67838df08c, type: 3}
     - key: 5
       value: {fileID: 1560189187, guid: 3b09101f3b3354e0e93acb67838df08c, type: 3}
     - key: 6
       value: {fileID: -1084938011, guid: 3b09101f3b3354e0e93acb67838df08c, type: 3}
+    - key: 0
+      value: {fileID: 21300000, guid: bbe9d6754057b2f4ca553c77ae85fda3, type: 3}
+    - key: 1
+      value: {fileID: 21300000, guid: f4dcf493f5cb91a4fb83ed49ff20e764, type: 3}
+    - key: 2
+      value: {fileID: 21300000, guid: 8dbf33fd0dbe7834ba83d038d3277c91, type: 3}
+    - key: 3
+      value: {fileID: 21300000, guid: 78ed3045523a0794f923bc8e3f92512f, type: 3}
+    - key: 4
+      value: {fileID: 21300000, guid: f83b4d7c48482914c8daa3a7a7260d85, type: 3}
+  itemPrefab: {fileID: 0}
   lakeFishSpawnInterval: 10
   lakeFishPrefabList:
   - {fileID: 4573932786295303094, guid: 4c7ff50b34cde77448bdd04cbb53a0f4, type: 3}
