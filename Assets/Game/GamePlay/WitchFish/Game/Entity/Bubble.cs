@@ -11,7 +11,7 @@ namespace WitchFish
         public float maxTop = 8.0f;
         public bool Enabled = false;
         public GameObject Item;
-        Vector3 tarpos = new Vector3(-7.29f,3.58f,0);
+        public Vector3 TargetPos = new Vector3(-7.29f,3.58f,0);
 
         // Start is called before the first frame update
         void Start()
@@ -27,7 +27,7 @@ namespace WitchFish
 
         void Explore()
         {
-            var item = Instantiate(Item, tarpos , Quaternion.identity);
+            var item = Instantiate(Item, TargetPos , Quaternion.identity);
             Destroy(gameObject);
         }
 
