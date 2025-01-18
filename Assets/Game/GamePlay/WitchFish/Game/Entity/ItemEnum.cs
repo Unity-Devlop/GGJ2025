@@ -6,7 +6,8 @@ namespace WitchFish
         破皮鞋,
         章鱼,
         向日葵,
-        核弹
+        核弹,
+        语音
     }
 
     public enum ItemStateEnum

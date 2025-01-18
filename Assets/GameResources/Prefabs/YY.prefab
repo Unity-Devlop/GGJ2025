@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2682284006767752948
 Transform:
   m_ObjectHideFlags: 0
@@ -157,7 +157,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubblePrefab: {fileID: 960176513239132198}
   RectLakeBottom: {fileID: 6558905688821855349}
-  BubbleCreatePerSec: 5
+  BubbleCreateInterval: 5
+  ChatBubbleCreateInterval: 4
+  BubbleCreateCount: 1
   bubbleSpeed: 1
   maxTop: 8
 --- !u!1001 &8638576044278275209
@@ -170,16 +172,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 437239448084533347, guid: d5912f2a64f5f405085412fde12e6c2e, type: 3}
       propertyPath: m_Size.x
-      value: 2
+      value: 2.56
       objectReference: {fileID: 0}
     - target: {fileID: 437239448084533347, guid: d5912f2a64f5f405085412fde12e6c2e, type: 3}
       propertyPath: m_Size.y
-      value: 2
+      value: 2.56
       objectReference: {fileID: 0}
     - target: {fileID: 437239448084533347, guid: d5912f2a64f5f405085412fde12e6c2e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 5a97d5afa6254804f81b7ba956296996, type: 3}
+      objectReference: {fileID: 21300000, guid: 3ef3f35793005c24c86f2bef750843d4, type: 3}
     - target: {fileID: 437239448084533347, guid: d5912f2a64f5f405085412fde12e6c2e, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -188,6 +190,10 @@ PrefabInstance:
       propertyPath: Item
       value: 
       objectReference: {fileID: 4810914925031358661, guid: 6b457479fde4d4c2e99d89ef46e0fdc3, type: 3}
+    - target: {fileID: 1821269470453298377, guid: d5912f2a64f5f405085412fde12e6c2e, type: 3}
+      propertyPath: "_\u8BED\u97F3"
+      value: 
+      objectReference: {fileID: 21300000, guid: eec19781926cd2248b7c9abfde8db555, type: 3}
     - target: {fileID: 8547283649653170859, guid: d5912f2a64f5f405085412fde12e6c2e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
