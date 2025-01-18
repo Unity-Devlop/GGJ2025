@@ -23,7 +23,7 @@ namespace WitchFish
             if (dis < 0.1f)
             {
                 GameMgr.Singleton.DeSpawn(owner);
-                Core.Event.Send<SendFishDiePush>();
+                Core.Event.Send<EventFishDiePush>();
             }
         }
 

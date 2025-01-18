@@ -83,7 +83,7 @@ namespace WitchFish
             _lakeFishSpawnPointList = lakeFishSpawnPointParent.GetComponentsInChildren<Transform>().ToList();
             _lakeFishSpawnPointList.Remove(lakeFishSpawnPointParent);
 
-            Core.Event.Listen<SendFishDiePush>(OnSendFishPush);
+            Core.Event.Listen<EventFishDiePush>(OnSendFishPush);
 
             Global.Get<AudioSystem>().PlayBGM(FMODName.Event.BGM_BackgroundMusic, out _);
         }
@@ -111,6 +111,24 @@ namespace WitchFish
                 }
             }
 
+            if (lakeFishCount.Value < 6)
+            {
+                fishSpawnInterval = 8;
+            }
+            else if (lakeFishCount.Value < 16)
+            {
+                fishSpawnInterval = 7;
+            }
+            else if (lakeFishCount.Value < 31)
+            {
+                fishSpawnInterval = 6;
+            }
+            else if (lakeFishCount.Value < 51)
+            {
+                fishSpawnInterval = 5;
+            }
+
+
             if (_currentLandFishWaitList.Count < 6)
             {
                 _spawnTimer += Time.deltaTime;
@@ -119,6 +137,23 @@ namespace WitchFish
                     _spawnTimer = 0;
                     SpawnFish();
                 }
+            }
+
+            if (lakeFishCount.Value < 6)
+            {
+                fishSpawnInterval = 28;
+            }
+            else if (lakeFishCount.Value < 16)
+            {
+                fishSpawnInterval = 24;
+            }
+            else if (lakeFishCount.Value < 31)
+            {
+                fishSpawnInterval = 24;
+            }
+            else if (lakeFishCount.Value < 51)
+            {
+                fishSpawnInterval = 20;
             }
 
             if (lakeFishCount.Value > minFishCountToSpawnLakeFish)
@@ -136,6 +171,9 @@ namespace WitchFish
 
         float _lakeSpawnTimer;
 
+        public List<GameObject> lakeFishPrefabList;
+        public float jumpDestroyTime = 70f;
+
         [Sirenix.OdinInspector.Button]
         private void SpawnLakeFish()
         {
@@ -144,7 +182,7 @@ namespace WitchFish
             {
                 if (transform1.childCount == 0)
                 {
-                    var obj = GameObject.Instantiate(lakeFishPrefab, transform1);
+                    var obj = Instantiate(lakeFishPrefab, transform1);
                     var fish = obj.GetComponent<Fish>();
                     SetupLakeFish(fish);
                     _currentLakeFishWaitList.Add(fish);
@@ -155,10 +193,6 @@ namespace WitchFish
 
             lakeFishCount.Value -= 1;
         }
-
-
-        public List<GameObject> lakeFishPrefabList;
-        public float jumpDestroyTime = 70f;
 
         [Sirenix.OdinInspector.Button]
         private void SpawnFish()
@@ -171,13 +205,81 @@ namespace WitchFish
             fish.stateMachine.Run<FishSpawnState>();
         }
 
+        private int CalNeedNumber()
+        {
+            if (lakeFishCount.Value is >= 0 and < 6)
+            {
+                return 1;
+            }
+
+            if (lakeFishCount.Value is >= 6 and < 16)
+            {
+                return UnityEngine.Random.value < 0.5 ? 1 : 2;
+            }
+
+            if (lakeFishCount.Value is >= 16 and < 31)
+            {
+                return UnityEngine.Random.value < 0.5 ? 2 : 3;
+            }
+
+            if (lakeFishCount.Value is >= 31 and < 51)
+            {
+                return UnityEngine.Random.Range(2, 5);
+            }
+
+            if (lakeFishCount.Value is >= 51)
+            {
+                return UnityEngine.Random.Range(2, 5);
+            }
+
+            return 4;
+        }
+
 
         private void SetupLakeFish(Fish fish)
         {
+            float beginAngryWaitTime = 14;
+            float maxWaitTime = 14 + 8;
+            fish.beginAngryWaitTime = beginAngryWaitTime;
+            fish.maxWaitTime = maxWaitTime;
+
+
+            FillNeedList(fish);
         }
 
         private void SetupFish(Fish fish)
         {
+            float beginAngryWaitTime = 14;
+            float maxWaitTime = 14 + 8;
+            fish.beginAngryWaitTime = beginAngryWaitTime;
+            fish.maxWaitTime = maxWaitTime;
+
+            FillNeedList(fish);
+        }
+
+        private void FillNeedList(Fish fish)
+        {
+            int needNumber = CalNeedNumber();
+            fish.InvokeRemoveEvent();
+            fish.needList = new List<ItemEnum>(needNumber);
+            for (int i = 0; i < needNumber; i++)
+            {
+                float value = UnityEngine.Random.value;
+                if (value < 0.5)
+                {
+                    fish.needList.Add(UnityEngine.Random.value < 0.5 ? ItemEnum.蟹黄堡 : ItemEnum.破皮鞋);
+                }
+                else if (value < 0.9)
+                {
+                    fish.needList.Add(UnityEngine.Random.value < 0.5 ? ItemEnum.向日葵 : ItemEnum.章鱼);
+                }
+                else
+                {
+                    fish.needList.Add(ItemEnum.核弹);
+                }
+            }
+
+            fish.InvokeAddEvent();
         }
 
         public Vector3 GetWaitPosition()
@@ -230,7 +332,7 @@ namespace WitchFish
             DeSpawn(fish);
         }
 
-        async void OnSendFishPush(SendFishDiePush push)
+        async void OnSendFishPush(EventFishDiePush push)
         {
             await UniTask.DelayFrame(1);
             if (maxHp > 1) maxHp--;

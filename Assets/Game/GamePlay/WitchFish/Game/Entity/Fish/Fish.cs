@@ -24,7 +24,7 @@ namespace WitchFish
 
         [SerializeField] private FishTypeEnum type = FishTypeEnum.普通鱼;
 
-        [SerializeField] internal List<ItemEnum> needList;
+        internal List<ItemEnum> needList;
         public event Action<ItemEnum> OnAdd = delegate { };
         public event Action<ItemEnum> OnRemove = delegate { };
 
@@ -67,7 +67,7 @@ namespace WitchFish
             GetComponentInChildren<FishNeedListUI>().Bind(this);
         }
 
-        private void Start()
+        internal void InvokeAddEvent()
         {
             foreach (var itemEnum in needList)
             {
@@ -75,6 +75,14 @@ namespace WitchFish
             }
         }
 
+        public void InvokeRemoveEvent()
+        {
+            if(needList==null) return;
+            foreach (var itemEnum in needList)
+            {
+                OnRemove(itemEnum);
+            }
+        }
 
         private void Update()
         {
@@ -127,6 +135,7 @@ namespace WitchFish
 
         private void OnFeedItem(Item item)
         {
+            GameLogger.Log.Information("喂我吃{item}".Color(Color.cyan), item.id);
             if (stateMachine.currentState is FishLandWaitState ||
                 stateMachine.currentState is FishLakeWaitState)
             {
@@ -174,6 +183,7 @@ namespace WitchFish
                 stateMachine.Change<FishMoveToJumpState>();
             }
         }
+
     }
 
 #endif

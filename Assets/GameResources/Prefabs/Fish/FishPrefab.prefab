@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 3659958582029853389}
   - component: {fileID: 8499916571318293305}
   - component: {fileID: 5207950890551490338}
-  - component: {fileID: 7821874936509891545}
+  - component: {fileID: 3506433375545282384}
   m_Layer: 3
   m_Name: FishPrefab
   m_TagString: Untagged
@@ -444,7 +444,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &7821874936509891545
+--- !u!58 &3506433375545282384
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -478,7 +478,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.45
+  m_Radius: 0.5
 --- !u!1 &6204383133681619561
 GameObject:
   m_ObjectHideFlags: 0

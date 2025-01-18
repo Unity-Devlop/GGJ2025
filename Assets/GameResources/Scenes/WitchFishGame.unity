@@ -778,6 +778,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7955816774686935011, guid: 83046a9029a1948f1a5009eda2300754, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8054743071646372383, guid: 83046a9029a1948f1a5009eda2300754, type: 3}
       propertyPath: m_Name
       value: FishReturnCount
@@ -935,6 +939,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1585029730262765188, guid: 65dadfe81296e4469ae17fd26b758d5d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.6652317
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585029730262765188, guid: 65dadfe81296e4469ae17fd26b758d5d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.6266
+      objectReference: {fileID: 0}
     - target: {fileID: 3629632479153965832, guid: 65dadfe81296e4469ae17fd26b758d5d, type: 3}
       propertyPath: m_Name
       value: Basket
