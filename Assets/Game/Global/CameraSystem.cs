@@ -13,5 +13,11 @@ namespace Game
         public void Dispose()
         {
         }
+
+        public void SetToMenuCamera() {
+
+            mainCamera = transform.parent.Find("MenuCamera").GetComponent<Camera>();
+        }
+
     }
 }

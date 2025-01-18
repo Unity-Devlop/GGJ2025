@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using Game;
 using TMPro;
 using UnityEngine;
 using Random = System.Random;
@@ -38,6 +39,12 @@ namespace WitchFish
             {
                 GameMgr.Singleton.lakeFishCount.UnRegister(OnLakeFishCountChange);
             }
+        }
+
+        private void OnMouseDown()
+        {
+            Time.timeScale = 0f; // Pause the game
+            Global.cameraSystem.SetToMenuCamera();
         }
 
         IEnumerator SpeakInterval()
