@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
@@ -18,23 +19,14 @@ namespace WitchFish
         {
             _animOver = false;
             float y = owner.transform.position.y;
-            await owner.transform.DOLocalMoveY(y + 1f, 0.5f);
-            await owner.transform.DOMoveY(y, 0.5f);
+            await owner.transform.DOLocalMoveY(y + 1f, 0.5f)
+                .ToUniTask(cancellationToken: owner.destroyCancellationToken);
+            await owner.transform.DOMoveY(y, 0.5f).ToUniTask(cancellationToken: owner.destroyCancellationToken);
 
-            // 沿着轨迹移动
-            var list = GameMgr.Singleton.fishJumpTrailLst;
-            for (int i = 0; i < list.Count; i++)
-            {
-                Vector3 pos = list[i].transform.position;
-                Vector3 dir = pos - owner.transform.position;
-                while (Vector3.Distance(owner.transform.position, pos) > 0.1f)
-                {
-                    owner.transform.position += dir * Time.deltaTime;
-                    await UniTask.DelayFrame(1, cancellationToken: owner.destroyCancellationToken);
-                }
+            owner.rb2D.isKinematic = false;
+            owner.rb2D.AddForce(owner.jumpForce, ForceMode2D.Impulse);
 
-                await UniTask.DelayFrame(1, cancellationToken: owner.destroyCancellationToken);
-            }
+            await UniTask.Delay(TimeSpan.FromSeconds(5), cancellationToken: owner.destroyCancellationToken);
 
             _animOver = true;
         }

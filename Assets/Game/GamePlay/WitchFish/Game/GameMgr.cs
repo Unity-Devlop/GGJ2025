@@ -13,8 +13,8 @@ namespace WitchFish
         [SerializeField] private Transform fishSpawnPoint;
         [SerializeField] private Transform fishWaitingFoodPoint;
         [SerializeField] private Transform fishJumpPoint;
-        private List<Transform> _fishJumpTrailLst;
-        public IReadOnlyList<Transform> fishJumpTrailLst => _fishJumpTrailLst;
+        // private List<Transform> _fishJumpTrailLst;
+        // public IReadOnlyList<Transform> fishJumpTrailLst => _fishJumpTrailLst;
         [SerializeField] private float fishSpawnInterval;
 
         [SerializeField] private GameObject fishPrefab;
@@ -34,11 +34,14 @@ namespace WitchFish
         public float rayDistance = 2;
 
         public Vector3 direction = new Vector3(-1, 0, 0);
+        
+        public float maxY = 10;
+        public float minY = -10;
 
         protected override void OnInit()
         {
-            _fishJumpTrailLst = fishJumpPoint.GetComponentsInChildren<Transform>().ToList();
-            _fishJumpTrailLst.Remove(fishJumpPoint);
+            // _fishJumpTrailLst = fishJumpPoint.GetComponentsInChildren<Transform>().ToList();
+            // _fishJumpTrailLst.Remove(fishJumpPoint);
         }
 
         private void Update()
@@ -87,6 +90,9 @@ namespace WitchFish
         public void DeSpawn(Fish owner)
         {
             currentLandFishList.Remove(owner);
+#if UNITY_EDITOR
+            owner.transform.SetAsLastSibling();
+#endif
             GameObject.Destroy(owner.gameObject, Time.deltaTime);
         }
 

@@ -14,9 +14,11 @@ namespace WitchFish
         public float maxWaitTime = 3f;
         public TMP_Text debugText;
         public StateMachine<Fish> stateMachine { get; private set; }
-
+        public Rigidbody2D rb2D { get; private set; }
         private void Awake()
         {
+            rb2D = GetComponent<Rigidbody2D>();
+            
             stateMachine = new StateMachine<Fish>(this);
 
             stateMachine.Add<FishSpawnState>();
@@ -29,6 +31,7 @@ namespace WitchFish
         }
 
         public RaycastHit2D[] hit2Ds;
+        public Vector2 jumpForce = new Vector2(-5, 5);
 
 
         private void Update()
@@ -58,6 +61,9 @@ namespace WitchFish
             // TODO 喂东西给我
             if (stateMachine.currentState is FishLandWaitState)
             {
+#if UNITY_EDITOR
+                transform.SetAsLastSibling();
+#endif
                 stateMachine.Change<FishMoveToJumpState>();
             }
         }

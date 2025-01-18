@@ -442,12 +442,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnWaitTime: 0.5
-  moveSpeed: 2
+  moveSpeed: 4
   beginAngryWaitTime: 5
   maxWaitTime: 10
   debugText: {fileID: 7179279432444690936}
-  rayDistance: 2
-  direction: {x: -1, y: 0, z: 0}
+  jumpForce: {x: -5, y: 5}
 --- !u!50 &5207950890551490338
 Rigidbody2D:
   serializedVersion: 4
