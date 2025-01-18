@@ -1,34 +1,29 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityToolkit;
 
 namespace WitchFish
 {
     public class Fish : MonoBehaviour
     {
-        public enum TargetStateEnum
-        {
-            Spawn,
-            MoveToWait,
-            Wait,
-            MoveToJump,
-            Jump,
-            ReturnToLand,
-        }
-
+        public float spawnWaitTime = 0.5f;
         public float moveSpeed = 1f;
-        public StateMachine<Fish> stateMachine;
-        public TargetStateEnum target = TargetStateEnum.Spawn;
-        
-        public const string MoveTarget = "MoveTarget";
-        public const string MoveCompleteAction = "MoveComplete";
-        
+        public float beginAngryWaitTime = 0.5f;
+        public float maxWaitTime = 3f;
+        public StateMachine<Fish> stateMachine { get; private set; }
+
         private void Awake()
         {
             stateMachine = new StateMachine<Fish>(this);
-            stateMachine.Add<FishIdleState>();
-            stateMachine.Add<FishMoveState>();
+
+            stateMachine.Add<FishSpawnState>();
+            stateMachine.Add<FishMoveToWaitState>();
+            stateMachine.Add<FishLandWaitState>();
+            stateMachine.Add<FishLandReturnState>();
+            stateMachine.Add<FishMoveToJumpState>();
             stateMachine.Add<FishJumpState>();
+            stateMachine.Add<FishLakeReturnState>();
         }
 
         private void Update()
@@ -39,14 +34,17 @@ namespace WitchFish
             }
         }
 
-        private void OnEnable()
-        {
-            stateMachine.Run<FishIdleState>();
-        }
-
         private void OnDisable()
         {
-            stateMachine.Stop();
+            if (stateMachine.running)
+            {
+                stateMachine.Stop();
+            }
+        }
+
+        public void OnFeed()
+        {
+            // TODO 喂东西给我
         }
     }
 }

@@ -2,11 +2,11 @@ using UnityToolkit;
 
 namespace WitchFish
 {
-    public class FishReturnState : IState<Fish>
+    public class FishLandReturnState : IState<Fish>
     {
         public void OnInit(Fish owner, IStateMachine<Fish> stateMachine)
         {
-            // throw new System.NotImplementedException();NotImplementedException
+            // throw new System.NotImplementedException();
         }
 
         public void OnEnter(Fish owner, IStateMachine<Fish> stateMachine)

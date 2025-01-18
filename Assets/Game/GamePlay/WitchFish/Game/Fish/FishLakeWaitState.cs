@@ -2,7 +2,7 @@ using UnityToolkit;
 
 namespace WitchFish
 {
-    public class FishJumpState: IState<Fish>
+    public class FishLakeWaitState : IState<Fish>
     {
         public void OnInit(Fish owner, IStateMachine<Fish> stateMachine)
         {

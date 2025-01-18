@@ -1,9 +1,11 @@
+using UnityEngine;
 using UnityToolkit;
 
 namespace WitchFish
 {
-    public class FishJumpState: IState<Fish>
+    public class FishMoveToJumpState: IState<Fish>
     {
+        Vector3 _targetPos;
         public void OnInit(Fish owner, IStateMachine<Fish> stateMachine)
         {
             // throw new System.NotImplementedException();
@@ -11,22 +13,27 @@ namespace WitchFish
 
         public void OnEnter(Fish owner, IStateMachine<Fish> stateMachine)
         {
-            // throw new System.NotImplementedException();
+            _targetPos = GameMgr.Singleton.GetJumpPosition();
         }
 
         public void Transition(Fish owner, IStateMachine<Fish> stateMachine)
         {
-            // throw new System.NotImplementedException();
+            if (GameMgr.Singleton.CloseToJumpPoint(owner))
+            {
+                stateMachine.Change<FishJumpState>();
+            }
         }
 
         public void OnUpdate(Fish owner, IStateMachine<Fish> stateMachine)
         {
-            // throw new System.NotImplementedException();
+            Vector3 diff = _targetPos - owner.transform.position;
+            Vector3 vec = diff.normalized * (owner.moveSpeed * Time.deltaTime);
+            owner.transform.Translate(vec, Space.World);
         }
 
         public void OnExit(Fish owner, IStateMachine<Fish> stateMachine)
         {
-            // throw new System.NotImplementedException();
+            GameMgr.Singleton.DequeueWait(owner);
         }
     }
 }
