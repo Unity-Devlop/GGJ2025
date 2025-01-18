@@ -11,6 +11,8 @@ namespace WitchFish
 
         public void OnEnter(Fish owner, IStateMachine<Fish> stateMachine)
         {
+            
+            owner.animator.Play("FishIdle");
         }
 
         public void Transition(Fish owner, IStateMachine<Fish> stateMachine)

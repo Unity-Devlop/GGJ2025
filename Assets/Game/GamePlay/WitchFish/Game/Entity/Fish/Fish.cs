@@ -29,6 +29,8 @@ namespace WitchFish
         public event Action<ItemEnum> OnRemove = delegate { };
 
         [NonSerialized] public RaycastHit2D[] hit2Ds;
+        
+        internal Animator animator;
 
         public List<Vector2> jumpForceList = new List<Vector2>()
         {
@@ -40,6 +42,7 @@ namespace WitchFish
 
         private void Awake()
         {
+            animator = GetComponent<Animator>();
             rb2D = GetComponent<Rigidbody2D>();
 
             // var values = Enum.GetValues(typeof(LakeEnum));

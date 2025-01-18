@@ -20,6 +20,7 @@ namespace WitchFish
         {
             try
             {
+                owner.animator.Play("FishIdle");
                 owner.rb2D.excludeLayers |= LayerMask.GetMask("Item");
                 _animOver = false;
                 float y = owner.transform.position.y;
