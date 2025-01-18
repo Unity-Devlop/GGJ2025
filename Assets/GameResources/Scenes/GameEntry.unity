@@ -283,7 +283,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7303123616743089911, guid: 5bfc919cf500c403b8f0ede9cf097dff, type: 3}
       propertyPath: orthographic size
-      value: 10
+      value: 5.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303123616743089911, guid: 5bfc919cf500c403b8f0ede9cf097dff, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 215
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
