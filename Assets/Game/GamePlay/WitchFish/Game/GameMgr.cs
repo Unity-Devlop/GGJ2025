@@ -19,10 +19,13 @@ namespace WitchFish
         // public IReadOnlyList<Transform> fishJumpTrailLst => _fishJumpTrailLst;
         [SerializeField] private float fishSpawnInterval;
 
-        [SerializeField] private GameObject fishPrefab;
-        [SerializeField] private List<Fish> currentLandFishList = new List<Fish>();
+        [SerializeField] private List<GameObject> fishPrefabList;
 
-        [SerializeField] private List<Fish> currentLakeFishList = new List<Fish>();
+        [SerializeField, Sirenix.OdinInspector.ReadOnly]
+        private List<Fish> currentLandFishList = new List<Fish>();
+
+        [SerializeField, Sirenix.OdinInspector.ReadOnly]
+        private List<Fish> currentLakeFishList = new List<Fish>();
 
         // 当前在岸上排队等食物的鱼
         // [SerializeField] private List<Fish> currentLandWaitingFishList = new List<Fish>();
@@ -62,6 +65,7 @@ namespace WitchFish
         [Sirenix.OdinInspector.Button]
         private void SpawnFish()
         {
+            var fishPrefab = fishPrefabList.RandomTakeWithoutRemove();
             var obj = GameObject.Instantiate(fishPrefab, fishSpawnPoint.position, Quaternion.identity);
             var fish = obj.GetComponent<Fish>();
             SetupFish(fish);
@@ -69,13 +73,6 @@ namespace WitchFish
             fish.stateMachine.Run<FishSpawnState>();
         }
 
-
-
-        public class FishConfig
-        {
-        }
-
-        public List<ItemEnum> itemGenerateRate;
 
         private void SetupFish(Fish fish)
         {

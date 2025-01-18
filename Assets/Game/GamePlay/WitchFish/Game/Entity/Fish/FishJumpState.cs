@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
@@ -14,7 +15,6 @@ namespace WitchFish
         {
             // throw new System.NotImplementedException();
         }
-
         public async void OnEnter(Fish owner, IStateMachine<Fish> stateMachine)
         {
             _animOver = false;
@@ -24,7 +24,7 @@ namespace WitchFish
             await owner.transform.DOMoveY(y, 0.5f).ToUniTask(cancellationToken: owner.destroyCancellationToken);
 
             owner.rb2D.isKinematic = false;
-            owner.rb2D.AddForce(owner.jumpForce, ForceMode2D.Impulse);
+            owner.rb2D.AddForce(owner.jumpForceList.RandomTakeWithoutRemove(), ForceMode2D.Impulse);
 
             await UniTask.Delay(TimeSpan.FromSeconds(5), cancellationToken: owner.destroyCancellationToken);
 

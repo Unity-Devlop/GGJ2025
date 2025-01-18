@@ -9,7 +9,6 @@ namespace WitchFish
 
         public void OnInit(Fish owner, IStateMachine<Fish> stateMachine)
         {
-           
         }
 
         public void OnEnter(Fish owner, IStateMachine<Fish> stateMachine)
@@ -27,6 +26,10 @@ namespace WitchFish
             else if (_timer >= owner.beginAngryWaitTime)
             {
                 // TODO 生气
+            }
+            else if (owner.needList.Count == 0)
+            {
+                stateMachine.Change<FishMoveToJumpState>();
             }
         }
 

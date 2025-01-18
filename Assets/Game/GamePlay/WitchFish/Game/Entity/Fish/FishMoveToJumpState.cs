@@ -8,7 +8,6 @@ namespace WitchFish
         Vector3 _targetPos;
         public void OnInit(Fish owner, IStateMachine<Fish> stateMachine)
         {
-            // throw new System.NotImplementedException();
         }
 
         public void OnEnter(Fish owner, IStateMachine<Fish> stateMachine)

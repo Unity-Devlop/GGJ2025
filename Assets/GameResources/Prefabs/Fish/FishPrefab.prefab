@@ -448,8 +448,12 @@ MonoBehaviour:
   maxWaitTime: 10
   debugText: {fileID: 7179279432444690936}
   type: 0
-  needList: 0000000000000000
-  jumpForce: {x: -5, y: 5}
+  needList: 00000000
+  jumpForceList:
+  - {x: -5, y: 5}
+  - {x: -4, y: 8}
+  - {x: -2, y: 8}
+  - {x: -3, y: 6}
 --- !u!50 &5207950890551490338
 Rigidbody2D:
   serializedVersion: 4
@@ -511,7 +515,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.3
 --- !u!1001 &2405375796807008183
 PrefabInstance:
   m_ObjectHideFlags: 0

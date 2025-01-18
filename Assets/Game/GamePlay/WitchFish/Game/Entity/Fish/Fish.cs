@@ -8,6 +8,7 @@ using UnityEngine.Serialization;
 using UnityToolkit;
 using WitchFish.UI;
 using Debug = UnityEngine.Debug;
+using Random = UnityEngine.Random;
 
 namespace WitchFish
 {
@@ -23,17 +24,34 @@ namespace WitchFish
 
         [SerializeField] private FishTypeEnum type = FishTypeEnum.普通鱼;
 
-        [SerializeField] private List<ItemEnum> needList;
+        [SerializeField] internal List<ItemEnum> needList;
         public event Action<ItemEnum> OnAdd = delegate { };
         public event Action<ItemEnum> OnRemove = delegate { };
 
         [NonSerialized] public RaycastHit2D[] hit2Ds;
-        public Vector2 jumpForce = new Vector2(-5, 5);
 
+        public List<Vector2> jumpForceList = new List<Vector2>()
+        {
+            new Vector2(-5, 5),
+            new Vector2(-4, 8),
+            new Vector2(-2, 8),
+            new Vector2(-3,6)
+        };
 
         private void Awake()
         {
             rb2D = GetComponent<Rigidbody2D>();
+
+            // var values = Enum.GetValues(typeof(LakeEnum));
+            // // List<LakeEnum> lakeEnums = new List<LakeEnum>();
+            // foreach (var value in values)
+            // {
+            //     lakeEnums.Add((LakeEnum)value);
+            // }
+            //
+            // LakeEnum lakeEnum = lakeEnums.RandomTakeWithoutRemove();
+            // rb2D.includeLayers = LayerMask.GetMask(lakeEnum.ToString());
+
 
             stateMachine = new StateMachine<Fish>(this);
 
@@ -79,13 +97,19 @@ namespace WitchFish
             OnFeedItem(item);
         }
 
+        // public event Action OnFeedOver;
+
         private void OnFeedItem(Item item)
         {
-            if (needList.Contains(item.id))
+            if (stateMachine.currentState is FishLandWaitState ||
+                stateMachine.currentState is FishLakeWaitState)
             {
-                needList.Remove(item.id);
-                OnRemove?.Invoke(item.id);
-                GameMgr.Singleton.DeSpawn(item);
+                if (needList.Contains(item.id))
+                {
+                    needList.Remove(item.id);
+                    OnRemove?.Invoke(item.id);
+                    GameMgr.Singleton.DeSpawn(item);
+                }   
             }
         }
 

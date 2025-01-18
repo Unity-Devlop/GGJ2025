@@ -27,10 +27,14 @@ namespace WitchFish
             bool frontHasOtherFish = false;
             foreach (var raycastHit2D in owner.hit2Ds)
             {
-                if (raycastHit2D.collider != null 
-                    && raycastHit2D.collider.TryGetComponent(out Fish fish) 
-                    && fish != owner 
-                    && (fish.stateMachine.currentState is FishLandWaitState || fish.stateMachine.currentState is FishMoveToWaitState))
+                if (raycastHit2D.collider != null
+                    && raycastHit2D.collider.TryGetComponent(out Fish fish)
+                    && fish != owner
+                    && (fish.stateMachine.currentState is FishLandWaitState ||
+                        fish.stateMachine.currentState is FishMoveToWaitState ||
+                        fish.stateMachine.currentState is FishMoveToJumpState
+                    )
+                   )
                 {
                     frontHasOtherFish = true;
                     break;
