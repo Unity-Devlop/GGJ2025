@@ -71,9 +71,9 @@ namespace WitchFish
 
         public SerializableDictionary<ItemEnum, Sprite> id2Sprite = new SerializableDictionary<ItemEnum, Sprite>();
 
-        
+
         public Item itemPrefab;
-        
+
         protected override void OnInit()
         {
             lakeFishCount = new BindableProperty<int>();
@@ -130,16 +130,12 @@ namespace WitchFish
             {
                 fishSpawnInterval = 5;
             }
-
-
-            if (_currentLandFishWaitList.Count < 6)
+            
+            _spawnTimer += Time.deltaTime;
+            if (_spawnTimer >= fishSpawnInterval)
             {
-                _spawnTimer += Time.deltaTime;
-                if (_spawnTimer >= fishSpawnInterval)
-                {
-                    _spawnTimer = 0;
-                    SpawnFish();
-                }
+                _spawnTimer = 0;
+                SpawnFish();
             }
 
             if (lakeFishCount.Value < 6)

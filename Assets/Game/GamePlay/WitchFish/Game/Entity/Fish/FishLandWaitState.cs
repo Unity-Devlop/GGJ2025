@@ -40,7 +40,7 @@ namespace WitchFish
                 _animating = true;
                 _animatingOver = false;
                 owner.animator.Play("yuzuiAnim");
-                UniTask.Delay(TimeSpan.FromSeconds(0.8f)).ContinueWith(() => { _animatingOver = true; });
+                UniTask.Delay(TimeSpan.FromSeconds(0.6f)).ContinueWith(() => { _animatingOver = true; });
             }
             else if (_timer > owner.maxWaitTime)
             {
