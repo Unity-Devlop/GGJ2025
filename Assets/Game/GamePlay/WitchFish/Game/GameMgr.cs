@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Game;
 using UnityEngine;
 using UnityToolkit;
@@ -12,7 +13,8 @@ namespace WitchFish
         [SerializeField] private Transform fishSpawnPoint;
         [SerializeField] private Transform fishWaitingFoodPoint;
         [SerializeField] private Transform fishJumpPoint;
-
+        private List<Transform> _fishJumpTrailLst;
+        public IReadOnlyList<Transform> fishJumpTrailLst => _fishJumpTrailLst;
         [SerializeField] private float fishSpawnInterval;
 
         [SerializeField] private GameObject fishPrefab;
@@ -21,28 +23,34 @@ namespace WitchFish
         [SerializeField] private List<Fish> currentLakeFishList = new List<Fish>();
 
         // 当前在岸上排队等食物的鱼
-        [SerializeField] private List<Fish> currentLandWaitingFishList = new List<Fish>();
+        // [SerializeField] private List<Fish> currentLandWaitingFishList = new List<Fish>();
 
         // 鱼的身位间隔
         [SerializeField] private Vector3 fishOffset;
 
         public float _spawnTimer;
 
-        
+
         public float rayDistance = 2;
 
         public Vector3 direction = new Vector3(-1, 0, 0);
-        
+
+        protected override void OnInit()
+        {
+            _fishJumpTrailLst = fishJumpPoint.GetComponentsInChildren<Transform>().ToList();
+            _fishJumpTrailLst.Remove(fishJumpPoint);
+        }
+
         private void Update()
         {
-            if (currentLandFishList.Count <6)
+            if (currentLandFishList.Count < 6)
             {
                 _spawnTimer += Time.deltaTime;
                 if (_spawnTimer >= fishSpawnInterval)
                 {
                     _spawnTimer = 0;
                     SpawnFish();
-                }   
+                }
             }
         }
 
@@ -57,18 +65,9 @@ namespace WitchFish
 
         public Vector3 GetWaitPosition()
         {
-            int count = currentLandWaitingFishList.Count;
-            if (count == 0)
-            {
-                return fishWaitingFoodPoint.position;
-            }
-            // 往后排一个身位
-
-            Vector3 pos = fishWaitingFoodPoint.position;
-            pos += count * fishOffset;
-            GameLogger.Log.Information("拿等待位置:{count}-{pos}", count, pos);
-            return pos;
+            return fishWaitingFoodPoint.position;
         }
+
         public Vector3 GetJumpPosition()
         {
             // TODO 
@@ -83,6 +82,12 @@ namespace WitchFish
         public bool CloseToFinalWaitPoint(Fish owner)
         {
             return Vector3.Distance(owner.transform.position, fishWaitingFoodPoint.position) <= 0.1f;
+        }
+
+        public void DeSpawn(Fish owner)
+        {
+            currentLandFishList.Remove(owner);
+            GameObject.Destroy(owner.gameObject, Time.deltaTime);
         }
     }
 }

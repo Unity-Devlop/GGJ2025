@@ -52,9 +52,14 @@ namespace WitchFish
             }
         }
 
+        [Sirenix.OdinInspector.Button]
         public void OnFeed()
         {
             // TODO 喂东西给我
+            if (stateMachine.currentState is FishLandWaitState)
+            {
+                stateMachine.Change<FishMoveToJumpState>();
+            }
         }
     }
 }

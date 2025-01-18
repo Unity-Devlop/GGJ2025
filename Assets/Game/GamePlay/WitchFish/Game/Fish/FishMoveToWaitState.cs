@@ -27,13 +27,16 @@ namespace WitchFish
             bool frontHasOtherFish = false;
             foreach (var raycastHit2D in owner.hit2Ds)
             {
-                if (raycastHit2D.collider != null && raycastHit2D.collider.TryGetComponent(out Fish fish) &&
-                    fish != owner) 
+                if (raycastHit2D.collider != null 
+                    && raycastHit2D.collider.TryGetComponent(out Fish fish) 
+                    && fish != owner 
+                    && (fish.stateMachine.currentState is FishLandWaitState || fish.stateMachine.currentState is FishMoveToWaitState))
                 {
                     frontHasOtherFish = true;
-                    break;  
+                    break;
                 }
             }
+
             if (!frontHasOtherFish)
             {
                 Move(owner);
@@ -44,7 +47,7 @@ namespace WitchFish
         {
             Vector3 target = GameMgr.Singleton.GetWaitPosition();
             Vector3 direction = (target - owner.transform.position).normalized;
-            owner.transform.position += direction * Time.deltaTime;
+            owner.transform.position += direction * (Time.deltaTime * owner.moveSpeed);
         }
 
         public void OnExit(Fish owner, IStateMachine<Fish> stateMachine)
