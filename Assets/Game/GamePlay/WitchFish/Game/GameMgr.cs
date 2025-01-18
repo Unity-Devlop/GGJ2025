@@ -15,17 +15,25 @@ namespace WitchFish
 
         [SerializeField] private Transform fishJumpPoint;
 
+        [SerializeField] private Transform lakeFishSpawnPointParent;
+
         // private List<Transform> _fishJumpTrailLst;
         // public IReadOnlyList<Transform> fishJumpTrailLst => _fishJumpTrailLst;
         [SerializeField] private float fishSpawnInterval;
 
         [SerializeField] private List<GameObject> fishPrefabList;
 
+
+        private List<Transform> _lakeFishSpawnPointList;
+
         [SerializeField, Sirenix.OdinInspector.ReadOnly]
         private List<Fish> currentLandFishList = new List<Fish>();
 
         [SerializeField, Sirenix.OdinInspector.ReadOnly]
         private List<Fish> currentLakeFishList = new List<Fish>();
+
+
+        public BindableProperty<int> lakeFishCount { get; private set; }
 
         // 当前在岸上排队等食物的鱼
         // [SerializeField] private List<Fish> currentLandWaitingFishList = new List<Fish>();
@@ -40,13 +48,30 @@ namespace WitchFish
 
         public Vector3 direction = new Vector3(-1, 0, 0);
 
-        public float maxY = 10;
-        public float minY = -10;
+// #if UNITY_EDITOR
+//         [SerializeField, Sirenix.OdinInspector.ReadOnly]
+// #endif
+        public float maxY { get; private set; } = 5;
+
+// #if UNITY_EDITOR
+//         [SerializeField, Sirenix.OdinInspector.ReadOnly]
+// #endif
+
+        public float minY { get; private set; } = -5;
+
+        public int minFishCountToSpawnLakeFish = 6;
 
         protected override void OnInit()
         {
-            // _fishJumpTrailLst = fishJumpPoint.GetComponentsInChildren<Transform>().ToList();
-            // _fishJumpTrailLst.Remove(fishJumpPoint);
+            lakeFishCount = new BindableProperty<int>();
+            var mainCamera = Global.cameraSystem.mainCamera;
+            Rect rect = mainCamera.GetOrthographicCameraRect();
+            minY = rect.yMin;
+            maxY = rect.yMax;
+
+            _lakeFishSpawnPointList = new List<Transform>();
+            _lakeFishSpawnPointList = lakeFishSpawnPointParent.GetComponentsInChildren<Transform>().ToList();
+            _lakeFishSpawnPointList.Remove(lakeFishSpawnPointParent);
         }
 
         private void Update()
@@ -60,7 +85,42 @@ namespace WitchFish
                     SpawnFish();
                 }
             }
+
+            if (lakeFishCount.Value > minFishCountToSpawnLakeFish)
+            {
+                _lakeSpawnTimer += Time.deltaTime;
+                if (_lakeSpawnTimer >= fishSpawnInterval)
+                {
+                    _lakeSpawnTimer = 0;
+                    SpawnLakeFish();
+                }
+            }
         }
+
+        public float lakeFishSpawnInterval = 10f;
+
+        float _lakeSpawnTimer;
+
+        [Sirenix.OdinInspector.Button]
+        private void SpawnLakeFish()
+        {
+            var lakeFishPrefab = lakeFishPrefabList.RandomTakeWithoutRemove();
+            foreach (var transform1 in _lakeFishSpawnPointList)
+            {
+                if (transform1.childCount == 0)
+                {
+                    var obj = GameObject.Instantiate(lakeFishPrefab, transform1);
+                    var fish = obj.GetComponent<Fish>();
+                    SetupLakeFish(fish);
+                    currentLakeFishList.Add(fish);
+                    fish.stateMachine.Run<FishLakeWaitState>();
+                    break;
+                }
+            }
+        }
+
+
+        public List<GameObject> lakeFishPrefabList;
 
         [Sirenix.OdinInspector.Button]
         private void SpawnFish()
@@ -73,6 +133,10 @@ namespace WitchFish
             fish.stateMachine.Run<FishSpawnState>();
         }
 
+
+        private void SetupLakeFish(Fish fish)
+        {
+        }
 
         private void SetupFish(Fish fish)
         {
@@ -104,18 +168,27 @@ namespace WitchFish
             GameObject.Destroy(item.gameObject, Time.deltaTime);
         }
 
+        public void DeSpawnLake(Fish owner)
+        {
+            currentLakeFishList.Remove(owner);
+            GameObject.Destroy(owner.gameObject, Time.deltaTime);
+        }
+
         public void DeSpawn(Fish owner)
         {
             currentLandFishList.Remove(owner);
-#if UNITY_EDITOR
-            owner.transform.SetAsLastSibling();
-#endif
             GameObject.Destroy(owner.gameObject, Time.deltaTime);
         }
 
         public Vector3 GetReturnPosition()
         {
             return fishSpawnPoint.position;
+        }
+
+        public void EnterLake(Fish fish)
+        {
+            lakeFishCount.Value += 1;
+            DeSpawn(fish);
         }
     }
 }

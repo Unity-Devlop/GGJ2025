@@ -35,7 +35,7 @@ namespace WitchFish
         {
             if (_animOver)
             {
-                GameMgr.Singleton.DeSpawn(owner);
+                GameMgr.Singleton.EnterLake(owner);
             }
         }
 

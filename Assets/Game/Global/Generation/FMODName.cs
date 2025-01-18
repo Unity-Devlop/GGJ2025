@@ -17,6 +17,8 @@ namespace FMOD
         	public const string SFX_plant_grow = "event:/SFX/plant_grow";
 
         	public const string SFX_purchase_succesful_ingame_230550 = "event:/SFX/purchase-succesful-ingame-230550";
+
+        	public const string BGM_BackgroundMusic = "event:/BGM/BackgroundMusic";
         }
         public static class Snapshot
         {

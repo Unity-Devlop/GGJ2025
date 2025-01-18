@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1958086876959557599}
   - component: {fileID: 1317169337778756291}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3955144509717023740}
   - component: {fileID: 4486478634908403479}
   - component: {fileID: 7179279432444690936}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 3001478535531247182}
   - component: {fileID: 8631866403227231516}
   - component: {fileID: 6846031694016170211}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EyeContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,6 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e01a2d75ae5544c4b55ac9a5383cd89a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  content: {fileID: 0}
 --- !u!1 &4573932786295303094
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,7 +367,7 @@ GameObject:
   - component: {fileID: 8499916571318293305}
   - component: {fileID: 5207950890551490338}
   - component: {fileID: 7821874936509891545}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FishPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +383,7 @@ Transform:
   m_GameObject: {fileID: 4573932786295303094}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.84, y: 0.86, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -644,6 +645,10 @@ PrefabInstance:
     - target: {fileID: 3103706261492098868, guid: 73e7b2b2b144b4306bb836a11bd454a6, type: 3}
       propertyPath: m_Name
       value: FishNeedListUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3103706261492098868, guid: 73e7b2b2b144b4306bb836a11bd454a6, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7779425373935012410, guid: 73e7b2b2b144b4306bb836a11bd454a6, type: 3}
       propertyPath: m_AnchorMax.y

@@ -59,9 +59,10 @@ namespace WitchFish
             stateMachine.Add<FishMoveToWaitState>();
             stateMachine.Add<FishLandWaitState>();
             stateMachine.Add<FishLandReturnState>();
+            stateMachine.Add<FishLakeWaitState>();
+            stateMachine.Add<FishLakeReturnState>();
             stateMachine.Add<FishMoveToJumpState>();
             stateMachine.Add<FishJumpState>();
-            stateMachine.Add<FishLakeReturnState>();
             GetComponentInChildren<FishNeedListUI>().Bind(this);
         }
 
