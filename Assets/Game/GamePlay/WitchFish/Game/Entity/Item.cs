@@ -13,10 +13,31 @@ namespace WitchFish
         public ItemStateEnum state = ItemStateEnum.在框子外;
         public ItemEnum id;
 
+        private float _timer;
+        public float deSpawnTime = 5f;
+
         private void Awake()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _collider = GetComponent<Collider2D>();
+            _timer = 0;
+        }
+
+        private void Update()
+        {
+            if (state == ItemStateEnum.在框子外)
+            {
+                _timer += Time.deltaTime;
+            }
+            else if (state == ItemStateEnum.在框子里)
+            {
+                _timer = 0;
+            }
+
+            if (_timer > deSpawnTime)
+            {
+                GameObject.Destroy(gameObject);
+            }
         }
 
         public void OnMouseDown()

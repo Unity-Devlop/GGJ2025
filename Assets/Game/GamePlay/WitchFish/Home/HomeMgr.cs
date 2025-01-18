@@ -9,7 +9,7 @@ namespace WitchFish
     {
         protected override void OnInit()
         {
-            UIRoot.Singleton.OpenPanel<GameHomePanel>();
+            UIRoot.Singleton.OpenPanelAsync<GameHomePanel>();
         }
 
         protected override void OnDispose()

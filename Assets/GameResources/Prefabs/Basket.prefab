@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1585029730262765188}
   - component: {fileID: 9207294373717096779}
   - component: {fileID: 4255485605179074199}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 1946109535195635169}
   - component: {fileID: 6159119299277411798}
   - component: {fileID: 6843658666911148135}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,6 +270,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7925800465580651010}
   - component: {fileID: 7927932687953290865}
+  - component: {fileID: 4286049613694551814}
   m_Layer: 7
   m_Name: Basket
   m_TagString: Untagged
@@ -308,6 +309,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f907c3e0f75b44feb82ac81637068317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &4286049613694551814
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3629632479153965832}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &4940887461873968086
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,7 +347,7 @@ GameObject:
   - component: {fileID: 7655152278113389888}
   - component: {fileID: 7374178533808153601}
   - component: {fileID: 9206348706700002666}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: Square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -449,7 +477,7 @@ GameObject:
   - component: {fileID: 6450173932998229996}
   - component: {fileID: 4364599865605605928}
   - component: {fileID: 4980152806891958599}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}

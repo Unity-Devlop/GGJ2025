@@ -13,7 +13,7 @@ namespace WitchFish
         public void OnEnter(Fish owner, IStateMachine<Fish> stateMachine)
         {
             // throw new System.NotImplementedException();
-            Core.Event.Send<SendFishDiePush>();
+            
         }
 
         public void Transition(Fish owner, IStateMachine<Fish> stateMachine)
@@ -23,6 +23,7 @@ namespace WitchFish
             if (dis < 0.1f)
             {
                 GameMgr.Singleton.DeSpawn(owner);
+                Core.Event.Send<SendFishDiePush>();
             }
         }
 

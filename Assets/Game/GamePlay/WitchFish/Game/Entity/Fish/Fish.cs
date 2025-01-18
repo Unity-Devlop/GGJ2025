@@ -35,7 +35,7 @@ namespace WitchFish
             new Vector2(-5, 5),
             new Vector2(-4, 8),
             new Vector2(-2, 8),
-            new Vector2(-3,6)
+            new Vector2(-3, 6)
         };
 
         private void Awake()
@@ -91,12 +91,31 @@ namespace WitchFish
             }
         }
 
+        public float waterEffectTime = 0.5f;
+        
+        [SerializeField]
+        private SpriteRenderer _body;
+        
+
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!other.TryGetComponent(out Item item)) return;
-            // GameLogger.Log.Information("{item}", item.ToString());
+            if (other.TryGetComponent(out Item item))
+            {
+                OnFeedItem(item);
+            }
 
-            OnFeedItem(item);
+            if (other.TryGetComponent(out Lake lake) && stateMachine.currentState is FishJumpState)
+            {
+                Color color = _body.color;
+                color.a = 0.5f;
+                _body.color = color;
+                
+                // GameLogger.Log.Information("{item}", item.ToString());
+                // TODO 生成一个水花 
+                var prefab = GameMgr.Singleton.waterParticleList.RandomTakeWithoutRemove();
+                var effect = Instantiate(prefab, transform.position, Quaternion.identity);
+                Destroy(effect, waterEffectTime);
+            }
         }
 
         // public event Action OnFeedOver;
@@ -111,7 +130,7 @@ namespace WitchFish
                     needList.Remove(item.id);
                     OnRemove?.Invoke(item.id);
                     GameMgr.Singleton.DeSpawn(item);
-                }   
+                }
             }
         }
 

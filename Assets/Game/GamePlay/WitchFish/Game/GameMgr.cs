@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 using Game;
 using Game.Flow;
 using UnityEngine;
@@ -34,10 +35,12 @@ namespace WitchFish
         [Sirenix.OdinInspector.ShowInInspector, Sirenix.OdinInspector.ReadOnly]
         private List<Fish> _currentLakeFishWaitList = new List<Fish>();
 
+        public List<GameObject> waterParticleList = new List<GameObject>();
+
 
         public BindableProperty<int> lakeFishCount { get; private set; }
 
-        private int Hp = 3;
+        public int maxHp = 3;
 
         // 当前在岸上排队等食物的鱼
         // [SerializeField] private List<Fish> currentLandWaitingFishList = new List<Fish>();
@@ -216,9 +219,10 @@ namespace WitchFish
             DeSpawn(fish);
         }
 
-        void OnSendFishPush(SendFishDiePush push)
+        async void OnSendFishPush(SendFishDiePush push)
         {
-            if (Hp > 1) Hp--;
+            await UniTask.DelayFrame(1);
+            if (maxHp > 1) maxHp--;
             else
             {
                 Global.Get<GameFlow>().Change<GameHomeState>();

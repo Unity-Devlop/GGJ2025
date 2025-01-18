@@ -6,7 +6,7 @@ namespace WitchFish
 
     }
 
-    public class SendFishDiePush
+    public struct SendFishDiePush
     {
        
     }

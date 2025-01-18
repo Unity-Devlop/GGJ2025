@@ -60,6 +60,7 @@ namespace Game.Flow
 
         public void Change<T>() where T : IState<GameFlow>
         {
+            if(_stateMachine.currentState is T )return;
             _stateMachine.Change<T>();
         }
 

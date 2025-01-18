@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityToolkit;
 
 namespace WitchFish
 {
@@ -13,6 +15,5 @@ namespace WitchFish
 
     public class Lake : MonoBehaviour
     {
-        // public LakeEnum lakeType;
     }
 }
