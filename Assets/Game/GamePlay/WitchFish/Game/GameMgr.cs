@@ -41,7 +41,7 @@ namespace WitchFish
 
         public BindableProperty<int> lakeFishCount { get; private set; }
 
-        public int maxHp = 3;
+        public int maxHp = 99;
 
         // 当前在岸上排队等食物的鱼
         // [SerializeField] private List<Fish> currentLandWaitingFishList = new List<Fish>();

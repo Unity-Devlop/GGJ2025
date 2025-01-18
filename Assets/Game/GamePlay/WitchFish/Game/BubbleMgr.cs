@@ -37,10 +37,37 @@ namespace WitchFish
         {
         }
 
+        void SetBubbleSettinsByFishCountInLake()
+        {
+            var fishCount = GameMgr.Singleton.lakeFishCount;
+            if (fishCount < 6)
+            {
+                BubbleCreateCount = 1;
+                BubbleCreateInterval = 2;
+            }else if(fishCount < 16)
+            {
+                BubbleCreateCount = 1;
+                BubbleCreateInterval = 1;
+            }
+            else if(fishCount < 31)
+            {
+                BubbleCreateCount =2;
+            }
+            else if (fishCount < 51)
+            {
+                BubbleCreateCount = 3;
+            }
+            else
+            {
+                BubbleCreateCount = 4;
+            }
+        }
+
         IEnumerator CreateBubble(float BubbleCreateInterval)
         {
             while (gameIsOn) // 无限循环
             {
+                SetBubbleSettinsByFishCountInLake();
                 // 实例化气泡
                 for (int i = 0; i < BubbleCreateCount; i++)
                 {
