@@ -18,7 +18,7 @@ namespace WitchFish
         public float moveSpeed = 1f;
         public float beginAngryWaitTime = 0.5f;
         public float maxWaitTime = 3f;
-        public TMP_Text debugText;
+        // public TMP_Text debugText;
         public StateMachine<Fish> stateMachine { get; private set; }
 
         public SpriteRenderer eye;
@@ -104,7 +104,7 @@ namespace WitchFish
 #endif
             if (stateMachine.running)
             {
-                debugText.text = stateMachine.currentState.GetType().Name.Replace("State", "");
+                // debugText.text = stateMachine.currentState.GetType().Name.Replace("State", "");
                 stateMachine.OnUpdate();
             }
         }
