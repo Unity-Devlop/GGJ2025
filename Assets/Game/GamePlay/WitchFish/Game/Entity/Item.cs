@@ -21,6 +21,7 @@ namespace WitchFish
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _collider = GetComponent<Collider2D>();
             _timer = 0;
+            Bind(id);
         }
 
         private void Update()
@@ -67,6 +68,13 @@ namespace WitchFish
             objectPos.z = 0;
             //给物体赋值坐标
             transform.position = objectPos;
+        }
+
+        [SerializeField] private SpriteRenderer _renderer;
+
+        public void Bind(ItemEnum type)
+        {
+            _renderer.sprite = GameMgr.Singleton.id2Sprite[type];
         }
     }
 }

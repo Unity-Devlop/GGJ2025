@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Cysharp.Threading.Tasks;
+using FMOD;
 using Game;
 using Game.Flow;
 using UnityEngine;
@@ -68,6 +69,8 @@ namespace WitchFish
 
         public int minFishCountToSpawnLakeFish = 6;
 
+        public SerializableDictionary<ItemEnum, Sprite> id2Sprite = new SerializableDictionary<ItemEnum, Sprite>();
+
         protected override void OnInit()
         {
             lakeFishCount = new BindableProperty<int>();
@@ -81,6 +84,13 @@ namespace WitchFish
             _lakeFishSpawnPointList.Remove(lakeFishSpawnPointParent);
 
             Core.Event.Listen<SendFishDiePush>(OnSendFishPush);
+
+            Global.Get<AudioSystem>().PlayBGM(FMODName.Event.BGM_BackgroundMusic, out _);
+        }
+
+        protected override void OnDispose()
+        {
+            Global.Get<AudioSystem>().DisposeBGM(FMODName.Event.BGM_BackgroundMusic);
         }
 
         private void Update()
@@ -227,11 +237,6 @@ namespace WitchFish
             {
                 Global.Get<GameFlow>().Change<GameHomeState>();
             }
-        }
-
-        protected override void OnDispose()
-        {
-            base.OnDispose();
         }
     }
 }

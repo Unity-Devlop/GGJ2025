@@ -104,7 +104,7 @@ namespace WitchFish
                 OnFeedItem(item);
             }
 
-            if (other.TryGetComponent(out Lake lake) && stateMachine.currentState is FishJumpState)
+            if (other.TryGetComponent(out Lake lake))// && stateMachine.currentState is FishJumpState)
             {
                 Color color = _body.color;
                 color.a = 0.5f;

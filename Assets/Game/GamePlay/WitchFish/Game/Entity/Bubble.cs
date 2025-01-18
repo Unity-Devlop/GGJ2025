@@ -15,15 +15,7 @@ namespace WitchFish
 
         private Sprite itemIcon;
 
-
-        [Header("图")]
-        public Sprite _向日葵;
-        public Sprite _核弹;
-        public Sprite _破皮鞋;
-        public Sprite _章鱼;
-        public Sprite _蟹黄堡;
-        public Sprite _语音;
-        public Sprite _空白;
+        
 
 
 
@@ -51,6 +43,7 @@ namespace WitchFish
             else
             {
                 var item = Instantiate(Item, TargetPos , Quaternion.identity);
+                item.GetComponent<Item>().Bind(Type);
             }
             Destroy(gameObject);
         }
@@ -71,16 +64,7 @@ namespace WitchFish
         public void SetItemType(ItemEnum itemEnum)
         {
             Type = itemEnum;
-            itemIcon = itemEnum switch  
-            {
-                ItemEnum.向日葵=>_向日葵,
-                ItemEnum.核弹=> _核弹,
-                ItemEnum.破皮鞋=>_破皮鞋,
-                ItemEnum.章鱼=> _章鱼,
-                ItemEnum.蟹黄堡=> _蟹黄堡,
-                ItemEnum.语音=> _语音,
-                ItemEnum.空白=> _空白,
-            };
+            itemIcon = GameMgr.Singleton.id2Sprite[itemEnum];
             transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = itemIcon;
         }
 
