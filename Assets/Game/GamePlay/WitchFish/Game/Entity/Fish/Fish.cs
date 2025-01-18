@@ -92,10 +92,9 @@ namespace WitchFish
         }
 
         public float waterEffectTime = 0.5f;
-        
-        [SerializeField]
-        private SpriteRenderer _body;
-        
+
+        [SerializeField] private SpriteRenderer _body;
+
 
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -104,12 +103,18 @@ namespace WitchFish
                 OnFeedItem(item);
             }
 
-            if (other.TryGetComponent(out Lake lake) && stateMachine.currentState is FishJumpState)
+            if (other.TryGetComponent(out Lake lake) &&
+                (stateMachine.currentState is FishJumpState
+                 || stateMachine.currentState is FishLakeDeadState
+                 || stateMachine.currentState is FishReturnLakeState
+                 || stateMachine.currentState is FishLakeWaitState
+                )
+               )
             {
                 Color color = _body.color;
                 color.a = 0.5f;
                 _body.color = color;
-                
+
                 // GameLogger.Log.Information("{item}", item.ToString());
                 // TODO 生成一个水花 
                 var prefab = GameMgr.Singleton.waterParticleList.RandomTakeWithoutRemove();

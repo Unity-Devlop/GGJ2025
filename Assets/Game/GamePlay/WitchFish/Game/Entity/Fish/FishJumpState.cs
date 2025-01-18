@@ -29,7 +29,8 @@ namespace WitchFish
                 owner.rb2D.isKinematic = false;
                 owner.rb2D.AddForce(owner.jumpForceList.RandomTakeWithoutRemove(), ForceMode2D.Impulse);
 
-                await UniTask.Delay(TimeSpan.FromSeconds(5), cancellationToken: owner.destroyCancellationToken);
+                float time = GameMgr.Singleton.jumpDestroyTime;
+                await UniTask.Delay(TimeSpan.FromSeconds(time), cancellationToken: owner.destroyCancellationToken);
             }
             catch (OperationCanceledException)
             {

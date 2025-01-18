@@ -6,7 +6,6 @@ namespace WitchFish
 {
     public class FishEye : MonoBehaviour
     {
-        public Transform content;
         private void Update()
         {
             Vector2 mousePosition = Input.mousePosition;

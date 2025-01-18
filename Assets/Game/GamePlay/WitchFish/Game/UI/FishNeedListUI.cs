@@ -42,7 +42,7 @@ namespace WitchFish.UI
         private void OnAdd(ItemEnum obj)
         {
             var icon = Instantiate(iconPrefab, transform).GetComponent<ItemIconUI>();
-            icon.id = obj;
+            icon.Bind(obj);
             _itemIconUis.Add(icon);
         }
 
