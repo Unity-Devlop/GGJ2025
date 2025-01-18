@@ -89,5 +89,10 @@ namespace WitchFish
             currentLandFishList.Remove(owner);
             GameObject.Destroy(owner.gameObject, Time.deltaTime);
         }
+
+        public Vector3 GetReturnPosition()
+        {
+            return fishSpawnPoint.position;
+        }
     }
 }
