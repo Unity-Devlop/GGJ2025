@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{0360b8af-21d7-4428-a479-c6b8ce3d83be}">
+		<property name="assetPath">
+			<value>SFX/丁老爷01.MP3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.5338775510204083</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e3dfefe9-004c-4cbe-b4cf-864e7dba598e}</destination>
+		</relationship>
+	</object>
+</objects>
