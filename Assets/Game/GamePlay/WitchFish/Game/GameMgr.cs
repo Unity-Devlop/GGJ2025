@@ -21,20 +21,28 @@ namespace WitchFish
         [SerializeField] private List<Fish> currentLakeFishList = new List<Fish>();
 
         // 当前在岸上排队等食物的鱼
-        private List<Fish> currentLandWaitingFishList = new List<Fish>();
+        [SerializeField] private List<Fish> currentLandWaitingFishList = new List<Fish>();
 
         // 鱼的身位间隔
         [SerializeField] private Vector3 fishOffset;
 
         public float _spawnTimer;
 
+        
+        public float rayDistance = 2;
+
+        public Vector3 direction = new Vector3(-1, 0, 0);
+        
         private void Update()
         {
-            _spawnTimer += Time.deltaTime;
-            if (_spawnTimer >= fishSpawnInterval)
+            if (currentLandFishList.Count <6)
             {
-                _spawnTimer = 0;
-                SpawnFish();
+                _spawnTimer += Time.deltaTime;
+                if (_spawnTimer >= fishSpawnInterval)
+                {
+                    _spawnTimer = 0;
+                    SpawnFish();
+                }   
             }
         }
 
@@ -58,25 +66,9 @@ namespace WitchFish
 
             Vector3 pos = fishWaitingFoodPoint.position;
             pos += count * fishOffset;
-            GameLogger.Log.Information("拿等待位置:{count}", count);
+            GameLogger.Log.Information("拿等待位置:{count}-{pos}", count, pos);
             return pos;
         }
-
-        public bool CloseToWaitPoint(Fish fish)
-        {
-            return Vector3.Distance(fish.transform.position, fishWaitingFoodPoint.position) <= 0.1f;
-        }
-
-        public void DequeueWait(Fish owner)
-        {
-            currentLandWaitingFishList.Remove(owner);
-        }
-
-        public void EnqueueWait(Fish owner)
-        {
-            currentLandWaitingFishList.Add(owner);
-        }
-
         public Vector3 GetJumpPosition()
         {
             // TODO 
@@ -86,6 +78,11 @@ namespace WitchFish
         public bool CloseToJumpPoint(Fish fish)
         {
             return Vector3.Distance(fish.transform.position, fishJumpPoint.position) <= 0.1f;
+        }
+
+        public bool CloseToFinalWaitPoint(Fish owner)
+        {
+            return Vector3.Distance(owner.transform.position, fishWaitingFoodPoint.position) <= 0.1f;
         }
     }
 }

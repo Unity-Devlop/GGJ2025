@@ -9,7 +9,7 @@ namespace WitchFish
 
         public void OnInit(Fish owner, IStateMachine<Fish> stateMachine)
         {
-            // throw new System.NotImplementedException();
+           
         }
 
         public void OnEnter(Fish owner, IStateMachine<Fish> stateMachine)
@@ -32,12 +32,14 @@ namespace WitchFish
 
         public void OnUpdate(Fish owner, IStateMachine<Fish> stateMachine)
         {
-            // throw new System.NotImplementedException();
+            // 没有到最后的目的地
         }
 
         public void OnExit(Fish owner, IStateMachine<Fish> stateMachine)
         {
-            // throw new System.NotImplementedException();
+            if (GameMgr.SingletonNullable != null)
+            {
+            }
         }
     }
 }

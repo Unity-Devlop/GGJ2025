@@ -112,6 +112,15 @@ MonoBehaviour:
   fishSpawnPoint: {fileID: 2850750588209552902}
   fishWaitingFoodPoint: {fileID: 6917856046508006404}
   fishJumpPoint: {fileID: 339733726279664488}
+  fishSpawnInterval: 2
+  fishPrefab: {fileID: 4573932786295303094, guid: 4c7ff50b34cde77448bdd04cbb53a0f4, type: 3}
+  currentLandFishList: []
+  currentLakeFishList: []
+  currentLandWaitingFishList: []
+  fishOffset: {x: -1, y: 0, z: 0}
+  _spawnTimer: 0
+  rayDistance: 0.5
+  direction: {x: -1, y: 0, z: 0}
 --- !u!1 &9202923073736321086
 GameObject:
   m_ObjectHideFlags: 0

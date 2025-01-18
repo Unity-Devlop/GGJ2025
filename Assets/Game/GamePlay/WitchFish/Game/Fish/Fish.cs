@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityToolkit;
@@ -11,6 +12,7 @@ namespace WitchFish
         public float moveSpeed = 1f;
         public float beginAngryWaitTime = 0.5f;
         public float maxWaitTime = 3f;
+        public TMP_Text debugText;
         public StateMachine<Fish> stateMachine { get; private set; }
 
         private void Awake()
@@ -26,10 +28,18 @@ namespace WitchFish
             stateMachine.Add<FishLakeReturnState>();
         }
 
+        public RaycastHit2D[] hit2Ds;
+
+
         private void Update()
         {
+            // hit2D = Physics2D.Raycast(transform.position, new Vector2(-1, 0), 1);
+            hit2Ds = Physics2D.RaycastAll(transform.position, GameMgr.Singleton.direction,
+                GameMgr.Singleton.rayDistance);
+            Debug.DrawRay(transform.position, GameMgr.Singleton.direction, Color.red);
             if (stateMachine.running)
             {
+                debugText.text = stateMachine.currentState.GetType().Name.Replace("State", "");
                 stateMachine.OnUpdate();
             }
         }

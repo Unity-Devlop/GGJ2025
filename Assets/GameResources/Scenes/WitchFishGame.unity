@@ -213,22 +213,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -4326224707372440757, guid: 544d81f960556411a86cf7f95d21d2bb, type: 3}
-      propertyPath: fishPrefab
-      value: 
-      objectReference: {fileID: 4573932786295303094, guid: 4c7ff50b34cde77448bdd04cbb53a0f4, type: 3}
-    - target: {fileID: -4326224707372440757, guid: 544d81f960556411a86cf7f95d21d2bb, type: 3}
-      propertyPath: _spawnTimer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4326224707372440757, guid: 544d81f960556411a86cf7f95d21d2bb, type: 3}
-      propertyPath: fishOffset.x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: -4326224707372440757, guid: 544d81f960556411a86cf7f95d21d2bb, type: 3}
-      propertyPath: fishSpawnInterval
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 1110733954999807276, guid: 544d81f960556411a86cf7f95d21d2bb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -268,6 +252,10 @@ PrefabInstance:
     - target: {fileID: 1110733954999807276, guid: 544d81f960556411a86cf7f95d21d2bb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850750588209552902, guid: 544d81f960556411a86cf7f95d21d2bb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.34
       objectReference: {fileID: 0}
     - target: {fileID: 5465856554188690791, guid: 544d81f960556411a86cf7f95d21d2bb, type: 3}
       propertyPath: m_Name

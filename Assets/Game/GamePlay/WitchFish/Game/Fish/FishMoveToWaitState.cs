@@ -5,22 +5,18 @@ namespace WitchFish
 {
     public class FishMoveToWaitState : IState<Fish>
     {
-        Vector3 _targetPosition;
-
         public void OnInit(Fish owner, IStateMachine<Fish> stateMachine)
         {
-            // throw new System.NotImplementedException();
         }
 
         public void OnEnter(Fish owner, IStateMachine<Fish> stateMachine)
         {
-            GameMgr.Singleton.EnqueueWait(owner);
-            _targetPosition = GameMgr.Singleton.GetWaitPosition();
         }
 
         public void Transition(Fish owner, IStateMachine<Fish> stateMachine)
         {
-            if(GameMgr.Singleton.CloseToWaitPoint(owner))
+            // 前面有正在等待的鱼 自己就停
+            if (GameMgr.Singleton.CloseToFinalWaitPoint(owner))
             {
                 stateMachine.Change<FishLandWaitState>();
             }
@@ -28,14 +24,31 @@ namespace WitchFish
 
         public void OnUpdate(Fish owner, IStateMachine<Fish> stateMachine)
         {
-            Vector3 direction = _targetPosition - owner.transform.position;
-            Vector3 vec = direction.normalized * (owner.moveSpeed * Time.deltaTime);
-            owner.transform.Translate(vec, Space.World);
+            bool frontHasOtherFish = false;
+            foreach (var raycastHit2D in owner.hit2Ds)
+            {
+                if (raycastHit2D.collider != null && raycastHit2D.collider.TryGetComponent(out Fish fish) &&
+                    fish != owner) 
+                {
+                    frontHasOtherFish = true;
+                    break;  
+                }
+            }
+            if (!frontHasOtherFish)
+            {
+                Move(owner);
+            }
+        }
+
+        private void Move(Fish owner)
+        {
+            Vector3 target = GameMgr.Singleton.GetWaitPosition();
+            Vector3 direction = (target - owner.transform.position).normalized;
+            owner.transform.position += direction * Time.deltaTime;
         }
 
         public void OnExit(Fish owner, IStateMachine<Fish> stateMachine)
         {
-            GameMgr.Singleton.DequeueWait(owner);
         }
     }
 }

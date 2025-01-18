@@ -33,7 +33,6 @@ namespace WitchFish
 
         public void OnExit(Fish owner, IStateMachine<Fish> stateMachine)
         {
-            GameMgr.Singleton.DequeueWait(owner);
         }
     }
 }
