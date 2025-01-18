@@ -113,19 +113,19 @@ namespace WitchFish
 
             if (lakeFishCount.Value < 6)
             {
-                fishSpawnInterval = 12;
+                fishSpawnInterval = 8;
             }
             else if (lakeFishCount.Value < 16)
             {
-                fishSpawnInterval = 10;
+                fishSpawnInterval = 7;
             }
             else if (lakeFishCount.Value < 31)
             {
-                fishSpawnInterval = 8;
+                fishSpawnInterval = 6;
             }
             else if (lakeFishCount.Value < 51)
             {
-                fishSpawnInterval = 8;
+                fishSpawnInterval = 5;
             }
 
 

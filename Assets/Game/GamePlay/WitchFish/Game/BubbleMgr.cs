@@ -76,11 +76,11 @@ namespace WitchFish
                 bubbleItem.SetItemType(ItemEnum.语音);
                 jackpotChance = 20;
             }
-            else
-            {
-                jackpotChance += 5;
-                bubbleItem.SetItemType(ItemEnum.空白);
-            }
+            // else
+            // {
+                // jackpotChance += 5;
+                // bubbleItem.SetItemType(ItemEnum.空白);
+            // }
         }
 
         void InstantiateBubble()
