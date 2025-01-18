@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2682284006767752948
 Transform:
   m_ObjectHideFlags: 0
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 3458433052992792690}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.8, y: -32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -158,7 +158,7 @@ MonoBehaviour:
   bubblePrefab: {fileID: 960176513239132198}
   RectLakeBottom: {fileID: 6558905688821855349}
   BubbleCreateInterval: 2
-  ChatBubbleCreateInterval: 1
+  ChatBubbleCreateInterval: 12
   BubbleCreateCount: 1
   bubbleSpeed: 3
   maxTop: 8
@@ -184,6 +184,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 3ef3f35793005c24c86f2bef750843d4, type: 3}
+    - target: {fileID: 437239448084533347, guid: d5912f2a64f5f405085412fde12e6c2e, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 437239448084533347, guid: d5912f2a64f5f405085412fde12e6c2e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 437239448084533347, guid: d5912f2a64f5f405085412fde12e6c2e, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1617869627
+      objectReference: {fileID: 0}
     - target: {fileID: 437239448084533347, guid: d5912f2a64f5f405085412fde12e6c2e, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1

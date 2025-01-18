@@ -10,7 +10,6 @@ namespace WitchFish
        
         public float maxTop = 8.0f;
         public bool Enabled = false;
-        public GameObject Item;
         public Transform target;
 
         private Sprite itemIcon;
@@ -42,7 +41,7 @@ namespace WitchFish
             }
             else
             {
-                var item = Instantiate(Item, target.transform.position , Quaternion.identity);
+                var item = Instantiate(GameMgr.Singleton.itemPrefab, target.transform.position , Quaternion.identity);
                 // item.transform.SetParent(GameMgr.Singleton.basket);
                 item.GetComponent<Item>().Bind(Type);
             }

@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &353811658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000b7327686
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -213,6 +213,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4326224707372440757, guid: 544d81f960556411a86cf7f95d21d2bb, type: 3}
+      propertyPath: itemPrefab
+      value: 
+      objectReference: {fileID: 4907337090211536313, guid: 6b457479fde4d4c2e99d89ef46e0fdc3, type: 3}
     - target: {fileID: -4326224707372440757, guid: 544d81f960556411a86cf7f95d21d2bb, type: 3}
       propertyPath: jumpDestroyTime
       value: 360
@@ -940,26 +944,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3597313403791808050, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.61
-      objectReference: {fileID: 0}
-    - target: {fileID: 3598958143366130316, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
-      propertyPath: config
-      value: 
-      objectReference: {fileID: 11400000, guid: fb700d25b6cdb453abf7fd236b3e369a, type: 2}
-    - target: {fileID: 3598958143366130316, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
-      propertyPath: bubbleSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3598958143366130316, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
-      propertyPath: BubbleCreateInterval
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3598958143366130316, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
-      propertyPath: ChatBubbleCreateInterval
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 4345117232210075779, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -999,22 +983,6 @@ PrefabInstance:
     - target: {fileID: 4345117232210075779, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6558905688821855349, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
-      propertyPath: m_Size.x
-      value: 6.25369
-      objectReference: {fileID: 0}
-    - target: {fileID: 6558905688821855349, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
-      propertyPath: m_Size.y
-      value: 4.196806
-      objectReference: {fileID: 0}
-    - target: {fileID: 6558905688821855349, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
-      propertyPath: m_Offset.x
-      value: -5.8584933
-      objectReference: {fileID: 0}
-    - target: {fileID: 6558905688821855349, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
-      propertyPath: m_Offset.y
-      value: 1.5984025
       objectReference: {fileID: 0}
     - target: {fileID: 6726606935621014967, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
       propertyPath: m_Name

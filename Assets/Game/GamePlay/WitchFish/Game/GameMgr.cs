@@ -71,6 +71,9 @@ namespace WitchFish
 
         public SerializableDictionary<ItemEnum, Sprite> id2Sprite = new SerializableDictionary<ItemEnum, Sprite>();
 
+        
+        public Item itemPrefab;
+        
         protected override void OnInit()
         {
             lakeFishCount = new BindableProperty<int>();
