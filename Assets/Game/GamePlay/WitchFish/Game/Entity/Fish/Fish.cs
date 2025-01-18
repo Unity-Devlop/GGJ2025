@@ -60,7 +60,8 @@ namespace WitchFish
             stateMachine.Add<FishLandWaitState>();
             stateMachine.Add<FishLandReturnState>();
             stateMachine.Add<FishLakeWaitState>();
-            stateMachine.Add<FishLakeReturnState>();
+            stateMachine.Add<FishReturnLakeState>();
+            stateMachine.Add<FishLakeDeadState>();
             stateMachine.Add<FishMoveToJumpState>();
             stateMachine.Add<FishJumpState>();
             GetComponentInChildren<FishNeedListUI>().Bind(this);
@@ -93,7 +94,7 @@ namespace WitchFish
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (!other.TryGetComponent(out Item item)) return;
-            GameLogger.Log.Information("{item}", item.ToString());
+            // GameLogger.Log.Information("{item}", item.ToString());
 
             OnFeedItem(item);
         }

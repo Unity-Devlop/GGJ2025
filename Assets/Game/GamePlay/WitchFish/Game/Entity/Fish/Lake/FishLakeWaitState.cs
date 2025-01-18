@@ -19,13 +19,17 @@ namespace WitchFish
 
         public void Transition(Fish owner, IStateMachine<Fish> stateMachine)
         {
-            if (_timer > owner.beginAngryWaitTime && _timer < owner.maxWaitTime)
+            if (owner.needList.Count == 0)
+            {
+                stateMachine.Change<FishReturnLakeState>();
+            }
+            else if (_timer > owner.beginAngryWaitTime && _timer < owner.maxWaitTime)
             {
                 // TODO 生气
             }
             else if (_timer > owner.maxWaitTime)
             {
-                stateMachine.Change<FishLandReturnState>();
+                stateMachine.Change<FishLakeDeadState>();
             }
         }
 

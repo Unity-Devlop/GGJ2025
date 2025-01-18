@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Game;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityToolkit;
 
 namespace WitchFish
@@ -26,11 +27,11 @@ namespace WitchFish
 
         private List<Transform> _lakeFishSpawnPointList;
 
-        [SerializeField, Sirenix.OdinInspector.ReadOnly]
-        private List<Fish> currentLandFishList = new List<Fish>();
+        [Sirenix.OdinInspector.ShowInInspector, Sirenix.OdinInspector.ReadOnly]
+        private List<Fish> _currentLandFishWaitList = new List<Fish>();
 
-        [SerializeField, Sirenix.OdinInspector.ReadOnly]
-        private List<Fish> currentLakeFishList = new List<Fish>();
+        [Sirenix.OdinInspector.ShowInInspector, Sirenix.OdinInspector.ReadOnly]
+        private List<Fish> _currentLakeFishWaitList = new List<Fish>();
 
 
         public BindableProperty<int> lakeFishCount { get; private set; }
@@ -76,7 +77,23 @@ namespace WitchFish
 
         private void Update()
         {
-            if (currentLandFishList.Count < 6)
+            // 鼠标左键发射线
+            Vector3 mousePos2D = Input.mousePosition;
+            if (Input.GetMouseButtonDown(0))
+            {
+                Vector3 mousePos = Global.cameraSystem.mainCamera.ScreenToWorldPoint(mousePos2D);
+                var hit2Ds = Physics2D.RaycastAll(mousePos, Vector2.zero);
+                foreach (var raycastHit2D in hit2Ds)
+                {
+                    var hit = raycastHit2D;
+                    if (hit.collider.TryGetComponent(out Item item))
+                    {
+                        item.OnMouseDrag();
+                    }
+                }
+            }
+
+            if (_currentLandFishWaitList.Count < 6)
             {
                 _spawnTimer += Time.deltaTime;
                 if (_spawnTimer >= fishSpawnInterval)
@@ -112,11 +129,13 @@ namespace WitchFish
                     var obj = GameObject.Instantiate(lakeFishPrefab, transform1);
                     var fish = obj.GetComponent<Fish>();
                     SetupLakeFish(fish);
-                    currentLakeFishList.Add(fish);
+                    _currentLakeFishWaitList.Add(fish);
                     fish.stateMachine.Run<FishLakeWaitState>();
                     break;
                 }
             }
+
+            lakeFishCount.Value -= 1;
         }
 
 
@@ -129,7 +148,7 @@ namespace WitchFish
             var obj = GameObject.Instantiate(fishPrefab, fishSpawnPoint.position, Quaternion.identity);
             var fish = obj.GetComponent<Fish>();
             SetupFish(fish);
-            currentLandFishList.Add(fish);
+            _currentLandFishWaitList.Add(fish);
             fish.stateMachine.Run<FishSpawnState>();
         }
 
@@ -170,13 +189,14 @@ namespace WitchFish
 
         public void DeSpawnLake(Fish owner)
         {
-            currentLakeFishList.Remove(owner);
+            lakeFishCount.Value += 1;
+            _currentLakeFishWaitList.Remove(owner);
             GameObject.Destroy(owner.gameObject, Time.deltaTime);
         }
 
         public void DeSpawn(Fish owner)
         {
-            currentLandFishList.Remove(owner);
+            _currentLandFishWaitList.Remove(owner);
             GameObject.Destroy(owner.gameObject, Time.deltaTime);
         }
 

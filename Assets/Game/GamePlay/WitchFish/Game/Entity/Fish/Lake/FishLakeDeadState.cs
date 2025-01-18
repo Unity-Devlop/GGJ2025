@@ -5,7 +5,7 @@ using UnityToolkit;
 
 namespace WitchFish
 {
-    public class FishLakeReturnState : IState<Fish>
+    public class FishLakeDeadState : IState<Fish>
     {
         public void OnInit(Fish owner, IStateMachine<Fish> stateMachine)
         {

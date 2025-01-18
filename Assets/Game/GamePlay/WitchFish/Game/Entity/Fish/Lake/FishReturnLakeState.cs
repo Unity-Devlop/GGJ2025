@@ -1,13 +1,13 @@
 using System;
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Game;
 using UnityEngine;
 using UnityToolkit;
 
 namespace WitchFish
 {
-    public class FishJumpState : IState<Fish>
+    public class FishReturnLakeState : IState<Fish>
     {
         private bool _animOver;
 
@@ -18,22 +18,12 @@ namespace WitchFish
 
         public async void OnEnter(Fish owner, IStateMachine<Fish> stateMachine)
         {
-            try
-            {
-                _animOver = false;
-                float y = owner.transform.position.y;
-                await owner.transform.DOLocalMoveY(y + 1f, 0.5f)
-                    .ToUniTask(cancellationToken: owner.destroyCancellationToken);
-                await owner.transform.DOMoveY(y, 0.5f).ToUniTask(cancellationToken: owner.destroyCancellationToken);
+            _animOver = false;
+            // 跳一下
+            owner.rb2D.isKinematic = false;
+            owner.rb2D.AddForce(owner.jumpForceList.RandomTakeWithoutRemove(), ForceMode2D.Impulse);
 
-                owner.rb2D.isKinematic = false;
-                owner.rb2D.AddForce(owner.jumpForceList.RandomTakeWithoutRemove(), ForceMode2D.Impulse);
-
-                await UniTask.Delay(TimeSpan.FromSeconds(5), cancellationToken: owner.destroyCancellationToken);
-            }
-            catch (OperationCanceledException)
-            {
-            }
+            await UniTask.Delay(TimeSpan.FromSeconds(5), cancellationToken: owner.destroyCancellationToken);
 
             _animOver = true;
         }
@@ -42,7 +32,7 @@ namespace WitchFish
         {
             if (_animOver)
             {
-                GameMgr.Singleton.EnterLake(owner);
+                GameMgr.Singleton.DeSpawnLake(owner);
             }
         }
 

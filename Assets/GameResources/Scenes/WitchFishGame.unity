@@ -768,27 +768,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 970411161484778933, guid: 65dadfe81296e4469ae17fd26b758d5d, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2930114930353185206, guid: 65dadfe81296e4469ae17fd26b758d5d, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3629632479153965832, guid: 65dadfe81296e4469ae17fd26b758d5d, type: 3}
       propertyPath: m_Name
       value: Basket
       objectReference: {fileID: 0}
-    - target: {fileID: 3629632479153965832, guid: 65dadfe81296e4469ae17fd26b758d5d, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 4940887461873968086, guid: 65dadfe81296e4469ae17fd26b758d5d, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6616661657251249314, guid: 65dadfe81296e4469ae17fd26b758d5d, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7925800465580651010, guid: 65dadfe81296e4469ae17fd26b758d5d, type: 3}
       propertyPath: m_LocalPosition.x

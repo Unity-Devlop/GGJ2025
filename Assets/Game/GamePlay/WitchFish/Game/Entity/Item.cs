@@ -19,21 +19,21 @@ namespace WitchFish
             _collider = GetComponent<Collider2D>();
         }
 
-        private void OnMouseDown()
+        public void OnMouseDown()
         {
-            GameLogger.Log.Information("{collider} isTrigger=true", _collider);
+            // GameLogger.Log.Information("{collider} isTrigger=true", _collider);
             _rigidbody2D.isKinematic = true;
             _collider.isTrigger = true;
         }
 
         private void OnMouseUp()
         {
-            GameLogger.Log.Information("{collider} isTrigger=false", _collider);
+            // GameLogger.Log.Information("{collider} isTrigger=false", _collider);
             _rigidbody2D.isKinematic = false;
             _collider.isTrigger = false;
         }
 
-        private void OnMouseDrag()
+        public void OnMouseDrag()
         {
             Vector3 mousePos = Input.mousePosition;
             //将当前物体位置转换为屏幕坐标并赋值给鼠标位置，保证物体深度不会发生变化
