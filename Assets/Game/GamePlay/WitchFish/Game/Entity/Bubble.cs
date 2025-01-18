@@ -23,6 +23,7 @@ namespace WitchFish
         public Sprite _章鱼;
         public Sprite _蟹黄堡;
         public Sprite _语音;
+        public Sprite _空白;
 
 
 
@@ -40,7 +41,17 @@ namespace WitchFish
 
         void Explore()
         {
-            var item = Instantiate(Item, TargetPos , Quaternion.identity);
+            if (Type == ItemEnum.空白 )
+            {
+
+            }else if(Type == ItemEnum.语音)
+            {
+
+            }
+            else
+            {
+                var item = Instantiate(Item, TargetPos , Quaternion.identity);
+            }
             Destroy(gameObject);
         }
 
@@ -68,6 +79,7 @@ namespace WitchFish
                 ItemEnum.章鱼=> _章鱼,
                 ItemEnum.蟹黄堡=> _蟹黄堡,
                 ItemEnum.语音=> _语音,
+                ItemEnum.空白=> _空白,
             };
             transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = itemIcon;
         }

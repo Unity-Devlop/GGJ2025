@@ -17,6 +17,8 @@ namespace WitchFish
 
         public float maxTop = 8.0f;
 
+        public float jackpotChance = 20;
+
 
         // 使用列表来存储所有的加权值
         List<WeightedValue> weightedValues = new List<WeightedValue>();
@@ -58,7 +60,7 @@ namespace WitchFish
 
                 // 实例化气泡
 
-                InstantiateBubble();
+                InstantiateChatBubble();
                
 
                 // 等待指定的秒数
@@ -66,7 +68,31 @@ namespace WitchFish
             }
         }
 
+        void InstantiateChatBubble()
+        {
+            var bubbleItem = RandomPosCreateBubbleItem();
+            int randomValue = Random.Range(0,100);
+            if (randomValue < jackpotChance)
+            {
+                bubbleItem.SetItemType(ItemEnum.语音);
+                jackpotChance = 20;
+            }
+            else
+            {
+                jackpotChance += 5;
+                bubbleItem.SetItemType(ItemEnum.空白);
+            }
+        }
+
         void InstantiateBubble()
+        {
+            var bubbleItem = RandomPosCreateBubbleItem();
+            // 获取一个随机值
+            ItemEnum randomValue = GetRandomWeightedValue();
+            bubbleItem.SetItemType(randomValue);
+        }
+
+        Bubble RandomPosCreateBubbleItem()
         {
             Bounds bounds = RectLakeBottom.bounds;
 
@@ -79,9 +105,7 @@ namespace WitchFish
             bubbleItem.speed = bubbleSpeed;
             bubbleItem.maxTop = maxTop;
             bubbleItem.Enabled = true;
-            // 获取一个随机值
-            ItemEnum randomValue = GetRandomWeightedValue();
-            bubbleItem.SetItemType(randomValue);
+            return bubbleItem;
         }
 
         void InitRandomMap()
