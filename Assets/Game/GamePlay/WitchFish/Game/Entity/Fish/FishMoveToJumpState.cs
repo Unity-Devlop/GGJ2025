@@ -12,6 +12,8 @@ namespace WitchFish
 
         public void OnEnter(Fish owner, IStateMachine<Fish> stateMachine)
         {
+            
+            owner.animator.Play("FishIdle");
             _targetPos = GameMgr.Singleton.GetJumpPosition();
         }
 

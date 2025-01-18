@@ -1,3 +1,5 @@
+using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityToolkit;
 
@@ -7,23 +9,40 @@ namespace WitchFish
     {
         private float _timer;
 
+        private bool _animating;
+        private bool _animatingOver;
+
         public void OnInit(Fish owner, IStateMachine<Fish> stateMachine)
         {
         }
 
         public void OnEnter(Fish owner, IStateMachine<Fish> stateMachine)
         {
+            _animating = false;
+            _animatingOver = false;
             _timer = 0;
         }
 
         public void Transition(Fish owner, IStateMachine<Fish> stateMachine)
         {
             _timer += Time.deltaTime;
+            if (_animating)
+            {
+                if (_animatingOver)
+                {
+                    stateMachine.Change<FishMoveToJumpState>();
+                }
+                return;
+            }
+
             if (owner.needList.Count == 0)
             {
-                stateMachine.Change<FishMoveToJumpState>();
+                _animating = true;
+                _animatingOver = false;
+                owner.animator.Play("yuzuiAnim");
+                UniTask.Delay(TimeSpan.FromSeconds(0.8f)).ContinueWith(() => { _animatingOver = true; });
             }
-            else if(_timer > owner.maxWaitTime)
+            else if (_timer > owner.maxWaitTime)
             {
                 stateMachine.Change<FishLandReturnState>();
             }
