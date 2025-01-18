@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8988046807495715595
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 158295751345358569, guid: b68121e9273072947b9fd74c34741b84, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 158295751345358569, guid: b68121e9273072947b9fd74c34741b84, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 158295751345358569, guid: b68121e9273072947b9fd74c34741b84, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 158295751345358569, guid: b68121e9273072947b9fd74c34741b84, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 158295751345358569, guid: b68121e9273072947b9fd74c34741b84, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 158295751345358569, guid: b68121e9273072947b9fd74c34741b84, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 158295751345358569, guid: b68121e9273072947b9fd74c34741b84, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 158295751345358569, guid: b68121e9273072947b9fd74c34741b84, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 158295751345358569, guid: b68121e9273072947b9fd74c34741b84, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 158295751345358569, guid: b68121e9273072947b9fd74c34741b84, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 997912786878062509, guid: b68121e9273072947b9fd74c34741b84, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.102
+      objectReference: {fileID: 0}
+    - target: {fileID: 997912786878062509, guid: b68121e9273072947b9fd74c34741b84, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.735
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117304437703446418, guid: b68121e9273072947b9fd74c34741b84, type: 3}
+      propertyPath: m_Name
+      value: FishYellowTrianglePrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828405402033738346, guid: b68121e9273072947b9fd74c34741b84, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.012
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828405402033738346, guid: b68121e9273072947b9fd74c34741b84, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.374
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125033696714379511, guid: b68121e9273072947b9fd74c34741b84, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 244bc4377378e4847bf863ae1000b225, type: 3}
+    - target: {fileID: 4623718260903608677, guid: b68121e9273072947b9fd74c34741b84, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.403
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623718260903608677, guid: b68121e9273072947b9fd74c34741b84, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.215
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341386421479804406, guid: b68121e9273072947b9fd74c34741b84, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d0e21df97d1ae6040aa481c5bb9e5709, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b68121e9273072947b9fd74c34741b84, type: 3}
