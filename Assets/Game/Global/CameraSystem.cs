@@ -6,8 +6,10 @@ namespace Game
     public class CameraSystem : MonoBehaviour, ISystem, IOnInit
     {
         [field: SerializeField] public Camera mainCamera { get; private set; }
+        public Camera MenuCamera;
         public void OnInit()
         {
+            
         }
 
         public void Dispose()
@@ -15,8 +17,14 @@ namespace Game
         }
 
         public void SetToMenuCamera() {
+            MenuCamera.gameObject.SetActive(true);
+            mainCamera.gameObject.SetActive(false);
+        }
 
-            mainCamera = transform.parent.Find("MenuCamera").GetComponent<Camera>();
+        public void SetToMainCamera()
+        {
+            MenuCamera.gameObject.SetActive(false);
+            mainCamera.gameObject.SetActive(true);
         }
 
     }

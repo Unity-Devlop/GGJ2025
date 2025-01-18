@@ -43,8 +43,9 @@ namespace WitchFish
 
         private void OnMouseDown()
         {
-            Time.timeScale = 0f; // Pause the game
+            Debug.LogError("ss");
             Global.cameraSystem.SetToMenuCamera();
+            Time.timeScale = 0f; // Pause the game
         }
 
         IEnumerator SpeakInterval()
