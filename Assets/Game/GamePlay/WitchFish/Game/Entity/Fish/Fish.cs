@@ -20,6 +20,10 @@ namespace WitchFish
         public float maxWaitTime = 3f;
         public TMP_Text debugText;
         public StateMachine<Fish> stateMachine { get; private set; }
+
+        public SpriteRenderer eye;
+        public Sprite angryEyeSprite;
+        public Sprite normalEyeSprite;
         public Rigidbody2D rb2D { get; private set; }
 
         [SerializeField] private FishTypeEnum type = FishTypeEnum.普通鱼;
@@ -29,8 +33,10 @@ namespace WitchFish
         public event Action<ItemEnum> OnRemove = delegate { };
 
         [NonSerialized] public RaycastHit2D[] hit2Ds;
-        
+
         internal Animator animator;
+
+        [SerializeField] internal GameObject angry;
 
         public List<Vector2> jumpForceList = new List<Vector2>()
         {
@@ -42,6 +48,7 @@ namespace WitchFish
 
         private void Awake()
         {
+            normalEyeSprite = eye.sprite;
             animator = GetComponent<Animator>();
             rb2D = GetComponent<Rigidbody2D>();
 
@@ -80,7 +87,7 @@ namespace WitchFish
 
         public void InvokeRemoveEvent()
         {
-            if(needList==null) return;
+            if (needList == null) return;
             foreach (var itemEnum in needList)
             {
                 OnRemove(itemEnum);
@@ -186,7 +193,6 @@ namespace WitchFish
                 stateMachine.Change<FishMoveToJumpState>();
             }
         }
-
     }
 
 #endif

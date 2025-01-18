@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityToolkit;
 
@@ -8,7 +9,7 @@ namespace WitchFish
     public class BubbleMgr : MonoSingleton<BubbleMgr>
     {
         public GameObject bubblePrefab;
-        public BoxCollider2D RectLakeBottom;
+        public Transform rect;
         bool gameIsOn = true;
         [Header("气泡生成")] public float BubbleCreateInterval = 5;
         public float ChatBubbleCreateInterval = 4;
@@ -21,8 +22,14 @@ namespace WitchFish
 
         [SerializeField] private BubbleConfig config;
 
+        private List<BoxCollider2D> _boxColliders = new List<BoxCollider2D>();
+
         // 使用列表来存储所有的加权值
         // List<WeightedValue> weightedValues = new List<WeightedValue>();
+        protected override void OnInit()
+        {
+            _boxColliders = rect.GetComponentsInChildren<BoxCollider2D>().ToList();
+        }
 
         // Start is called before the first frame update
         void Start()
@@ -31,11 +38,7 @@ namespace WitchFish
             StartCoroutine(CreateBubble(BubbleCreateInterval));
             StartCoroutine(CreateChatBubble(ChatBubbleCreateInterval));
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-        }
+        
 
         void SetBubbleSettinsByFishCountInLake()
         {
@@ -44,14 +47,15 @@ namespace WitchFish
             {
                 BubbleCreateCount = 1;
                 BubbleCreateInterval = 2;
-            }else if(fishCount < 16)
+            }
+            else if (fishCount < 16)
             {
                 BubbleCreateCount = 1;
                 BubbleCreateInterval = 1;
             }
-            else if(fishCount < 31)
+            else if (fishCount < 31)
             {
-                BubbleCreateCount =2;
+                BubbleCreateCount = 2;
             }
             else if (fishCount < 51)
             {
@@ -105,8 +109,8 @@ namespace WitchFish
             }
             // else
             // {
-                // jackpotChance += 5;
-                // bubbleItem.SetItemType(ItemEnum.空白);
+            // jackpotChance += 5;
+            // bubbleItem.SetItemType(ItemEnum.空白);
             // }
         }
 
@@ -120,7 +124,9 @@ namespace WitchFish
 
         Bubble RandomPosCreateBubbleItem()
         {
-            Bounds bounds = RectLakeBottom.bounds;
+            var boxCollider2D = _boxColliders.RandomTakeWithoutRemove();
+
+            Bounds bounds = boxCollider2D.bounds;
 
             // 在边界范围内随机选择一个位置
             float randomX = Random.Range(bounds.min.x, bounds.max.x);
@@ -148,7 +154,7 @@ namespace WitchFish
         public ItemEnum GetRandomWeightedValue()
         {
             return config.randomList.RandomTakeWithoutRemove();
-            
+
             // // 计算总权重
             // float totalWeight = 0f;
             // foreach (var item in weightedValues)

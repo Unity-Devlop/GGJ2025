@@ -32,15 +32,19 @@ namespace WitchFish
                 {
                     stateMachine.Change<FishMoveToJumpState>();
                 }
+
                 return;
             }
 
             if (owner.needList.Count == 0)
             {
+                
+                owner.angry.SetActive(false);
+                owner.eye.sprite = owner.normalEyeSprite;
                 _animating = true;
                 _animatingOver = false;
                 owner.animator.Play("yuzuiAnim");
-                UniTask.Delay(TimeSpan.FromSeconds(0.8f)).ContinueWith(() => { _animatingOver = true; });
+                UniTask.Delay(TimeSpan.FromSeconds(0.6f)).ContinueWith(() => { _animatingOver = true; });
             }
             else if (_timer > owner.maxWaitTime)
             {
@@ -48,7 +52,12 @@ namespace WitchFish
             }
             else if (_timer >= owner.beginAngryWaitTime)
             {
+                if (_timer >= owner.beginAngryWaitTime + (owner.maxWaitTime - owner.beginAngryWaitTime) * 0.5)
+                {
+                    owner.angry.SetActive(true);
+                }
                 // TODO 生气
+                owner.eye.sprite = owner.angryEyeSprite;
             }
         }
 

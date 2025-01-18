@@ -329,7 +329,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 7295050bfe10b46e48693aa51cbad780, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.25490198}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -944,6 +944,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 635590396192110803, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473394936736312731, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3345498620494508161, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3730777694204571301, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4345117232210075779, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -988,10 +1004,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: YY
       objectReference: {fileID: 0}
+    - target: {fileID: 7224607362169946344, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7957292254529487871, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7972516806995093568, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1686072883}
+    - target: {fileID: 8690228665025499649, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
