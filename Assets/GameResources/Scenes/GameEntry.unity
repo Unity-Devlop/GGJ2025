@@ -161,7 +161,6 @@ GameObject:
   - component: {fileID: 1935181503}
   - component: {fileID: 1935181502}
   - component: {fileID: 1935181501}
-  - component: {fileID: 1935181500}
   - component: {fileID: 1935181499}
   - component: {fileID: 1935181498}
   m_Layer: 8
@@ -236,19 +235,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1935181500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1935181496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 847f2ca6ffb14c6eb3a37146c10e01e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <mainCamera>k__BackingField: {fileID: 1935181503}
 --- !u!114 &1935181501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,6 +464,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Global
       objectReference: {fileID: 0}
+    - target: {fileID: 5007375354839121084, guid: 5bfc919cf500c403b8f0ede9cf097dff, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6119944372200252343, guid: 5bfc919cf500c403b8f0ede9cf097dff, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -502,6 +492,10 @@ PrefabInstance:
       propertyPath: m_CullingMask.m_Bits
       value: 223
       objectReference: {fileID: 0}
+    - target: {fileID: 7428323441703143043, guid: 5bfc919cf500c403b8f0ede9cf097dff, type: 3}
+      propertyPath: MenuCamera
+      value: 
+      objectReference: {fileID: 1935181503}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4008515833461499454, guid: 5bfc919cf500c403b8f0ede9cf097dff, type: 3}
