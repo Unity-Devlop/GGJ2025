@@ -58,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 5530293991273917468}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -9, z: 0}
+  m_LocalPosition: {x: 0, y: -4.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -96,7 +96,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -3.2723129, y: 0}
+  m_Offset: {x: -5.8584933, y: 1.5984025}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -107,7 +107,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 11.42605, y: 1}
+  m_Size: {x: 6.25369, y: 4.196806}
   m_EdgeRadius: 0
 --- !u!1 &6726606935621014967
 GameObject:
@@ -157,12 +157,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubblePrefab: {fileID: 960176513239132198}
   RectLakeBottom: {fileID: 6558905688821855349}
-  BubbleCreateInterval: 5
-  ChatBubbleCreateInterval: 4
+  BubbleCreateInterval: 2
+  ChatBubbleCreateInterval: 1
   BubbleCreateCount: 1
-  bubbleSpeed: 1
+  bubbleSpeed: 3
   maxTop: 8
   jackpotChance: 20
+  config: {fileID: 11400000, guid: fb700d25b6cdb453abf7fd236b3e369a, type: 2}
 --- !u!1001 &8638576044278275209
 PrefabInstance:
   m_ObjectHideFlags: 0

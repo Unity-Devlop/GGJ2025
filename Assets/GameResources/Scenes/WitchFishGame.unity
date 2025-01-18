@@ -936,6 +936,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3597313403791808050, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.61
+      objectReference: {fileID: 0}
     - target: {fileID: 3598958143366130316, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
       propertyPath: config
       value: 
@@ -991,6 +995,22 @@ PrefabInstance:
     - target: {fileID: 4345117232210075779, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558905688821855349, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
+      propertyPath: m_Size.x
+      value: 6.25369
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558905688821855349, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
+      propertyPath: m_Size.y
+      value: 4.196806
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558905688821855349, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
+      propertyPath: m_Offset.x
+      value: -5.8584933
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558905688821855349, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
+      propertyPath: m_Offset.y
+      value: 1.5984025
       objectReference: {fileID: 0}
     - target: {fileID: 6726606935621014967, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
       propertyPath: m_Name
