@@ -409,7 +409,6 @@ MonoBehaviour:
   maxWaitTime: 10
   debugText: {fileID: 7179279432444690936}
   type: 0
-  needList: 00000000
   jumpForceList:
   - {x: -5, y: 5}
   - {x: -4, y: 8}
@@ -439,7 +438,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 132
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
