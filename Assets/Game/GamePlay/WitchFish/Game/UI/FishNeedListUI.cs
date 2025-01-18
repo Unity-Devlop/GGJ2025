@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Game;
 using UnityEngine;
 
 namespace WitchFish.UI
@@ -49,6 +50,10 @@ namespace WitchFish.UI
         private void OnRemove(ItemEnum obj)
         {
             int index = _itemIconUis.FindIndex(icon => icon.id == obj);
+            if (index == -1)
+            {
+                return;
+            }
             GameObject.Destroy(_itemIconUis[index].gameObject);
             _itemIconUis.RemoveAt(index);
         }

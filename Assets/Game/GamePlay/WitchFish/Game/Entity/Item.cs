@@ -75,6 +75,7 @@ namespace WitchFish
         public void Bind(ItemEnum type)
         {
             _renderer.sprite = GameMgr.Singleton.id2Sprite[type];
+            id = type;
         }
     }
 }

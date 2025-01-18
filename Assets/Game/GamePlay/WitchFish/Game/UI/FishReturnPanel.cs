@@ -15,7 +15,7 @@ public class FishReturnPanel : MonoBehaviour
             var itemObj = Instantiate(prefab, panel);
         }
 
-        Core.Event.Listen<SendFishDiePush>(OnSendFishDie);
+        Core.Event.Listen<EventFishDiePush>(OnSendFishDie);
 
     }
 
@@ -25,7 +25,7 @@ public class FishReturnPanel : MonoBehaviour
         
     }
 
-    void OnSendFishDie(SendFishDiePush push)
+    void OnSendFishDie(EventFishDiePush push)
     {
         if (panel.childCount > 0)
         {
@@ -34,6 +34,6 @@ public class FishReturnPanel : MonoBehaviour
     }
     private void OnDestroy()
     {
-        Core.Event.UnListen<SendFishDiePush>(OnSendFishDie);
+        Core.Event.UnListen<EventFishDiePush>(OnSendFishDie);
     }
 }
