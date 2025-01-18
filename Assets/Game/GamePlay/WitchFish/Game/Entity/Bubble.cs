@@ -43,6 +43,7 @@ namespace WitchFish
             else
             {
                 var item = Instantiate(Item, target.transform.position , Quaternion.identity);
+                // item.transform.SetParent(GameMgr.Singleton.basket);
                 item.GetComponent<Item>().Bind(Type);
             }
             Destroy(gameObject);

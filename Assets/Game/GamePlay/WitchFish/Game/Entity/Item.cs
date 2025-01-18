@@ -13,6 +13,7 @@ namespace WitchFish
         public ItemStateEnum state = ItemStateEnum.在框子外;
         public ItemEnum id;
 
+        [SerializeField] private SpriteRenderer _renderer;
         private float _timer;
         public float deSpawnTime = 5f;
 
@@ -37,7 +38,7 @@ namespace WitchFish
 
             if (_timer > deSpawnTime)
             {
-                GameObject.Destroy(gameObject);
+                Destroy(gameObject);
             }
         }
 
@@ -46,6 +47,7 @@ namespace WitchFish
             // GameLogger.Log.Information("{collider} isTrigger=true", _collider);
             _rigidbody2D.isKinematic = true;
             _collider.isTrigger = true;
+            _renderer.sortingOrder = 10;
         }
 
         private void OnMouseUp()
@@ -53,10 +55,19 @@ namespace WitchFish
             // GameLogger.Log.Information("{collider} isTrigger=false", _collider);
             _rigidbody2D.isKinematic = false;
             _collider.isTrigger = false;
+            // Vector3 pos = transform.position;
+            // float z = transform.parent.position.z;
+            // transform.position = new Vector3(pos.x, pos.y, z);
+            _renderer.sortingOrder = 0;
         }
 
         public void OnMouseDrag()
         {
+           
+            // Vector3 pos = transform.position;
+            // pos.z = 0;
+            // transform.position = pos;
+            
             Vector3 mousePos = Input.mousePosition;
             //将当前物体位置转换为屏幕坐标并赋值给鼠标位置，保证物体深度不会发生变化
             mousePos.z = Global.cameraSystem.mainCamera.WorldToScreenPoint(transform.position).z;
@@ -70,7 +81,6 @@ namespace WitchFish
             transform.position = objectPos;
         }
 
-        [SerializeField] private SpriteRenderer _renderer;
 
         public void Bind(ItemEnum type)
         {
