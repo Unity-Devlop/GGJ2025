@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityToolkit;
+
 namespace WitchFish
 {
-    public class BubbleMgr : MonoBehaviour
+    public class BubbleMgr : MonoSingleton<BubbleMgr>
     {
         public GameObject bubblePrefab;
         public BoxCollider2D RectLakeBottom;

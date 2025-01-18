@@ -1,7 +1,13 @@
+using UnityToolkit;
 namespace WitchFish
 {
-    public class FishMgr
+    public class FishMgr  : MonoSingleton<FishMgr>
     {
-        
+
+    }
+
+    public class SendFishDiePush
+    {
+       
     }
 }

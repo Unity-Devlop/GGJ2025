@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Game;
+using Game.Flow;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityToolkit;
@@ -35,6 +36,8 @@ namespace WitchFish
 
 
         public BindableProperty<int> lakeFishCount { get; private set; }
+
+        private int Hp = 3;
 
         // 当前在岸上排队等食物的鱼
         // [SerializeField] private List<Fish> currentLandWaitingFishList = new List<Fish>();
@@ -73,6 +76,8 @@ namespace WitchFish
             _lakeFishSpawnPointList = new List<Transform>();
             _lakeFishSpawnPointList = lakeFishSpawnPointParent.GetComponentsInChildren<Transform>().ToList();
             _lakeFishSpawnPointList.Remove(lakeFishSpawnPointParent);
+
+            Core.Event.Listen<SendFishDiePush>(OnSendFishPush);
         }
 
         private void Update()
@@ -209,6 +214,20 @@ namespace WitchFish
         {
             lakeFishCount.Value += 1;
             DeSpawn(fish);
+        }
+
+        void OnSendFishPush(SendFishDiePush push)
+        {
+            if (Hp > 1) Hp--;
+            else
+            {
+                Global.Get<GameFlow>().Change<GameHomeState>();
+            }
+        }
+
+        protected override void OnDispose()
+        {
+            base.OnDispose();
         }
     }
 }
