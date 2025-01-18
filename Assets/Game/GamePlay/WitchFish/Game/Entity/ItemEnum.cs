@@ -7,7 +7,8 @@ namespace WitchFish
         章鱼,
         向日葵,
         核弹,
-        语音
+        语音,
+        空白,
     }
 
     public enum ItemStateEnum

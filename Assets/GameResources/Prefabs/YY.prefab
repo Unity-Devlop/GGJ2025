@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2682284006767752948
 Transform:
   m_ObjectHideFlags: 0
@@ -162,6 +162,7 @@ MonoBehaviour:
   BubbleCreateCount: 1
   bubbleSpeed: 1
   maxTop: 8
+  jackpotChance: 20
 --- !u!1001 &8638576044278275209
 PrefabInstance:
   m_ObjectHideFlags: 0
