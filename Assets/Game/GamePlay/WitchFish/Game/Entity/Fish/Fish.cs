@@ -30,7 +30,7 @@ namespace WitchFish
 
         [SerializeField] private FishTypeEnum type = FishTypeEnum.普通鱼;
 
-        [Sirenix.OdinInspector.ShowInInspector, Sirenix.OdinInspector.ReadOnly]
+        [Sirenix.OdinInspector.ShowInInspector]//, Sirenix.OdinInspector.ReadOnly]
         internal List<ItemEnum> needList;
 
         // public event Action<ItemEnum> OnAdd = delegate { };

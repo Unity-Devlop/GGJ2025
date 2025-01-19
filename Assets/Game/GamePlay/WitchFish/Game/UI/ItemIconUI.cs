@@ -19,6 +19,7 @@ namespace WitchFish.UI
         public void Bind(ItemEnum itemEnum)
         {
             _image.sprite = GameMgr.Singleton.id2Sprite[itemEnum];
+            _image.SetNativeSize();
         }
     }
 }
