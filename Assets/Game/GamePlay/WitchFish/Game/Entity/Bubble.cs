@@ -84,6 +84,10 @@ namespace WitchFish
 
             var deltaTime = Time.deltaTime;
             var direction = Vector3.up;
+            if(Type == ItemEnum.语音)
+            {
+                speed = 1.2f;
+            }
             transform.Translate(deltaTime * speed * direction);
         }
 
