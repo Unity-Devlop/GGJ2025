@@ -115,6 +115,7 @@ namespace WitchFish
             // soaping = false;
         }
 
+        public StudioEventEmitter eventEmitter;
 
         private async UniTask ExecuteQueue()
         {
@@ -130,6 +131,10 @@ namespace WitchFish
                 var str = _queue.Dequeue();
                 _text.text = str;
                 _animator.enabled = true;
+                if (!eventEmitter.IsPlaying())
+                {
+                    eventEmitter.Play();
+                }
                 await UniTask.Delay(TimeSpan.FromSeconds(0.2f * str.Length * UnityEngine.Random.value * 2));
                 _text.text = "";
                 _animator.enabled = false;

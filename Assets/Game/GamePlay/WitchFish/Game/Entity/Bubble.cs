@@ -66,6 +66,7 @@ namespace WitchFish
                 var item = Instantiate(prefab, target.transform.position, Quaternion.identity);
                 // item.transform.SetParent(GameMgr.Singleton.basket);
                 item.GetComponent<Item>().Bind(Type);
+                RuntimeManager.PlayOneShotAttached(FMODName.Event.SFX_SoundEffect_11_____, gameObject);
                 animator.Play("booow");
             }
 
