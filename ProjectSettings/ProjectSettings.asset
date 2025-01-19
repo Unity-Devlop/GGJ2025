@@ -162,6 +162,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Standalone: com.TheWitchAndFish.GGJ2025
+    iPhone: com.TheWitchAndFish.GGJ2025
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -677,7 +678,7 @@ PlayerSettings:
     WebGL: DOTWEEN
     Windows Store Apps: DOTWEEN
     XboxOne: DOTWEEN
-    iPhone: DOTWEEN
+    iPhone: DOTWEEN;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;NODECANVAS;USING_URP
     tvOS: DOTWEEN
   additionalCompilerArguments: {}
   platformArchitecture: {}
