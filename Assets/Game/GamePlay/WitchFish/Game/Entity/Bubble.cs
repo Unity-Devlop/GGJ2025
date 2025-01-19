@@ -14,7 +14,11 @@ namespace WitchFish
 
         private Sprite itemIcon;
 
-        
+        Animator animator;
+        private void Awake()
+        {
+            animator = gameObject.GetComponent<Animator>();
+        }
 
 
 
@@ -47,8 +51,10 @@ namespace WitchFish
                 var item = Instantiate(prefab, target.transform.position , Quaternion.identity);
                 // item.transform.SetParent(GameMgr.Singleton.basket);
                 item.GetComponent<Item>().Bind(Type);
+                animator.Play("booow");
+               
             }
-            Destroy(gameObject);
+            Destroy(gameObject,0.2f);
         }
 
         private void Move()
