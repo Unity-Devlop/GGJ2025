@@ -358,6 +358,10 @@ namespace WitchFish
             Core.Event.Send(new EventFishJumpInLakePush
                 { pa = lakeFishCount.ToString() });
             
+            
+            await UniTask.Delay(TimeSpan.FromSeconds(5f));
+            fish.stateMachine.Change<FishWaitDestroyState>();
+            
             await UniTask.Delay(TimeSpan.FromSeconds(jumpDestroyTime), cancellationToken: destroyCancellationToken);
             DeSpawn(fish);
         }

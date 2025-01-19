@@ -221,11 +221,11 @@ PrefabInstance:
       objectReference: {fileID: 154486457}
     - target: {fileID: 8137945988403388747, guid: 91bb6b4ded3af4ff69fc60c7e9951d42, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.89
+      value: 3.86
       objectReference: {fileID: 0}
     - target: {fileID: 8137945988403388747, guid: 91bb6b4ded3af4ff69fc60c7e9951d42, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.29
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8137945988403388747, guid: 91bb6b4ded3af4ff69fc60c7e9951d42, type: 3}
       propertyPath: m_LocalPosition.z
@@ -293,7 +293,7 @@ Transform:
   m_GameObject: {fileID: 154486456}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.89, y: -0.29, z: 0.02403374}
+  m_LocalPosition: {x: 3.86, y: 0, z: 0.02403374}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1877,6 +1877,22 @@ PrefabInstance:
     - target: {fileID: 2699274043212348999, guid: 19a98e4670f3b437aaca8eba44379053, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3159153228050618252, guid: 19a98e4670f3b437aaca8eba44379053, type: 3}
+      propertyPath: m_Size.x
+      value: 1.8926123
+      objectReference: {fileID: 0}
+    - target: {fileID: 3159153228050618252, guid: 19a98e4670f3b437aaca8eba44379053, type: 3}
+      propertyPath: m_Size.y
+      value: 2.5075402
+      objectReference: {fileID: 0}
+    - target: {fileID: 3159153228050618252, guid: 19a98e4670f3b437aaca8eba44379053, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.015237153
+      objectReference: {fileID: 0}
+    - target: {fileID: 3159153228050618252, guid: 19a98e4670f3b437aaca8eba44379053, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.108507395
       objectReference: {fileID: 0}
     - target: {fileID: 7158477422894767892, guid: 19a98e4670f3b437aaca8eba44379053, type: 3}
       propertyPath: m_Name
@@ -5387,6 +5403,22 @@ PrefabInstance:
     - target: {fileID: 1030801132502092587, guid: 5b473ffabbc8946fe989be8ca4a4a66a, type: 3}
       propertyPath: m_Name
       value: BigFish
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411110838077708363, guid: 5b473ffabbc8946fe989be8ca4a4a66a, type: 3}
+      propertyPath: m_Size.x
+      value: 3.2466536
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411110838077708363, guid: 5b473ffabbc8946fe989be8ca4a4a66a, type: 3}
+      propertyPath: m_Size.y
+      value: 3.9623342
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411110838077708363, guid: 5b473ffabbc8946fe989be8ca4a4a66a, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.11196947
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411110838077708363, guid: 5b473ffabbc8946fe989be8ca4a4a66a, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.3212893
       objectReference: {fileID: 0}
     - target: {fileID: 2868482359984260779, guid: 5b473ffabbc8946fe989be8ca4a4a66a, type: 3}
       propertyPath: panel

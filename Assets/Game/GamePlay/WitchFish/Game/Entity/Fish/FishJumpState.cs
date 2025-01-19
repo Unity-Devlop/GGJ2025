@@ -42,10 +42,6 @@ namespace WitchFish
 
         public void Transition(Fish owner, IStateMachine<Fish> stateMachine)
         {
-            if (_animOver)
-            {
-                stateMachine.Change<FishWaitDestroyState>();
-            }
         }
 
         public void OnUpdate(Fish owner, IStateMachine<Fish> stateMachine)
