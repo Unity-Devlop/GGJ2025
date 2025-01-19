@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Cysharp.Threading.Tasks;
 using FMOD;
 using FMODUnity;
 using Game;
@@ -14,14 +15,14 @@ using Random = UnityEngine.Random;
 
 namespace WitchFish
 {
-    public interface ISoap
+    public interface ISoapTarget
     {
         public void OnSoup();
     }
-    public class Fish : MonoBehaviour,ISoap
+
+    public class Fish : MonoBehaviour, ISoapTarget
     {
-        [SerializeField]
-        internal StudioEventEmitter moveSFX;
+        [SerializeField] internal StudioEventEmitter moveSFX;
         public float spawnWaitTime = 0.5f;
         public float moveSpeed = 1f;
         public float beginAngryWaitTime = 0.5f;
@@ -38,7 +39,7 @@ namespace WitchFish
 
         [SerializeField] private FishTypeEnum type = FishTypeEnum.普通鱼;
 
-        [Sirenix.OdinInspector.ShowInInspector]//, Sirenix.OdinInspector.ReadOnly]
+        [Sirenix.OdinInspector.ShowInInspector] //, Sirenix.OdinInspector.ReadOnly]
         internal List<ItemEnum> needList;
 
         // public event Action<ItemEnum> OnAdd = delegate { };
@@ -148,7 +149,7 @@ namespace WitchFish
                 // GameLogger.Log.Information("{item}", item.ToString());
                 // TODO 生成一个水花 
                 RuntimeManager.PlayOneShotAttached(FMODName.Event.SFX_SoundEffect_2___, gameObject);
-                
+
                 var prefab = GameMgr.Singleton.waterParticleList.RandomTakeWithoutRemove();
                 var effect = Instantiate(prefab, transform.position, Quaternion.identity);
                 Destroy(effect, waterEffectTime);
@@ -209,17 +210,25 @@ namespace WitchFish
             }
         }
 
-        public void OnSoup()
+        // private bool soaping = false;
+
+        public async void OnSoup()
         {
+            // if (soaping) return;
+            // soaping = true;
             if (stateMachine.currentState is FishLandWaitState ||
                 stateMachine.currentState is FishLakeWaitState)
             {
                 needList.RemoveAt(UnityEngine.Random.Range(0, needList.Count));
                 needList.Add(_itemEnums[UnityEngine.Random.Range(0, _itemEnums.Length)]);
             }
-            RuntimeManager.PlayOneShotAttached(FMODName.Event.SFX_SoundEffect_5____,gameObject);
-            var effect = Instantiate(GameMgr.Singleton.soupEffectList.RandomTakeWithoutRemove(),transform.position, Quaternion.identity);
+
+            RuntimeManager.PlayOneShotAttached(FMODName.Event.SFX_SoundEffect_5____, gameObject);
+            var effect = Instantiate(GameMgr.Singleton.soupEffectList.RandomTakeWithoutRemove(), transform.position,
+                Quaternion.identity);
             GameObject.Destroy(effect, 0.5f);
+            // await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
+            // soaping = false;
         }
 
         private static ItemEnum[] _itemEnums = new[]
@@ -231,7 +240,6 @@ namespace WitchFish
             ItemEnum.核弹,
         };
     }
-    
 
 
 #endif

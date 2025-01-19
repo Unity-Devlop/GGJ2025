@@ -12,7 +12,7 @@ using Random = System.Random;
 
 namespace WitchFish
 {
-    public class BigFish : MonoBehaviour, ISoap
+    public class BigFish : MonoBehaviour, ISoapTarget
     {
         public GameObject panel;
         [SerializeField] private TMP_Text _text;
@@ -95,21 +95,24 @@ namespace WitchFish
         //     Global.cameraSystem.SetToMenuCamera();
         //     panel.gameObject.SetActive(true);
         // }
-
-        public void OnSoup()
+        // private bool soaping = false;
+        public async void OnSoup()
         {
+            // if(soaping)return;
             float random = UnityEngine.Random.value;
             if (random < 2
                 && _queue.Count == 0)
             {
                 string str = soapStringList[UnityEngine.Random.Range(0, soapStringList.Count)];
                 _queue.Enqueue(str);
-                RuntimeManager.PlayOneShotAttached(FMODName.Event.SFX_SoundEffect_2___, gameObject);
+                RuntimeManager.PlayOneShotAttached(FMODName.Event.SFX_SoundEffect_5____, gameObject);
 
                 var prefab = GameMgr.Singleton.waterParticleList.RandomTakeWithoutRemove();
                 var effect = Instantiate(prefab, transform.position, Quaternion.identity);
                 Destroy(effect, 0.5f);
             }
+            await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
+            // soaping = false;
         }
 
 
