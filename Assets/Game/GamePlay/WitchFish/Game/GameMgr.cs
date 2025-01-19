@@ -43,7 +43,7 @@ namespace WitchFish
 
         public List<GameObject> waterParticleList = new List<GameObject>();
 
-
+        public GameObject GameOver;
         /// <summary>
         /// 湖里鱼的数量
         /// </summary>
@@ -365,8 +365,17 @@ namespace WitchFish
             if (maxHp > 1) maxHp--;
             else
             {
-                Global.Get<GameFlow>().Change<GameHomeState>();
+                Time.timeScale = 0;
+                GameOver.SetActive(true);
+                StartCoroutine(waitForSecond());
             }
+        }
+
+        IEnumerator waitForSecond()
+        {
+            yield return new WaitForSecondsRealtime(3);
+            Time.timeScale = 1;
+            Global.Get<GameFlow>().Change<GameHomeState>();
         }
     }
 }
