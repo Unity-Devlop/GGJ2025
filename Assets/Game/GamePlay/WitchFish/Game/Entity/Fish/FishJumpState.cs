@@ -30,7 +30,8 @@ namespace WitchFish
 
                 owner.rb2D.isKinematic = false;
                 owner.rb2D.AddForce(owner.jumpForceList.RandomTakeWithoutRemove(), ForceMode2D.Impulse);
-
+                
+                GameMgr.Singleton.EnterLake(owner);
                 float time = GameMgr.Singleton.jumpDestroyTime;
                 await UniTask.Delay(TimeSpan.FromSeconds(time), cancellationToken: owner.destroyCancellationToken);
             }
@@ -45,7 +46,6 @@ namespace WitchFish
         {
             if (_animOver)
             {
-                GameMgr.Singleton.EnterLake(owner);
             }
         }
 

@@ -44,6 +44,9 @@ namespace WitchFish
         public List<GameObject> waterParticleList = new List<GameObject>();
 
 
+        /// <summary>
+        /// 湖里鱼的数量
+        /// </summary>
         public BindableProperty<int> lakeFishCount { get; private set; }
 
         public int maxHp = 99;
@@ -180,6 +183,7 @@ namespace WitchFish
 
         // public Transform basket;
 
+        // 湖里生成了一个鱼 很饿
         [Sirenix.OdinInspector.Button]
         private void SpawnLakeFish()
         {
@@ -317,10 +321,6 @@ namespace WitchFish
 
         public void DeSpawnLake(Fish owner)
         {
-            lakeFishCount.Value += 1;
-            Core.Event.Send<EventFishJumpInLakePush>(new EventFishJumpInLakePush
-                { pa = GameMgr.Singleton.lakeFishCount.ToString() });
-
             _currentLakeFishWaitList.Remove(owner);
             GameObject.Destroy(owner.gameObject, Time.deltaTime);
         }
@@ -340,8 +340,9 @@ namespace WitchFish
         {
             lakeFishCount.Value += 1;
             DeSpawn(fish);
-            Core.Event.Send<EventFishJumpInLakePush>(new EventFishJumpInLakePush
-                { pa = GameMgr.Singleton.lakeFishCount.ToString() });
+            GameLogger.Log.Information("鱼数量+1".Color(Color.yellow));
+            Core.Event.Send(new EventFishJumpInLakePush
+                { pa = lakeFishCount.ToString() });
         }
 
         async void OnSendFishPush(EventFishDiePush push)
