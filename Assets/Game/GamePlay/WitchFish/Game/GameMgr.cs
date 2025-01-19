@@ -122,7 +122,7 @@ namespace WitchFish
 
         public void OnCloseToHall()
         {
-            
+            Global.Get<AudioSystem>().DisposeAllBGM();
             Global.Get<GameFlow>().Change<GameHomeState>();
         }
 
