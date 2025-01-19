@@ -578,10 +578,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -4326224707372440757, guid: 544d81f960556411a86cf7f95d21d2bb, type: 3}
-      propertyPath: soupEffect
-      value: 
-      objectReference: {fileID: 1220728400110268040, guid: aa82e65e9acb2884c9e387fcb62e36a7, type: 3}
     - target: {fileID: 1110733954999807276, guid: 544d81f960556411a86cf7f95d21d2bb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -622,25 +618,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3296465454642292494, guid: 544d81f960556411a86cf7f95d21d2bb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.6499999
-      objectReference: {fileID: 0}
-    - target: {fileID: 4579858269445654331, guid: 544d81f960556411a86cf7f95d21d2bb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.76
-      objectReference: {fileID: 0}
     - target: {fileID: 5465856554188690791, guid: 544d81f960556411a86cf7f95d21d2bb, type: 3}
       propertyPath: m_Name
       value: GameMgr
-      objectReference: {fileID: 0}
-    - target: {fileID: 5817600661893262708, guid: 544d81f960556411a86cf7f95d21d2bb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.5699998
-      objectReference: {fileID: 0}
-    - target: {fileID: 6074759200610952382, guid: 544d81f960556411a86cf7f95d21d2bb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.5199999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

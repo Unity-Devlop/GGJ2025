@@ -486,7 +486,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7303123616743089911, guid: 5bfc919cf500c403b8f0ede9cf097dff, type: 3}
       propertyPath: orthographic size
-      value: 5.45
+      value: 5.39
       objectReference: {fileID: 0}
     - target: {fileID: 7303123616743089911, guid: 5bfc919cf500c403b8f0ede9cf097dff, type: 3}
       propertyPath: m_CullingMask.m_Bits
