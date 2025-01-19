@@ -13,6 +13,8 @@ namespace WitchFish
 {
     public class Soap : MonoBehaviour
     {
+        [SerializeField] private Transform soapTarget;
+
         // public bool isCleaningFish = false;
         // 上一次检测到鱼的位置
         private Vector3 _prevHitFishPos = new Vector3(0, 0, 0);
@@ -31,6 +33,7 @@ namespace WitchFish
         private bool _dragging = false;
 
         // private Vector3 _prevHitBigFishPos = new Vector3(0, 0, 0);
+        public float returnSpeed = 5f;
 
         private void Update()
         {
@@ -85,6 +88,11 @@ namespace WitchFish
                     maxInPath = transform.position;
                     _prevHitFishPos = transform.position;
                 }
+            }
+            else
+            {
+                transform.position = Vector3.Lerp(transform.position, soapTarget.transform.position,
+                    Time.deltaTime * returnSpeed);
             }
         }
 
