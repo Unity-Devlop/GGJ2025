@@ -46,8 +46,14 @@ namespace WitchFish
             }
             else if (Type == ItemEnum.语音)
             {
-                string path = "event:/SFX/生气";
-                RuntimeManager.PlayOneShotAttached(path, gameObject);
+                string path = $"event:/SFX/Voice_{GameMgr.Singleton.PlayVideoIndex}";
+                var instance =  RuntimeManager.CreateInstance(path);
+                if (instance.isValid())
+                {
+                    instance.start();
+                }
+                GameMgr.Singleton.PlayVideoIndex++;
+
             }
             else
             {
@@ -78,6 +84,17 @@ namespace WitchFish
         public void SetItemType(ItemEnum itemEnum)
         {
             Type = itemEnum;
+
+            if(Type == ItemEnum.语音)
+            {
+                var count = gameObject.transform.childCount;
+                for(int i = 0;i < count; i++)
+                {
+                     var obj = transform.GetChild(i);
+                    obj.gameObject.SetActive(obj.name == "Icon");
+                }
+            }
+
         }
 
 
