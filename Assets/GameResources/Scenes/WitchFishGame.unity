@@ -1843,9 +1843,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3159153228050618252, guid: 19a98e4670f3b437aaca8eba44379053, type: 3}
+      propertyPath: m_Size.x
+      value: 2.5075402
+      objectReference: {fileID: 0}
+    - target: {fileID: 3159153228050618252, guid: 19a98e4670f3b437aaca8eba44379053, type: 3}
+      propertyPath: m_Size.y
+      value: 4.239465
+      objectReference: {fileID: 0}
+    - target: {fileID: 3159153228050618252, guid: 19a98e4670f3b437aaca8eba44379053, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.09722757
+      objectReference: {fileID: 0}
+    - target: {fileID: 3159153228050618252, guid: 19a98e4670f3b437aaca8eba44379053, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.75745535
+      objectReference: {fileID: 0}
     - target: {fileID: 7158477422894767892, guid: 19a98e4670f3b437aaca8eba44379053, type: 3}
       propertyPath: m_Name
-      value: Witch (1)
+      value: Witch
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5421,6 +5437,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigFish
       objectReference: {fileID: 0}
+    - target: {fileID: 2411110838077708363, guid: 5b473ffabbc8946fe989be8ca4a4a66a, type: 3}
+      propertyPath: m_Size.x
+      value: 7.293002
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411110838077708363, guid: 5b473ffabbc8946fe989be8ca4a4a66a, type: 3}
+      propertyPath: m_Size.y
+      value: 7.293002
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411110838077708363, guid: 5b473ffabbc8946fe989be8ca4a4a66a, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.26336336
+      objectReference: {fileID: 0}
     - target: {fileID: 2868482359984260779, guid: 5b473ffabbc8946fe989be8ca4a4a66a, type: 3}
       propertyPath: panel
       value: 
@@ -5432,6 +5460,10 @@ PrefabInstance:
     - target: {fileID: 4127140309244753635, guid: 5b473ffabbc8946fe989be8ca4a4a66a, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6392585272796199577, guid: 5b473ffabbc8946fe989be8ca4a4a66a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6846088433084747687, guid: 5b473ffabbc8946fe989be8ca4a4a66a, type: 3}
       propertyPath: m_Pivot.x

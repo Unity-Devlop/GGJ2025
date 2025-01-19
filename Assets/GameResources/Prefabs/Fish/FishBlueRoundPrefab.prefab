@@ -358,7 +358,7 @@ MonoBehaviour:
     Path: "event:/SFX/SoundEffect_0_\u8D70\u8DEF\u7B2C\u4E00\u6B65"
   Event: 
   PlayEvent: 0
-  StopEvent: 0
+  StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0

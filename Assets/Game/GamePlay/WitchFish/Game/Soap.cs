@@ -21,15 +21,16 @@ namespace WitchFish
         private Collider2D _prevTarget = null;
 
         public const string ColliderName = "SoapCollider";
-        int cuoCount = 0;
+        private int _cuoCount = 0;
 
         public Vector3 maxInPath;
         public Vector3 minInPath;
 
 
-
         public float radius = 0.5f;
         private bool _dragging = false;
+
+        // private Vector3 _prevHitBigFishPos = new Vector3(0, 0, 0);
 
         private void Update()
         {
@@ -63,23 +64,24 @@ namespace WitchFish
                         maxInPath.y = MathF.Max(maxInPath.y, transform.position.y);
                         minInPath.x = MathF.Min(minInPath.x, transform.position.x);
                         minInPath.y = MathF.Min(minInPath.y, transform.position.y);
-                        if (!(maxInPath.x - minInPath.x > 0.4f) && !(maxInPath.y - minInPath.y > 0.4f)) continue;
+                        if (!(maxInPath.x - minInPath.x > 0.3f) && !(maxInPath.y - minInPath.y > 0.3f)) continue;
                         _prevHitFishPos = transform.position;
                         maxInPath = _prevHitFishPos;
                         minInPath = _prevHitFishPos;
-                        cuoCount++;
-                        if (cuoCount <= 5) continue;
-                        var fish = _prevTarget.transform.parent.GetComponent<Fish>();
-                        fish.OnSoup();
-    
-                        cuoCount = 0;
+                        _cuoCount++;
+                        if (_cuoCount <= 3) continue;
+                        var soapTarget = _prevTarget.transform.parent.GetComponent<ISoapTarget>();
+                        soapTarget.OnSoup();
+
+                        _cuoCount = 0;
                     }
                 }
+
 
                 if (!hit)
                 {
                     _prevTarget = null;
-                    cuoCount = 0;
+                    _cuoCount = 0;
                     maxInPath = transform.position;
                     _prevHitFishPos = transform.position;
                 }
@@ -153,6 +155,7 @@ namespace WitchFish
 
         public void OnMouseDrag()
         {
+            _dragging = true;
             Vector3 mousePos = Input.mousePosition;
             //将当前物体位置转换为屏幕坐标并赋值给鼠标位置，保证物体深度不会发生变化
             mousePos.z = Global.cameraSystem.mainCamera.WorldToScreenPoint(transform.position).z;

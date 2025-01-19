@@ -108,7 +108,10 @@ namespace WitchFish
 
         protected override void OnDispose()
         {
-            Global.Get<AudioSystem>().DisposeBGM(FMODName.Event.BGM_BackgroundMusic);
+            if (Global.SingletonNullable != null)
+            {
+                Global.Get<AudioSystem>().DisposeBGM(FMODName.Event.BGM_BackgroundMusic);
+            }
         }
 
         private void Update()
