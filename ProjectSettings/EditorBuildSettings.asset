@@ -5,8 +5,14 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/GameResources/Scenes/GameEntry.unity
+    guid: 8b8366a8f8f6e48468494c875ca3f7a8
+  - enabled: 0
+    path: Assets/GameResources/Scenes/WitchFishGame.unity
+    guid: 3a8c3d8dfd43e40c583f33a6a63c4b48
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 1992815b0137a47f4a9fbe9d2fd43de3, type: 2}

@@ -87,6 +87,24 @@ namespace FMOD
         	public const string SFX_SoundEffect_11_____ = "event:/SFX/SoundEffect_11_物品偏移";
 
         	public const string SFX_SoundEffect_12____ = "event:/SFX/SoundEffect_12_点按钮";
+
+        	public const string SFX_Voice_21 = "event:/SFX/Voice_21";
+
+        	public const string SFX_Voice_26 = "event:/SFX/Voice_26";
+
+        	public const string SFX_Voice_25 = "event:/SFX/Voice_25";
+
+        	public const string SFX_Voice_27 = "event:/SFX/Voice_27";
+
+        	public const string SFX_Voice_23 = "event:/SFX/Voice_23";
+
+        	public const string SFX_Voice_28 = "event:/SFX/Voice_28";
+
+        	public const string SFX_Voice_22 = "event:/SFX/Voice_22";
+
+        	public const string SFX_Voice_24 = "event:/SFX/Voice_24";
+
+        	public const string SFX_Voice_29 = "event:/SFX/Voice_29";
         }
         public static class Snapshot
         {

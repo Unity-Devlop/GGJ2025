@@ -183,9 +183,7 @@ namespace WitchFish
                 stateMachine.Stop();
             }
         }
-
-
-#if UNITY_EDITOR
+        
 
 
         [Conditional("UNITY_EDITOR")]
@@ -204,9 +202,9 @@ namespace WitchFish
             // TODO 喂东西给我
             if (stateMachine.currentState is FishLandWaitState)
             {
-#if UNITY_EDITOR
-                transform.SetAsLastSibling();
-#endif
+// #if UNITY_EDITOR
+//                 transform.SetAsLastSibling();
+// #endif
                 stateMachine.Change<FishMoveToJumpState>();
             }
         }
@@ -241,7 +239,4 @@ namespace WitchFish
             ItemEnum.核弹,
         };
     }
-
-
-#endif
 }
