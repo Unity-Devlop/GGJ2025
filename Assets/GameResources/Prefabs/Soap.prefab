@@ -70,8 +70,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 0.95, y: 0.64}
+    newSize: {x: 0.2, y: 0.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -117,15 +117,15 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 48205846, guid: 3b09101f3b3354e0e93acb67838df08c, type: 3}
+  m_SortingLayerID: -2039074121
+  m_SortingLayer: 1
+  m_SortingOrder: 88
+  m_Sprite: {fileID: 21300000, guid: 72f68588a02cc4b3ead97f243dc95177, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.2, y: 0.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -143,7 +143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05af3235ff16c4c519109e5eae66d4ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isCleaningFish: 0
-  initPos: {x: 0, y: 0, z: 0}
-  TargetFish: {fileID: 0}
-  colliderName: 
+  maxInPath: {x: 0, y: 0, z: 0}
+  minInPath: {x: 0, y: 0, z: 0}
+  radius: 0.5
