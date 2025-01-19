@@ -15,6 +15,9 @@ namespace WitchFish
         public Collider2D TargetFish = null;
         public string colliderName = string.Empty;
         int cuoCount = 0;
+
+        public Vector3 maxInPath;
+        public Vector3 minInPath;
         // Start is called before the first frame update
         void Start()
         {
@@ -58,6 +61,8 @@ namespace WitchFish
                 TargetFish = null;
                 isCleaningFish = false;
                 cuoCount = 0;
+                maxInPath = transform.position;
+                initPos = transform.position;
             }
         }
 
@@ -69,17 +74,21 @@ namespace WitchFish
             }
             // 第二次检测到，且没变targetfish，就比较位置，变化够大就完成一次搓
 
-            float verticalMovement = transform.position.y - initPos.y;
-            var relavite = Mathf.Abs(verticalMovement);
-            float horizontalMovemenet = transform.position.x - initPos.x;
-            var relavitex = Mathf.Abs(verticalMovement);
-            if (relavite > 0.4f || relavitex > 0.4f)
+
+            maxInPath.x = MathF.Max(maxInPath.x, transform.position.x);
+            maxInPath.y = MathF.Max(maxInPath.y, transform.position.y);
+            minInPath.x = MathF.Min(minInPath.x, transform.position.x);
+            minInPath.y = MathF.Min(minInPath.y, transform.position.y);
+            if (maxInPath.x - minInPath.x > 0.4f || maxInPath.y - minInPath.y > 0.4f)
             {
 
+  
+                initPos = transform.position;
+                maxInPath = initPos;
+                minInPath = initPos;
                 cuoCount++;
-                if (cuoCount > 10)
+                if (cuoCount > 5)
                 {
-                    initPos = transform.position;
                     // todo fsx
                     var fish = collision.transform.parent.GetComponent<Fish>();
                     var lastneedList = new List<ItemEnum>();
