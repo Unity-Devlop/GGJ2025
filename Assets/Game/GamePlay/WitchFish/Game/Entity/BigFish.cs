@@ -109,7 +109,7 @@ namespace WitchFish
         }
         void OnSendFishJumpInLakePush(EventFishJumpInLakePush push)
         {
-            Debug.LogError(push.pa);
+            // Debug.LogError(push.pa);
             StartCoroutine(SpeakByPush(whenJumpInLake,push.pa));
         }
 

@@ -27,6 +27,8 @@ namespace WitchFish
         // Update is called once per frame
         void Update()
         {
+            itemIcon = GameMgr.Singleton.id2Sprite[Type];
+            transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = itemIcon;
             Move();
         }
 
@@ -61,12 +63,12 @@ namespace WitchFish
             var direction = Vector3.up;
             transform.Translate(deltaTime * speed * direction);
         }
+        
 
         public void SetItemType(ItemEnum itemEnum)
         {
             Type = itemEnum;
-            itemIcon = GameMgr.Singleton.id2Sprite[itemEnum];
-            transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = itemIcon;
+            
         }
 
 
