@@ -5538,7 +5538,7 @@ PrefabInstance:
       objectReference: {fileID: 3460358956395912144, guid: 26a2f0a340e9e4c3c8a4f8232c088f6e, type: 3}
     - target: {fileID: 3598958143366130316, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
       propertyPath: ChatBubbleCreateInterval
-      value: 1
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4345117232210075779, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
       propertyPath: m_LocalPosition.x
