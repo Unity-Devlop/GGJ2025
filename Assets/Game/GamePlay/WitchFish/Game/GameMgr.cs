@@ -51,7 +51,7 @@ namespace WitchFish
 
         public int maxHp = 99;
 
-        public int PlayVideoIndex = 0;
+        // public int PlayVideoIndex = 0;
 
         // 当前在岸上排队等食物的鱼
         // [SerializeField] private List<Fish> currentLandWaitingFishList = new List<Fish>();
