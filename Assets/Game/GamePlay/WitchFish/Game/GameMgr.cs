@@ -80,9 +80,10 @@ namespace WitchFish
         public int minFishCountToSpawnLakeFish = 6;
 
         public SerializableDictionary<ItemEnum, Sprite> id2Sprite = new SerializableDictionary<ItemEnum, Sprite>();
-        
-        
-        public SerializableDictionary<ItemEnum,GameObject> id2ItemPrefab = new SerializableDictionary<ItemEnum, GameObject>();
+
+
+        public SerializableDictionary<ItemEnum, GameObject> id2ItemPrefab =
+            new SerializableDictionary<ItemEnum, GameObject>();
 
         protected override void OnInit()
         {
@@ -336,13 +337,16 @@ namespace WitchFish
             return fishSpawnPoint.position;
         }
 
-        public void EnterLake(Fish fish)
+        public async void EnterLake(Fish fish)
         {
             lakeFishCount.Value += 1;
-            DeSpawn(fish);
+
             GameLogger.Log.Information("鱼数量+1".Color(Color.yellow));
             Core.Event.Send(new EventFishJumpInLakePush
                 { pa = lakeFishCount.ToString() });
+            
+            await UniTask.Delay(TimeSpan.FromSeconds(jumpDestroyTime), cancellationToken: destroyCancellationToken);
+            DeSpawn(fish);
         }
 
         async void OnSendFishPush(EventFishDiePush push)

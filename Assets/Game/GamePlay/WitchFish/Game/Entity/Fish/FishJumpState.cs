@@ -32,8 +32,6 @@ namespace WitchFish
                 owner.rb2D.AddForce(owner.jumpForceList.RandomTakeWithoutRemove(), ForceMode2D.Impulse);
                 
                 GameMgr.Singleton.EnterLake(owner);
-                float time = GameMgr.Singleton.jumpDestroyTime;
-                await UniTask.Delay(TimeSpan.FromSeconds(time), cancellationToken: owner.destroyCancellationToken);
             }
             catch (OperationCanceledException)
             {
