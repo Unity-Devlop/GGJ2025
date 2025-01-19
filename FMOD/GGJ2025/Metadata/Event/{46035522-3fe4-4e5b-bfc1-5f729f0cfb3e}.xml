@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{46035522-3fe4-4e5b-bfc1-5f729f0cfb3e}">
 		<property name="name">
-			<value>跳水</value>
+			<value>SoundEffect_2_跳水</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
