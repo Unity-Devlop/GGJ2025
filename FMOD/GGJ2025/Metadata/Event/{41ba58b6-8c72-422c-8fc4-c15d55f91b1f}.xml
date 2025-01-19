@@ -61,13 +61,20 @@
 	</object>
 	<object class="EventAutomatableProperties" id="{67f1c47c-4c3a-46cd-b6f9-c07cc8d37fce}" />
 	<object class="MarkerTrack" id="{84dd4ac8-9004-4152-96fb-10f9367bb5c1}" />
-	<object class="Timeline" id="{64261ae9-2d73-4678-b4d5-dcb8c17354af}" />
+	<object class="Timeline" id="{64261ae9-2d73-4678-b4d5-dcb8c17354af}">
+		<property name="isProxyEnabled">
+			<value>false</value>
+		</property>
+	</object>
 	<object class="ActionSheet" id="{885dcd92-121b-4544-9ab3-b597027f5e79}">
 		<relationship name="modules">
 			<destination>{f518a48b-d950-46a6-9f57-2ff3bbc73fef}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{3ae20e1e-bfdf-480a-9878-17278d280be0}">
+		<property name="volume">
+			<value>10</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{d1b52039-ee6a-44ea-b1c2-3363b90f0e60}</destination>
 		</relationship>
