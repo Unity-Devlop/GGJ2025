@@ -143,6 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05af3235ff16c4c519109e5eae66d4ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soapTarget: {fileID: 0}
   maxInPath: {x: 0, y: 0, z: 0}
   minInPath: {x: 0, y: 0, z: 0}
   radius: 0.5
+  returnSpeed: 5

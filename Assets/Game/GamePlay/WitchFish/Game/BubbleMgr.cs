@@ -18,7 +18,7 @@ namespace WitchFish
 
         public float maxTop = 8.0f;
 
-        public float jackpotChance = 20;
+        public float jackpotChance = 100;
 
         [SerializeField] private BubbleConfig config;
 
@@ -101,12 +101,12 @@ namespace WitchFish
         void InstantiateChatBubble()
         {
             var bubbleItem = RandomPosCreateBubbleItem();
-            int randomValue = Random.Range(0, 100);
-            if (randomValue < jackpotChance)
-            {
                 bubbleItem.SetItemType(ItemEnum.语音);
-                jackpotChance = 20;
-            }
+            int randomValue = Random.Range(0, 100);
+            //if (randomValue < jackpotChance)
+            //{
+            //    jackpotChance = 20;
+            //}
             // else
             // {
             // jackpotChance += 5;
