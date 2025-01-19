@@ -26,10 +26,7 @@ namespace WitchFish
 
         public void OnUpdate(Fish owner, IStateMachine<Fish> stateMachine)
         {
-            if (!owner.moveSFX.IsPlaying())
-            {
-                owner.moveSFX.Play();
-            }
+
             bool frontHasOtherFish = false;
             foreach (var raycastHit2D in owner.hit2Ds)
             {
@@ -49,6 +46,10 @@ namespace WitchFish
 
             if (!frontHasOtherFish)
             {
+                if (!owner.moveSFX.IsPlaying())
+                {
+                    owner.moveSFX.Play();
+                }
                 Move(owner);
             }
         }
