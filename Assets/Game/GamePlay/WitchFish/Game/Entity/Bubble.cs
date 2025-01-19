@@ -33,9 +33,14 @@ namespace WitchFish
         // Update is called once per frame
         void Update()
         {
-            itemIcon = GameMgr.Singleton.id2Sprite[Type];
-            transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = itemIcon;
-            Move();
+            if (Type != ItemEnum.语音)
+            {
+                itemIcon = GameMgr.Singleton.id2Sprite[Type];
+                transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = itemIcon;
+            }
+            
+            Move();   
+            
         }
 
         void Explore()
@@ -84,17 +89,6 @@ namespace WitchFish
         public void SetItemType(ItemEnum itemEnum)
         {
             Type = itemEnum;
-
-            if(Type == ItemEnum.语音)
-            {
-                var count = gameObject.transform.childCount;
-                for(int i = 0;i < count; i++)
-                {
-                     var obj = transform.GetChild(i);
-                    obj.gameObject.SetActive(obj.name == "Icon");
-                }
-            }
-
         }
 
 

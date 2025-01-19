@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Game;
 using UnityEngine;
 using UnityToolkit;
 
@@ -9,6 +10,7 @@ namespace WitchFish
     public class BubbleMgr : MonoSingleton<BubbleMgr>
     {
         public GameObject bubblePrefab;
+        public GameObject chatBubblePrefab;
         public Transform rect;
         bool gameIsOn = true;
         [Header("气泡生成")] public float BubbleCreateInterval = 5;
@@ -35,10 +37,10 @@ namespace WitchFish
         void Start()
         {
             InitRandomMap();
-            StartCoroutine(CreateBubble(BubbleCreateInterval));
-            StartCoroutine(CreateChatBubble(ChatBubbleCreateInterval));
+            StartCoroutine(CreateBubble());
+            StartCoroutine(CreateChatBubble());
         }
-        
+
 
         void SetBubbleSettinsByFishCountInLake()
         {
@@ -67,7 +69,7 @@ namespace WitchFish
             }
         }
 
-        IEnumerator CreateBubble(float BubbleCreateInterval)
+        IEnumerator CreateBubble()
         {
             while (gameIsOn) // 无限循环
             {
@@ -84,7 +86,7 @@ namespace WitchFish
             }
         }
 
-        IEnumerator CreateChatBubble(float ChatBubbleInterval)
+        IEnumerator CreateChatBubble()
         {
             while (gameIsOn) // 无限循环
             {
@@ -94,14 +96,16 @@ namespace WitchFish
 
 
                 // 等待指定的秒数
-                yield return new WaitForSeconds(ChatBubbleInterval);
+                yield return new WaitForSeconds(ChatBubbleCreateInterval);
             }
         }
 
         void InstantiateChatBubble()
         {
-            var bubbleItem = RandomPosCreateBubbleItem();
-                bubbleItem.SetItemType(ItemEnum.语音);
+            GameLogger.Log.Information("聊天气泡");
+            var bubbleItem = RandomPosCreateChatBubbleItem();
+            Debug.Log(bubbleItem.gameObject);
+            bubbleItem.SetItemType(ItemEnum.语音);
             int randomValue = Random.Range(0, 100);
             //if (randomValue < jackpotChance)
             //{
@@ -133,6 +137,26 @@ namespace WitchFish
             float randomY = Random.Range(bounds.min.y, bounds.max.y);
 
             var item = Instantiate(bubblePrefab, transform.position + new Vector3(randomX, randomY, 0),
+                Quaternion.identity);
+            var bubbleItem = item.GetComponent<Bubble>();
+            bubbleItem.speed = bubbleSpeed;
+            bubbleItem.maxTop = maxTop;
+            bubbleItem.Enabled = true;
+            return bubbleItem;
+        }
+
+
+        Bubble RandomPosCreateChatBubbleItem()
+        {
+            var boxCollider2D = _boxColliders.RandomTakeWithoutRemove();
+
+            Bounds bounds = boxCollider2D.bounds;
+
+            // 在边界范围内随机选择一个位置
+            float randomX = Random.Range(bounds.min.x, bounds.max.x);
+            float randomY = Random.Range(bounds.min.y, bounds.max.y);
+
+            var item = Instantiate(chatBubblePrefab, transform.position + new Vector3(randomX, randomY, 0),
                 Quaternion.identity);
             var bubbleItem = item.GetComponent<Bubble>();
             bubbleItem.speed = bubbleSpeed;
