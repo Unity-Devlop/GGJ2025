@@ -16,6 +16,8 @@ namespace WitchFish
 {
     public class Fish : MonoBehaviour
     {
+        [SerializeField]
+        internal StudioEventEmitter moveSFX;
         public float spawnWaitTime = 0.5f;
         public float moveSpeed = 1f;
         public float beginAngryWaitTime = 0.5f;
@@ -159,6 +161,7 @@ namespace WitchFish
             {
                 if (needList.Contains(item.id))
                 {
+                    RuntimeManager.PlayOneShotAttached(FMODName.Event.SFX_SoundEffect_4__, gameObject);
                     needList.Remove(item.id);
                     // OnRemove?.Invoke(item.id);
                     GameMgr.Singleton.DeSpawn(item);
@@ -210,7 +213,7 @@ namespace WitchFish
                 needList.RemoveAt(UnityEngine.Random.Range(0, needList.Count));
                 needList.Add(_itemEnums[UnityEngine.Random.Range(0, _itemEnums.Length)]);
             }
-            
+            RuntimeManager.PlayOneShotAttached(FMODName.Event.SFX_SoundEffect_5____,gameObject);
             var effect = Instantiate(GameMgr.Singleton.soupEffectList.RandomTakeWithoutRemove(),transform.position, Quaternion.identity);
             GameObject.Destroy(effect, 0.5f);
         }

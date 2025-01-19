@@ -14,6 +14,7 @@ namespace WitchFish
         {
             // throw new System.NotImplementedException();
             
+            owner.moveSFX.Play();
         }
 
         public void Transition(Fish owner, IStateMachine<Fish> stateMachine)
@@ -30,6 +31,10 @@ namespace WitchFish
 
         public void OnUpdate(Fish owner, IStateMachine<Fish> stateMachine)
         {
+            if (!owner.moveSFX.IsPlaying())
+            {
+                owner.moveSFX.Play();
+            }
             Vector3 target = GameMgr.Singleton.GetReturnPosition();
             Vector3 vec = target - owner.transform.position;
             vec.Normalize();
@@ -39,6 +44,8 @@ namespace WitchFish
         public void OnExit(Fish owner, IStateMachine<Fish> stateMachine)
         {
             // throw new System.NotImplementedException();
+            
+            owner.moveSFX.Stop();
         }
     }
 }
