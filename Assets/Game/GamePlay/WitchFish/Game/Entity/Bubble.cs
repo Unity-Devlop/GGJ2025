@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 namespace WitchFish
 {
@@ -43,7 +44,12 @@ namespace WitchFish
 
             }else if(Type == ItemEnum.语音)
             {
-
+                string path = "event:/SFX/生气";
+                var instance =  RuntimeManager.CreateInstance(path);
+                if (instance.isValid())
+                {
+                    instance.start();
+                }
             }
             else
             {
