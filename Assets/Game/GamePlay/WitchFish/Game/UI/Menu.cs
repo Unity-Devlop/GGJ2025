@@ -12,6 +12,13 @@ namespace WitchFish
         void Start()
         {
             var curIdx = GameMgr.Singleton.PlayVideoIndex;
+            var curCount = Content.transform.childCount ;
+            for (int i = curCount; i < curIdx; i++)
+            {
+                var obj = Instantiate(Item, Content.transform);
+                var bubbleItem = obj.GetComponent<uiBubbleItem>();
+                bubbleItem.SetId(i);
+            }
         }
 
         // Update is called once per frame
