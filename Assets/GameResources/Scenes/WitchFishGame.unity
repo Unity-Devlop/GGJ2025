@@ -215,6 +215,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 601525888361773026, guid: 91bb6b4ded3af4ff69fc60c7e9951d42, type: 3}
+      propertyPath: m_SortingOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7434691690097329031, guid: 91bb6b4ded3af4ff69fc60c7e9951d42, type: 3}
       propertyPath: soapTarget
       value: 
@@ -5534,7 +5538,7 @@ PrefabInstance:
       objectReference: {fileID: 3460358956395912144, guid: 26a2f0a340e9e4c3c8a4f8232c088f6e, type: 3}
     - target: {fileID: 3598958143366130316, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
       propertyPath: ChatBubbleCreateInterval
-      value: 12
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4345117232210075779, guid: 1702703ff61d76540b437cb365d9abfa, type: 3}
       propertyPath: m_LocalPosition.x
