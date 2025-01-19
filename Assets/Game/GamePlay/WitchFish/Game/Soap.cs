@@ -24,16 +24,7 @@ namespace WitchFish
         public Vector3 maxInPath;
         public Vector3 minInPath;
 
-        public int GetRandomExcluding(int min, int max, List<ItemEnum> exclude)
-        {
-            int randomValue = min;
-            while (exclude.Contains((ItemEnum)randomValue))
-            {
-                randomValue = Random.Range(min, max + 1);
-            }
 
-            return randomValue;
-        }
 
         public float radius = 0.5f;
         private bool _dragging = false;
@@ -75,17 +66,11 @@ namespace WitchFish
                         maxInPath = _prevHitFishPos;
                         minInPath = _prevHitFishPos;
                         cuoCount++;
-                        if (cuoCount > 5)
-                        {
-                            var fish = _prevTarget.transform.parent.GetComponent<Fish>();
-                            var lastneedList = new List<ItemEnum>();
-                            lastneedList.AddRange(fish.needList);
-                            fish.needList.Remove(lastneedList[0]);
-                            var newitem =
-                                (ItemEnum)GetRandomExcluding((int)ItemEnum.蟹黄堡, (int)ItemEnum.核弹, lastneedList);
-                            fish.needList.Add(newitem);
-                            cuoCount = 0;
-                        }
+                        if (cuoCount <= 5) continue;
+                        var fish = _prevTarget.transform.parent.GetComponent<Fish>();
+                        fish.OnSoup();
+    
+                        cuoCount = 0;
                     }
                 }
 

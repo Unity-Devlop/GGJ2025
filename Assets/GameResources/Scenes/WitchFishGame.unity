@@ -247,6 +247,26 @@ PrefabInstance:
       propertyPath: m_RenderingLayerMask
       value: 131072
       objectReference: {fileID: 0}
+    - target: {fileID: 1411565957854166878, guid: 91bb6b4ded3af4ff69fc60c7e9951d42, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411565957854166878, guid: 91bb6b4ded3af4ff69fc60c7e9951d42, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411565957854166878, guid: 91bb6b4ded3af4ff69fc60c7e9951d42, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411565957854166878, guid: 91bb6b4ded3af4ff69fc60c7e9951d42, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411565957854166878, guid: 91bb6b4ded3af4ff69fc60c7e9951d42, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.32
+      objectReference: {fileID: 0}
     - target: {fileID: 8137945988403388747, guid: 91bb6b4ded3af4ff69fc60c7e9951d42, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.05
@@ -550,6 +570,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4326224707372440757, guid: 544d81f960556411a86cf7f95d21d2bb, type: 3}
+      propertyPath: soupEffect
+      value: 
+      objectReference: {fileID: 1220728400110268040, guid: c72d7ec05a2be47488b56781282c606b, type: 3}
     - target: {fileID: 1110733954999807276, guid: 544d81f960556411a86cf7f95d21d2bb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -84,6 +84,8 @@ namespace WitchFish
 
         public SerializableDictionary<ItemEnum, GameObject> id2ItemPrefab =
             new SerializableDictionary<ItemEnum, GameObject>();
+        
+        public GameObject soupEffect;
 
         protected override void OnInit()
         {

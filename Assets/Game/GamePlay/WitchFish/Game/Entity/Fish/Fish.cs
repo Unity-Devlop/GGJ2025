@@ -197,7 +197,37 @@ namespace WitchFish
                 stateMachine.Change<FishMoveToJumpState>();
             }
         }
+
+        public void OnSoup()
+        {
+            if (stateMachine.currentState is FishLandWaitState ||
+                stateMachine.currentState is FishLakeWaitState)
+            {
+                var lastneedList = new List<ItemEnum>();
+                lastneedList.AddRange(needList);
+                needList.Remove(lastneedList[0]);
+                var newItem =
+                    GetRandomExcluding(0, 5, lastneedList);
+                needList.Add(newItem);
+            }
+            
+            var effect = Instantiate(GameMgr.Singleton.soupEffect,transform.position, Quaternion.identity);
+            GameObject.Destroy(effect, 1f);
+        }
+        
+        public static  ItemEnum GetRandomExcluding(int min, int max, List<ItemEnum> exclude)
+        {
+            int randomValue = min;
+            while (exclude.Contains((ItemEnum)randomValue))
+            {
+                randomValue = Random.Range(min, max + 1);
+            }
+
+            return (ItemEnum)randomValue;
+        }
     }
+    
+
 
 #endif
 }
