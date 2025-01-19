@@ -31,7 +31,7 @@ public class FishReturnPanel : MonoBehaviour
     {
         if (panel.childCount > 0)
         {
-            panel.GetChild(0).gameObject.GetComponent<Animator>().enabled = true;
+            panel.GetChild(panel.childCount - 1).gameObject.GetComponent<Animator>().enabled = true;
             await UniTask.Delay(TimeSpan.FromSeconds(0.25f), cancellationToken: destroyCancellationToken);
             Destroy( panel.GetChild(panel.childCount - 1).gameObject);
         }

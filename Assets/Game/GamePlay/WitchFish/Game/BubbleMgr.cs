@@ -90,15 +90,13 @@ namespace WitchFish
         {
             while (gameIsOn) // 无限循环
             {
+                // 等待指定的秒数
+                yield return new WaitForSeconds(ChatBubbleCreateInterval);
                 // 实例化气泡
                 if (UnityEngine.Random.value < 0.3)
                 {
                     InstantiateChatBubble();
                 }
-
-
-                // 等待指定的秒数
-                yield return new WaitForSeconds(ChatBubbleCreateInterval);
             }
         }
 

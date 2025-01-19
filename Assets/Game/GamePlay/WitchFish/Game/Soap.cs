@@ -34,11 +34,19 @@ namespace WitchFish
 
         // private Vector3 _prevHitBigFishPos = new Vector3(0, 0, 0);
         public float returnSpeed = 5f;
+        private int sortingOrder = 0;
+        private SpriteRenderer _renderer;
+        private void Awake()
+        {
+            _renderer = GetComponent<SpriteRenderer>();
+            sortingOrder = GetComponent<SpriteRenderer>().sortingOrder;
+        }
 
         private void Update()
         {
             if (_dragging)
             {
+                _renderer.sortingOrder = 88;
                 var collider2Ds = Physics2D.OverlapCircleAll(transform.position, radius);
                 bool hit = false;
                 foreach (var collider2D1 in collider2Ds)
@@ -91,6 +99,7 @@ namespace WitchFish
             }
             else
             {
+                _renderer.sortingOrder = sortingOrder;
                 transform.position = Vector3.Lerp(transform.position, soapTarget.transform.position,
                     Time.deltaTime * returnSpeed);
             }

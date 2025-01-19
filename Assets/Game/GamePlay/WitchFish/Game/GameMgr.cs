@@ -51,7 +51,7 @@ namespace WitchFish
 
         public int maxHp = 99;
 
-        public int PlayVideoIndex = 0;
+        // public int PlayVideoIndex = 0;
 
         // 当前在岸上排队等食物的鱼
         // [SerializeField] private List<Fish> currentLandWaitingFishList = new List<Fish>();
@@ -357,6 +357,10 @@ namespace WitchFish
             GameLogger.Log.Information("鱼数量+1".Color(Color.yellow));
             Core.Event.Send(new EventFishJumpInLakePush
                 { pa = lakeFishCount.ToString() });
+            
+            
+            await UniTask.Delay(TimeSpan.FromSeconds(5f));
+            fish.stateMachine.Change<FishWaitDestroyState>();
             
             await UniTask.Delay(TimeSpan.FromSeconds(jumpDestroyTime), cancellationToken: destroyCancellationToken);
             DeSpawn(fish);

@@ -51,13 +51,14 @@ namespace WitchFish
             }
             else if (Type == ItemEnum.语音)
             {
-                string path = $"event:/SFX/Voice_{GameMgr.Singleton.PlayVideoIndex}";
+                
+                string path = $"event:/SFX/Voice_{UnityEngine.Random.Range(0,30)}";
                 var instance =  RuntimeManager.CreateInstance(path);
                 if (instance.isValid())
                 {
                     instance.start();
                 }
-                GameMgr.Singleton.PlayVideoIndex++;
+                // GameMgr.Singleton.PlayVideoIndex++;
 
             }
             else
@@ -98,14 +99,14 @@ namespace WitchFish
             Explore();
             if (Type == ItemEnum.语音)
             {
-                PlayVideo();
+                // PlayVideo();
             }
         }
 
-        void PlayVideo()
-        {
+        // void PlayVideo()
+        // {
             // play
-            GameMgr.Singleton.PlayVideoIndex++;
-        }
+            // GameMgr.Singleton.PlayVideoIndex++;
+        // }
     }
 }
