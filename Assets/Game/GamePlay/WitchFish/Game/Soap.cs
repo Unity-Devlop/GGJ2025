@@ -27,9 +27,10 @@ namespace WitchFish
         public Vector3 minInPath;
 
 
-
         public float radius = 0.5f;
         private bool _dragging = false;
+
+        private Vector3 _prevHitBigFishPos = new Vector3(0, 0, 0);
 
         private void Update()
         {
@@ -69,12 +70,13 @@ namespace WitchFish
                         minInPath = _prevHitFishPos;
                         cuoCount++;
                         if (cuoCount <= 5) continue;
-                        var fish = _prevTarget.transform.parent.GetComponent<Fish>();
+                        var fish = _prevTarget.transform.parent.GetComponent<ISoap>();
                         fish.OnSoup();
-    
+
                         cuoCount = 0;
                     }
                 }
+                
 
                 if (!hit)
                 {

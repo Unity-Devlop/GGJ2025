@@ -14,7 +14,11 @@ using Random = UnityEngine.Random;
 
 namespace WitchFish
 {
-    public class Fish : MonoBehaviour
+    public interface ISoap
+    {
+        public void OnSoup();
+    }
+    public class Fish : MonoBehaviour,ISoap
     {
         [SerializeField]
         internal StudioEventEmitter moveSFX;

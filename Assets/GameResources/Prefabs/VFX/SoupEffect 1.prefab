@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1220728400110268040, guid: aa82e65e9acb2884c9e387fcb62e36a7, type: 3}
       propertyPath: m_Name
-      value: SoupEffect Variant
+      value: SoupEffect 1
       objectReference: {fileID: 0}
     - target: {fileID: 6349475136042461552, guid: aa82e65e9acb2884c9e387fcb62e36a7, type: 3}
       propertyPath: m_Materials.Array.data[0]

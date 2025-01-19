@@ -2,14 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using FMOD;
+using FMODUnity;
 using Game;
 using TMPro;
 using UnityEngine;
+using UnityToolkit;
 using Random = System.Random;
 
 namespace WitchFish
 {
-    public class BigFish : MonoBehaviour
+    public class BigFish : MonoBehaviour, ISoap
     {
         public GameObject panel;
         [SerializeField] private TMP_Text _text;
@@ -46,7 +49,15 @@ namespace WitchFish
             "你吃菌子中毒了吧？哪有鱼走？",
         };
 
-        Queue<string> queue = new Queue<string>();
+        private List<string> soapStringList = new List<string>()
+        {
+            "我很干净",
+
+            "我很干净",
+            "我很干净"
+        };
+
+        readonly Queue<string> _queue = new Queue<string>();
 
         private void Awake()
         {
@@ -79,10 +90,26 @@ namespace WitchFish
             }
         }
 
-        public void OnMouseDown()
+        // public void OnMouseDown()
+        // {
+        //     Global.cameraSystem.SetToMenuCamera();
+        //     panel.gameObject.SetActive(true);
+        // }
+
+        public void OnSoup()
         {
-            Global.cameraSystem.SetToMenuCamera();
-            panel.gameObject.SetActive(true);
+            float random = UnityEngine.Random.value;
+            if (random < 2
+                && _queue.Count == 0)
+            {
+                string str = soapStringList[UnityEngine.Random.Range(0, soapStringList.Count)];
+                _queue.Enqueue(str);
+                RuntimeManager.PlayOneShotAttached(FMODName.Event.SFX_SoundEffect_2___, gameObject);
+
+                var prefab = GameMgr.Singleton.waterParticleList.RandomTakeWithoutRemove();
+                var effect = Instantiate(prefab, transform.position, Quaternion.identity);
+                Destroy(effect, 0.5f);
+            }
         }
 
 
@@ -90,17 +117,17 @@ namespace WitchFish
         {
             while (!destroyCancellationToken.IsCancellationRequested)
             {
-                if (queue.Count == 0)
+                if (_queue.Count == 0)
                 {
                     _animator.enabled = false;
                     await UniTask.Yield();
                     continue;
                 }
 
-                var str = queue.Dequeue();
+                var str = _queue.Dequeue();
                 _text.text = str;
                 _animator.enabled = true;
-                await UniTask.Delay(TimeSpan.FromSeconds(0.5 * str.Length));
+                await UniTask.Delay(TimeSpan.FromSeconds(0.2f * str.Length * UnityEngine.Random.value * 2));
                 _text.text = "";
                 _animator.enabled = false;
             }
@@ -112,7 +139,7 @@ namespace WitchFish
             {
                 var time = UnityEngine.Random.Range(15, 20);
                 yield return new WaitForSeconds(time);
-                queue.Enqueue(whenInTime[IndexChat % whenInTime.Count]);
+                _queue.Enqueue(whenInTime[IndexChat % whenInTime.Count]);
                 IndexChat++;
             }
         }
@@ -120,12 +147,12 @@ namespace WitchFish
 
         void OnSendFishDieInLand(EventFishDieInLandPush push)
         {
-            queue.Enqueue(GetSpeakStr(whenRun, push.pa));
+            _queue.Enqueue(GetSpeakStr(whenRun, push.pa));
         }
 
         void OnSendFishDieInLakePush(EventFishDieInLakePush push)
         {
-            queue.Enqueue(GetSpeakStr(whenDie, push.pa));
+            _queue.Enqueue(GetSpeakStr(whenDie, push.pa));
         }
 
         void OnSendFishJumpInLakePush(EventFishJumpInLakePush push)
@@ -133,7 +160,7 @@ namespace WitchFish
             // Debug.LogError(push.pa);
             if (int.Parse(push.pa) % 10 == 0)
             {
-                queue.Enqueue(GetSpeakStr(whenJumpInLake, push.pa));
+                _queue.Enqueue(GetSpeakStr(whenJumpInLake, push.pa));
             }
         }
 
