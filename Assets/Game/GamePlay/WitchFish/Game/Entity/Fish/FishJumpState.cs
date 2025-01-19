@@ -10,7 +10,6 @@ namespace WitchFish
     public class FishJumpState : IState<Fish>
     {
         private bool _animOver;
-
         public void OnInit(Fish owner, IStateMachine<Fish> stateMachine)
         {
             // throw new System.NotImplementedException();
@@ -32,6 +31,7 @@ namespace WitchFish
                 owner.rb2D.AddForce(owner.jumpForceList.RandomTakeWithoutRemove(), ForceMode2D.Impulse);
                 
                 GameMgr.Singleton.EnterLake(owner);
+                
             }
             catch (OperationCanceledException)
             {
@@ -44,6 +44,7 @@ namespace WitchFish
         {
             if (_animOver)
             {
+                stateMachine.Change<FishWaitDestroyState>();
             }
         }
 

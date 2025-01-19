@@ -1,5 +1,7 @@
 using System;
 using Cysharp.Threading.Tasks;
+using FMOD;
+using FMODUnity;
 using UnityEngine;
 using UnityToolkit;
 
@@ -48,6 +50,7 @@ namespace WitchFish
             }
             else if (_timer > owner.maxWaitTime)
             {
+                RuntimeManager.PlayOneShotAttached(FMODName.Event.SFX_SoundEffect_3___, owner.gameObject);
                 stateMachine.Change<FishLandReturnState>();
             }
             else if (_timer >= owner.beginAngryWaitTime)

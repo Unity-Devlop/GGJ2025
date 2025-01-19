@@ -77,7 +77,7 @@ namespace WitchFish
 
 
             stateMachine = new StateMachine<Fish>(this);
-
+            stateMachine.Add<FishWaitDestroyState>();
             stateMachine.Add<FishSpawnState>();
             stateMachine.Add<FishMoveToWaitState>();
             stateMachine.Add<FishLandWaitState>();
@@ -149,6 +149,7 @@ namespace WitchFish
                 // GameLogger.Log.Information("{item}", item.ToString());
                 // TODO 生成一个水花 
                 RuntimeManager.PlayOneShotAttached(FMODName.Event.SFX_SoundEffect_2___, gameObject);
+
 
                 var prefab = GameMgr.Singleton.waterParticleList.RandomTakeWithoutRemove();
                 var effect = Instantiate(prefab, transform.position, Quaternion.identity);
