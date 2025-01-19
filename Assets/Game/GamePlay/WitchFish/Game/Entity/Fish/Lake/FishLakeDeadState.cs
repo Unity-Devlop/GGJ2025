@@ -18,6 +18,7 @@ namespace WitchFish
             await owner.transform.DOLocalMoveY(owner.transform.position.y + vec.y, .2f).SetEase(Ease.Linear);
             GameMgr.Singleton.DeSpawnLake(owner);
             Core.Event.Send<EventFishDiePush>();
+            Core.Event.Send<EventFishDieInLakePush>();
         }
 
         public void Transition(Fish owner, IStateMachine<Fish> stateMachine)

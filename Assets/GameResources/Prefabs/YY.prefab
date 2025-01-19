@@ -61,7 +61,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 2.0642664, y: 0.3552878}
@@ -138,7 +138,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 7.993165, y: 0.3552878}
@@ -215,7 +215,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 7.921573, y: 0.3552878}
@@ -463,7 +463,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 7.9198885, y: 0.3552878}
@@ -540,7 +540,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 4.31845, y: 0.3552878}
@@ -617,7 +617,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 2.3248, y: 0.3552878}
@@ -694,7 +694,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 1.8830254, y: 0.3552878}
@@ -732,7 +732,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 3ef3f35793005c24c86f2bef750843d4, type: 3}
     - target: {fileID: 437239448084533347, guid: d5912f2a64f5f405085412fde12e6c2e, type: 3}
       propertyPath: m_SortingLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 437239448084533347, guid: d5912f2a64f5f405085412fde12e6c2e, type: 3}
       propertyPath: m_SortingOrder
@@ -740,7 +740,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 437239448084533347, guid: d5912f2a64f5f405085412fde12e6c2e, type: 3}
       propertyPath: m_SortingLayerID
-      value: 1617869627
+      value: -2039074121
       objectReference: {fileID: 0}
     - target: {fileID: 437239448084533347, guid: d5912f2a64f5f405085412fde12e6c2e, type: 3}
       propertyPath: m_WasSpriteAssigned

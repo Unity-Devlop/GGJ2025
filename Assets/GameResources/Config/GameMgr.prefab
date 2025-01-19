@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 842204944846015990}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.29, y: -3.87, z: 0}
+  m_LocalPosition: {x: -0.51, y: -3.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 2074828500403094392}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.18, y: -1.26, z: 0}
+  m_LocalPosition: {x: 4.18, y: -0.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -87,7 +87,7 @@ Transform:
   m_GameObject: {fileID: 2094391856555841637}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.65, y: -4.55, z: 0}
+  m_LocalPosition: {x: -1.59, y: -4.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -118,7 +118,7 @@ Transform:
   m_GameObject: {fileID: 4179408320695952108}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.67, y: -4.79, z: 0}
+  m_LocalPosition: {x: -0.64, y: -4.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -149,7 +149,7 @@ Transform:
   m_GameObject: {fileID: 4991191883890156673}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.32, y: -1.28, z: 0}
+  m_LocalPosition: {x: 1.32, y: -0.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -209,10 +209,25 @@ MonoBehaviour:
   lakeFishSpawnPointParent: {fileID: 2838591987235398421}
   fishSpawnInterval: 2
   fishPrefabList:
-  - {fileID: 4573932786295303094, guid: 4c7ff50b34cde77448bdd04cbb53a0f4, type: 3}
+  - {fileID: 1117304437703446418, guid: b68121e9273072947b9fd74c34741b84, type: 3}
+  - {fileID: 7670174126557948596, guid: 5972453751f17ab479ce6084edeb2a95, type: 3}
+  - {fileID: 8303092366493197465, guid: 32757ed720554284993e228385d460da, type: 3}
+  - {fileID: 3410377761087750756, guid: 47e3910f9dda6434c899e9aefc76ce08, type: 3}
+  - {fileID: 1031581495521983246, guid: 48c3a7b79c1aac24493089d959e258a0, type: 3}
+  - {fileID: 4573932786295303094, guid: f78d188ce4f31c4449f6835d3d6f2594, type: 3}
+  lakeFishPrefabList:
+  - {fileID: 1117304437703446418, guid: b68121e9273072947b9fd74c34741b84, type: 3}
+  - {fileID: 7670174126557948596, guid: 5972453751f17ab479ce6084edeb2a95, type: 3}
+  - {fileID: 8303092366493197465, guid: 32757ed720554284993e228385d460da, type: 3}
+  - {fileID: 3410377761087750756, guid: 47e3910f9dda6434c899e9aefc76ce08, type: 3}
+  - {fileID: 1031581495521983246, guid: 48c3a7b79c1aac24493089d959e258a0, type: 3}
+  - {fileID: 4573932786295303094, guid: f78d188ce4f31c4449f6835d3d6f2594, type: 3}
+  lakeFishSpawnInterval: 10
+  jumpDestroyTime: 360
   waterParticleList:
   - {fileID: 1220728400110268040, guid: c72d7ec05a2be47488b56781282c606b, type: 3}
   maxHp: 3
+  PlayVideoIndex: 0
   fishOffset: {x: -1, y: 0, z: 0}
   _spawnTimer: 0
   rayDistance: 0.5
@@ -220,24 +235,32 @@ MonoBehaviour:
   minFishCountToSpawnLakeFish: 0
   id2Sprite:
     list:
-    - key: 0
-      value: {fileID: 484644775, guid: 3b09101f3b3354e0e93acb67838df08c, type: 3}
-    - key: 1
-      value: {fileID: 235642230, guid: 3b09101f3b3354e0e93acb67838df08c, type: 3}
-    - key: 2
-      value: {fileID: 1084995682, guid: 3b09101f3b3354e0e93acb67838df08c, type: 3}
-    - key: 3
-      value: {fileID: -909545429, guid: 3b09101f3b3354e0e93acb67838df08c, type: 3}
-    - key: 4
-      value: {fileID: 253363269, guid: 3b09101f3b3354e0e93acb67838df08c, type: 3}
     - key: 5
       value: {fileID: 1560189187, guid: 3b09101f3b3354e0e93acb67838df08c, type: 3}
     - key: 6
       value: {fileID: -1084938011, guid: 3b09101f3b3354e0e93acb67838df08c, type: 3}
-  lakeFishSpawnInterval: 10
-  lakeFishPrefabList:
-  - {fileID: 4573932786295303094, guid: 4c7ff50b34cde77448bdd04cbb53a0f4, type: 3}
-  jumpDestroyTime: 70
+    - key: 0
+      value: {fileID: 21300000, guid: bbe9d6754057b2f4ca553c77ae85fda3, type: 3}
+    - key: 1
+      value: {fileID: 21300000, guid: f4dcf493f5cb91a4fb83ed49ff20e764, type: 3}
+    - key: 2
+      value: {fileID: 21300000, guid: 8dbf33fd0dbe7834ba83d038d3277c91, type: 3}
+    - key: 3
+      value: {fileID: 21300000, guid: 78ed3045523a0794f923bc8e3f92512f, type: 3}
+    - key: 4
+      value: {fileID: 21300000, guid: f83b4d7c48482914c8daa3a7a7260d85, type: 3}
+  id2ItemPrefab:
+    list:
+    - key: 3
+      value: {fileID: 4810914925031358661, guid: 6b457479fde4d4c2e99d89ef46e0fdc3, type: 3}
+    - key: 4
+      value: {fileID: 2972956159160811827, guid: 9269d772f318a4280b0e467d3c4b60f1, type: 3}
+    - key: 2
+      value: {fileID: 1402836293740584220, guid: 0b59abcd71fd64fdbb5036f1bffec845, type: 3}
+    - key: 1
+      value: {fileID: 7308803245739519644, guid: 1936cee07a0034ae9a0d80e8aa21b592, type: 3}
+    - key: 0
+      value: {fileID: 4067973181636107289, guid: 289384337fda54cbc968ebc25b367805, type: 3}
 --- !u!1 &7312474543816864110
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,7 +286,7 @@ Transform:
   m_GameObject: {fileID: 7312474543816864110}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.4, y: -3.59, z: 0}
+  m_LocalPosition: {x: -1.4, y: -3.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -294,7 +317,7 @@ Transform:
   m_GameObject: {fileID: 7642416613186657343}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 6.32, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -329,7 +352,7 @@ Transform:
   m_GameObject: {fileID: 9202923073736321086}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.11, y: -1.18, z: 0}
+  m_LocalPosition: {x: 12.11, y: -0.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

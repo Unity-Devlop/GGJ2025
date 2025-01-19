@@ -17,14 +17,14 @@ namespace Game
         }
 
         public void SetToMenuCamera() {
-            MenuCamera.gameObject.SetActive(true);
-            mainCamera.gameObject.SetActive(false);
+           // MenuCamera.gameObject.SetActive(true);
+           // mainCamera.gameObject.SetActive(false);
         }
 
         public void SetToMainCamera()
         {
-            MenuCamera.gameObject.SetActive(false);
-            mainCamera.gameObject.SetActive(true);
+           // MenuCamera.gameObject.SetActive(false);
+           // mainCamera.gameObject.SetActive(true);
         }
 
     }

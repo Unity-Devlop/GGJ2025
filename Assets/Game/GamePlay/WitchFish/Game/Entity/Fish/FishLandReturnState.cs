@@ -24,6 +24,7 @@ namespace WitchFish
             {
                 GameMgr.Singleton.DeSpawn(owner);
                 Core.Event.Send<EventFishDiePush>();
+                Core.Event.Send<EventFishDieInLandPush>();
             }
         }
 

@@ -26,7 +26,12 @@ namespace WitchFish
         [SerializeField] private float fishSpawnInterval;
 
         [SerializeField] private List<GameObject> fishPrefabList;
+        [SerializeField] private List<GameObject> lakeFishPrefabList;
+        public float lakeFishSpawnInterval = 10f;
 
+        float _lakeSpawnTimer;
+
+        public float jumpDestroyTime = 70f;
 
         private List<Transform> _lakeFishSpawnPointList;
 
@@ -39,9 +44,14 @@ namespace WitchFish
         public List<GameObject> waterParticleList = new List<GameObject>();
 
 
+        /// <summary>
+        /// 湖里鱼的数量
+        /// </summary>
         public BindableProperty<int> lakeFishCount { get; private set; }
 
         public int maxHp = 99;
+
+        public int PlayVideoIndex = 0;
 
         // 当前在岸上排队等食物的鱼
         // [SerializeField] private List<Fish> currentLandWaitingFishList = new List<Fish>();
@@ -72,7 +82,8 @@ namespace WitchFish
         public SerializableDictionary<ItemEnum, Sprite> id2Sprite = new SerializableDictionary<ItemEnum, Sprite>();
 
 
-        public Item itemPrefab;
+        public SerializableDictionary<ItemEnum, GameObject> id2ItemPrefab =
+            new SerializableDictionary<ItemEnum, GameObject>();
 
         protected override void OnInit()
         {
@@ -111,6 +122,11 @@ namespace WitchFish
                     {
                         item.OnMouseDrag();
                     }
+
+                    if (hit.collider.TryGetComponent(out Soap soap))
+                    {
+                        soap.OnMouseDrag();
+                    }
                 }
             }
 
@@ -130,7 +146,7 @@ namespace WitchFish
             {
                 fishSpawnInterval = 5;
             }
-            
+
             _spawnTimer += Time.deltaTime;
             if (_spawnTimer >= fishSpawnInterval)
             {
@@ -166,14 +182,9 @@ namespace WitchFish
             }
         }
 
-        public float lakeFishSpawnInterval = 10f;
-
-        float _lakeSpawnTimer;
-
-        public List<GameObject> lakeFishPrefabList;
-        public float jumpDestroyTime = 70f;
         // public Transform basket;
 
+        // 湖里生成了一个鱼 很饿
         [Sirenix.OdinInspector.Button]
         private void SpawnLakeFish()
         {
@@ -311,7 +322,6 @@ namespace WitchFish
 
         public void DeSpawnLake(Fish owner)
         {
-            lakeFishCount.Value += 1;
             _currentLakeFishWaitList.Remove(owner);
             GameObject.Destroy(owner.gameObject, Time.deltaTime);
         }
@@ -327,9 +337,15 @@ namespace WitchFish
             return fishSpawnPoint.position;
         }
 
-        public void EnterLake(Fish fish)
+        public async void EnterLake(Fish fish)
         {
             lakeFishCount.Value += 1;
+
+            GameLogger.Log.Information("鱼数量+1".Color(Color.yellow));
+            Core.Event.Send(new EventFishJumpInLakePush
+                { pa = lakeFishCount.ToString() });
+            
+            await UniTask.Delay(TimeSpan.FromSeconds(jumpDestroyTime), cancellationToken: destroyCancellationToken);
             DeSpawn(fish);
         }
 

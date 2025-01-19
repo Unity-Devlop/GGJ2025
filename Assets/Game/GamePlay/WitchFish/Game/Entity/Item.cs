@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Game;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -8,7 +9,8 @@ namespace WitchFish
     [RequireComponent(typeof(Rigidbody2D))]
     public class Item : MonoBehaviour
     {
-        private Collider2D _collider;
+        private Collider2D[] _colliders;
+
         private Rigidbody2D _rigidbody2D;
         public ItemStateEnum state = ItemStateEnum.在框子外;
         public ItemEnum id;
@@ -16,12 +18,14 @@ namespace WitchFish
         [SerializeField] private SpriteRenderer _renderer;
         private float _timer;
         public float deSpawnTime = 5f;
-
+private int sortingOrder;
         private void Awake()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
-            _collider = GetComponent<Collider2D>();
+            _colliders = GetComponents<Collider2D>();
             _timer = 0;
+
+            sortingOrder = GetComponent<SpriteRenderer>().sortingOrder;
             Bind(id);
         }
 
@@ -46,7 +50,10 @@ namespace WitchFish
         {
             // GameLogger.Log.Information("{collider} isTrigger=true", _collider);
             _rigidbody2D.isKinematic = true;
-            _collider.isTrigger = true;
+            foreach (var collider2D1 in _colliders)
+            {
+                collider2D1.isTrigger = true;
+            }
             _renderer.sortingOrder = 10;
         }
 
@@ -54,11 +61,16 @@ namespace WitchFish
         {
             // GameLogger.Log.Information("{collider} isTrigger=false", _collider);
             _rigidbody2D.isKinematic = false;
-            _collider.isTrigger = false;
+            
+            foreach (var collider2D1 in _colliders)
+            {
+                collider2D1.isTrigger = false;
+            }
+            
             // Vector3 pos = transform.position;
             // float z = transform.parent.position.z;
             // transform.position = new Vector3(pos.x, pos.y, z);
-            _renderer.sortingOrder = 0;
+            _renderer.sortingOrder = sortingOrder;
         }
 
         public void OnMouseDrag()

@@ -27,6 +27,8 @@ namespace WitchFish
         // Update is called once per frame
         void Update()
         {
+            itemIcon = GameMgr.Singleton.id2Sprite[Type];
+            transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = itemIcon;
             Move();
         }
 
@@ -41,7 +43,8 @@ namespace WitchFish
             }
             else
             {
-                var item = Instantiate(GameMgr.Singleton.itemPrefab, target.transform.position , Quaternion.identity);
+                var prefab = GameMgr.Singleton.id2ItemPrefab[Type];
+                var item = Instantiate(prefab, target.transform.position , Quaternion.identity);
                 // item.transform.SetParent(GameMgr.Singleton.basket);
                 item.GetComponent<Item>().Bind(Type);
             }
@@ -60,12 +63,12 @@ namespace WitchFish
             var direction = Vector3.up;
             transform.Translate(deltaTime * speed * direction);
         }
+        
 
         public void SetItemType(ItemEnum itemEnum)
         {
             Type = itemEnum;
-            itemIcon = GameMgr.Singleton.id2Sprite[itemEnum];
-            transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = itemIcon;
+            
         }
 
 
@@ -73,6 +76,16 @@ namespace WitchFish
         private void OnMouseDown()
         {
             Explore();
+            if(Type == ItemEnum.语音)
+            {
+                PlayVideo();
+            }
+        }
+
+        void PlayVideo()
+        {
+            // play
+            GameMgr.Singleton.PlayVideoIndex++;
         }
 
     }

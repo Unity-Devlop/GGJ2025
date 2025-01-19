@@ -92,7 +92,7 @@ namespace WitchFish
             }
         }
 
-        void OnMouseDrag()
+        public void OnMouseDrag()
         {
             Vector3 mousePos = Input.mousePosition;
             //将当前物体位置转换为屏幕坐标并赋值给鼠标位置，保证物体深度不会发生变化
