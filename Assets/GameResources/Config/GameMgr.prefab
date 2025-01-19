@@ -251,6 +251,10 @@ MonoBehaviour:
       value: {fileID: 21300000, guid: 78ed3045523a0794f923bc8e3f92512f, type: 3}
     - key: 4
       value: {fileID: 21300000, guid: f83b4d7c48482914c8daa3a7a7260d85, type: 3}
+    - key: 5
+      value: {fileID: 0}
+    - key: 6
+      value: {fileID: 0}
   id2ItemPrefab:
     list:
     - key: 3
