@@ -6,7 +6,7 @@ namespace Game
     public class CameraSystem : MonoBehaviour, ISystem, IOnInit
     {
         [field: SerializeField] public Camera mainCamera { get; private set; }
-        public Camera MenuCamera;
+        // public Camera MenuCamera;
         public void OnInit()
         {
             

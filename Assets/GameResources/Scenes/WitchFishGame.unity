@@ -522,6 +522,22 @@ PrefabInstance:
       propertyPath: GameOver
       value: 
       objectReference: {fileID: 1332395423}
+    - target: {fileID: -4326224707372440757, guid: 544d81f960556411a86cf7f95d21d2bb, type: 3}
+      propertyPath: soupEffectList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -4326224707372440757, guid: 544d81f960556411a86cf7f95d21d2bb, type: 3}
+      propertyPath: soupEffectList.Array.data[0]
+      value: 
+      objectReference: {fileID: 1220728400110268040, guid: aa82e65e9acb2884c9e387fcb62e36a7, type: 3}
+    - target: {fileID: -4326224707372440757, guid: 544d81f960556411a86cf7f95d21d2bb, type: 3}
+      propertyPath: soupEffectList.Array.data[1]
+      value: 
+      objectReference: {fileID: 3424647952033048540, guid: f36027c2ad4fd41ebb784de1a8e34cf2, type: 3}
+    - target: {fileID: -4326224707372440757, guid: 544d81f960556411a86cf7f95d21d2bb, type: 3}
+      propertyPath: soupEffectList.Array.data[2]
+      value: 
+      objectReference: {fileID: 3424647952033048540, guid: d54768390325844f4b08b493472ff6e3, type: 3}
     - target: {fileID: 1110733954999807276, guid: 544d81f960556411a86cf7f95d21d2bb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

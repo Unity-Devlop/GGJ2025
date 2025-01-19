@@ -19,6 +19,64 @@ namespace FMOD
         	public const string SFX_purchase_succesful_ingame_230550 = "event:/SFX/purchase-succesful-ingame-230550";
 
         	public const string BGM_BackgroundMusic = "event:/BGM/BackgroundMusic";
+
+        	public const string SFX_Voice_2 = "event:/SFX/Voice_2";
+
+        	public const string SFX_Voice_19 = "event:/SFX/Voice_19";
+
+        	public const string SFX_SoundEffect_0______ = "event:/SFX/SoundEffect_0_走路第一步";
+
+        	public const string SFX_SoundEffect_2___ = "event:/SFX/SoundEffect_2_跳水";
+
+        	public const string SFX_Voice_4 = "event:/SFX/Voice_4";
+
+        	public const string SFX_SoundEffect_6____ = "event:/SFX/SoundEffect_6_戳泡泡";
+
+        	public const string SFX_Voice_9 = "event:/SFX/Voice_9";
+
+        	public const string SFX_Voice_20 = "event:/SFX/Voice_20";
+
+        	public const string SFX_Voice_0 = "event:/SFX/Voice_0";
+
+        	public const string SFX_Voice_12 = "event:/SFX/Voice_12";
+
+        	public const string SFX_Voice_10 = "event:/SFX/Voice_10";
+
+        	public const string SFX_Voice_5 = "event:/SFX/Voice_5";
+
+        	public const string SFX_Voice_6 = "event:/SFX/Voice_6";
+
+        	public const string SFX_Voice_7 = "event:/SFX/Voice_7";
+
+        	public const string SFX_Voice_17 = "event:/SFX/Voice_17";
+
+        	public const string SFX_Voice_13 = "event:/SFX/Voice_13";
+
+        	public const string SFX_Voice_16 = "event:/SFX/Voice_16";
+
+        	public const string SFX_Voice_14 = "event:/SFX/Voice_14";
+
+        	public const string SFX_Voice_8 = "event:/SFX/Voice_8";
+
+        	public const string SFX_SoundEffect_4__ = "event:/SFX/SoundEffect_4_吞";
+
+        	public const string SFX_SoundEffect_5____ = "event:/SFX/SoundEffect_5_搓肥皂";
+
+        	public const string SFX_Voice_15 = "event:/SFX/Voice_15";
+
+        	public const string SFX_SoundEffect_1______ = "event:/SFX/SoundEffect_1_走路第二步";
+
+        	public const string SFX_Voice_3 = "event:/SFX/Voice_3";
+
+        	public const string SFX_Voice_1 = "event:/SFX/Voice_1";
+
+        	public const string SFX_Voice_18 = "event:/SFX/Voice_18";
+
+        	public const string SFX_Voice_11 = "event:/SFX/Voice_11";
+
+        	public const string SFX_SoundEffect_3___ = "event:/SFX/SoundEffect_3_生气";
+
+        	public const string SFX_SoundEffect_7____ = "event:/SFX/SoundEffect_7_拿肥皂";
         }
         public static class Snapshot
         {

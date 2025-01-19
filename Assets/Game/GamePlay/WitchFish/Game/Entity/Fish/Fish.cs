@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using FMOD;
+using FMODUnity;
 using Game;
 using TMPro;
 using UnityEngine;
@@ -139,6 +141,8 @@ namespace WitchFish
 
                 // GameLogger.Log.Information("{item}", item.ToString());
                 // TODO 生成一个水花 
+                RuntimeManager.PlayOneShotAttached(FMODName.Event.SFX_SoundEffect_2___, gameObject);
+                
                 var prefab = GameMgr.Singleton.waterParticleList.RandomTakeWithoutRemove();
                 var effect = Instantiate(prefab, transform.position, Quaternion.identity);
                 Destroy(effect, waterEffectTime);
@@ -207,7 +211,7 @@ namespace WitchFish
                 needList.Add(_itemEnums[UnityEngine.Random.Range(0, _itemEnums.Length)]);
             }
             
-            var effect = Instantiate(GameMgr.Singleton.soupEffect,transform.position, Quaternion.identity);
+            var effect = Instantiate(GameMgr.Singleton.soupEffectList.RandomTakeWithoutRemove(),transform.position, Quaternion.identity);
             GameObject.Destroy(effect, 0.5f);
         }
 

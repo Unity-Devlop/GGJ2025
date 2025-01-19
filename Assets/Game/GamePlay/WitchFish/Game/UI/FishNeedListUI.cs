@@ -39,7 +39,14 @@ namespace WitchFish.UI
             }
             else
             {
-                _canvas.enabled = true;
+                if (_fish.needList.Count == 0)
+                {
+                    _canvas.enabled = false;
+                }
+                else
+                {
+                    _canvas.enabled = true;
+                }
             }
 
             while (_fish.needList.Count > _itemIconUis.Count)
@@ -56,14 +63,6 @@ namespace WitchFish.UI
                 Destroy(lastUI.gameObject);
             }
 
-            if (_fish.needList.Count ==0)
-            {
-                _canvas.enabled = false;
-            }
-            else
-            {
-                _canvas.enabled = true;
-            }
 
             for (int i = 0; i < _fish.needList.Count; i++)
             {
@@ -71,7 +70,6 @@ namespace WitchFish.UI
                 var ui = _itemIconUis[i];
                 ui.Bind(need);
             }
-            
         }
 
         // private void OnAdd(ItemEnum obj)

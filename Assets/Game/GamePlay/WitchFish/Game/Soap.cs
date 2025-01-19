@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using FMOD;
+using FMODUnity;
 using Game;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -141,6 +143,7 @@ namespace WitchFish
         private void OnMouseDown()
         {
             _dragging = true;
+            RuntimeManager.PlayOneShotAttached(FMODName.Event.SFX_SoundEffect_7____, gameObject);
         }
 
         private void OnMouseUp()
