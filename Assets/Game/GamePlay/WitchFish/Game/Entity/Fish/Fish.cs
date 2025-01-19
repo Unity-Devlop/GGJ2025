@@ -203,28 +203,22 @@ namespace WitchFish
             if (stateMachine.currentState is FishLandWaitState ||
                 stateMachine.currentState is FishLakeWaitState)
             {
-                var lastneedList = new List<ItemEnum>();
-                lastneedList.AddRange(needList);
-                needList.Remove(lastneedList[0]);
-                var newItem =
-                    GetRandomExcluding(0, 5, lastneedList);
-                needList.Add(newItem);
+                needList.RemoveAt(UnityEngine.Random.Range(0, needList.Count));
+                needList.Add(_itemEnums[UnityEngine.Random.Range(0, _itemEnums.Length)]);
             }
             
             var effect = Instantiate(GameMgr.Singleton.soupEffect,transform.position, Quaternion.identity);
-            GameObject.Destroy(effect, 1f);
+            GameObject.Destroy(effect, 0.5f);
         }
-        
-        public static  ItemEnum GetRandomExcluding(int min, int max, List<ItemEnum> exclude)
-        {
-            int randomValue = min;
-            while (exclude.Contains((ItemEnum)randomValue))
-            {
-                randomValue = Random.Range(min, max + 1);
-            }
 
-            return (ItemEnum)randomValue;
-        }
+        private static ItemEnum[] _itemEnums = new[]
+        {
+            ItemEnum.蟹黄堡,
+            ItemEnum.破皮鞋,
+            ItemEnum.章鱼,
+            ItemEnum.向日葵,
+            ItemEnum.核弹,
+        };
     }
     
 

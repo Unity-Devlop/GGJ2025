@@ -102,6 +102,8 @@ namespace WitchFish
             Core.Event.Listen<EventFishDiePush>(OnSendFishPush);
 
             Global.Get<AudioSystem>().PlayBGM(FMODName.Event.BGM_BackgroundMusic, out _);
+
+            _spawnTimer = float.MaxValue;
         }
 
         protected override void OnDispose()
@@ -132,6 +134,7 @@ namespace WitchFish
                 }
             }
 
+            //=================================================
             if (lakeFishCount.Value < 6)
             {
                 fishSpawnInterval = 8;
@@ -155,33 +158,38 @@ namespace WitchFish
                 _spawnTimer = 0;
                 SpawnFish();
             }
+            //=================================================
 
+            
+            
+            //=================================================
             if (lakeFishCount.Value < 6)
             {
-                fishSpawnInterval = 28;
+                lakeFishSpawnInterval = 28;
             }
             else if (lakeFishCount.Value < 16)
             {
-                fishSpawnInterval = 24;
+                lakeFishSpawnInterval = 24;
             }
             else if (lakeFishCount.Value < 31)
             {
-                fishSpawnInterval = 24;
+                lakeFishSpawnInterval = 24;
             }
             else if (lakeFishCount.Value < 51)
             {
-                fishSpawnInterval = 20;
+                lakeFishSpawnInterval = 20;
             }
 
             if (lakeFishCount.Value > minFishCountToSpawnLakeFish)
             {
                 _lakeSpawnTimer += Time.deltaTime;
-                if (_lakeSpawnTimer >= fishSpawnInterval)
+                if (_lakeSpawnTimer >= lakeFishSpawnInterval)
                 {
                     _lakeSpawnTimer = 0;
                     SpawnLakeFish();
                 }
             }
+            //=================================================
         }
 
         // public Transform basket;
