@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 2699274043212348999}
   - component: {fileID: 4777084867149187394}
   - component: {fileID: 559217777108834756}
+  - component: {fileID: 1313404690999972166}
   m_Layer: 0
   m_Name: Witch
   m_TagString: Untagged
@@ -237,6 +238,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea65806a0f34fabb514fe50650abd0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventEmitter: {fileID: 1313404690999972166}
+--- !u!114 &1313404690999972166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7158477422894767892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1521276256
+      Data2: 1263838527
+      Data3: 59594668
+      Data4: 1320207960
+    Path: "event:/SFX/SoundEffect_10_\u5C0F\u5973\u5DEB\u6D17\u6FA1"
+  Event: 
+  PlayEvent: 0
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &929604271433829501
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -251,19 +284,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2824055172928609265, guid: 5ef773a6285d94daf8de4202f6eea0a0, type: 3}
       propertyPath: m_Size.x
-      value: 2.2680185
+      value: 2.5075402
       objectReference: {fileID: 0}
     - target: {fileID: 2824055172928609265, guid: 5ef773a6285d94daf8de4202f6eea0a0, type: 3}
       propertyPath: m_Size.y
-      value: 2.6568751
+      value: 4.239465
       objectReference: {fileID: 0}
     - target: {fileID: 2824055172928609265, guid: 5ef773a6285d94daf8de4202f6eea0a0, type: 3}
       propertyPath: m_Offset.x
-      value: 0.05116546
+      value: 0.09722757
       objectReference: {fileID: 0}
     - target: {fileID: 2824055172928609265, guid: 5ef773a6285d94daf8de4202f6eea0a0, type: 3}
       propertyPath: m_Offset.y
-      value: 0.02046609
+      value: 0.75745535
       objectReference: {fileID: 0}
     - target: {fileID: 2824055172928609265, guid: 5ef773a6285d94daf8de4202f6eea0a0, type: 3}
       propertyPath: m_IsTrigger

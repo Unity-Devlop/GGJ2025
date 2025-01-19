@@ -91,8 +91,10 @@ namespace WitchFish
             while (gameIsOn) // 无限循环
             {
                 // 实例化气泡
-
-                InstantiateChatBubble();
+                if (UnityEngine.Random.value < 0.3)
+                {
+                    InstantiateChatBubble();
+                }
 
 
                 // 等待指定的秒数

@@ -77,6 +77,16 @@ namespace FMOD
         	public const string SFX_SoundEffect_3___ = "event:/SFX/SoundEffect_3_生气";
 
         	public const string SFX_SoundEffect_7____ = "event:/SFX/SoundEffect_7_拿肥皂";
+
+        	public const string SFX_SoundEffect_8_____ = "event:/SFX/SoundEffect_8_游戏失败";
+
+        	public const string SFX_SoundEffect_10______ = "event:/SFX/SoundEffect_10_小女巫洗澡";
+
+        	public const string SFX_SoundEffect_9_______ = "event:/SFX/SoundEffect_9_大鱼太阳说话";
+
+        	public const string SFX_SoundEffect_11_____ = "event:/SFX/SoundEffect_11_物品偏移";
+
+        	public const string SFX_SoundEffect_12____ = "event:/SFX/SoundEffect_12_点按钮";
         }
         public static class Snapshot
         {
