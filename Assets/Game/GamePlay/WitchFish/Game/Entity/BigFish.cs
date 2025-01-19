@@ -14,6 +14,7 @@ namespace WitchFish
         public GameObject panel;
         [SerializeField] private TMP_Text _text;
         private int IndexChat = 0;
+        [SerializeField] private Animator _animator;
 
         private List<string> whenJumpInLake = new List<string>()
         {
@@ -49,6 +50,7 @@ namespace WitchFish
 
         private void Awake()
         {
+            _text.text = "";
             GameMgr.Singleton.lakeFishCount.Register(OnLakeFishCountChange);
             StartCoroutine(AutoEnqueue());
             Core.Event.Listen<EventFishDieInLandPush>(OnSendFishDieInLand);
@@ -90,13 +92,17 @@ namespace WitchFish
             {
                 if (queue.Count == 0)
                 {
+                    _animator.enabled = false;
                     await UniTask.Yield();
                     continue;
                 }
+
                 var str = queue.Dequeue();
                 _text.text = str;
-                await UniTask.Delay(TimeSpan.FromSeconds(0.1 * str.Length));
+                _animator.enabled = true;
+                await UniTask.Delay(TimeSpan.FromSeconds(0.5 * str.Length));
                 _text.text = "";
+                _animator.enabled = false;
             }
         }
 
