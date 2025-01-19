@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 1415349018500495142}
   - component: {fileID: 2601140242404261802}
   - component: {fileID: 7947875942200610727}
-  - component: {fileID: 2383106168770728456}
   - component: {fileID: 4907337090211536313}
+  - component: {fileID: 7569870421792190947}
   m_Layer: 6
-  m_Name: Item
+  m_Name: "\u5411\u65E5\u8475"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: -2039074121
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: -71237820, guid: 3b09101f3b3354e0e93acb67838df08c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 78ed3045523a0794f923bc8e3f92512f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.79, y: 0.93}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -114,7 +114,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &2383106168770728456
+--- !u!114 &4907337090211536313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4810914925031358661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 157685b7302b4b26bb4d985b081297e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  id: 3
+  _renderer: {fileID: 2601140242404261802}
+  deSpawnTime: 5
+--- !u!58 &7569870421792190947
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,22 +162,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0036113262, y: 0.09}
   serializedVersion: 2
-  m_Radius: 0.45
---- !u!114 &4907337090211536313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4810914925031358661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 157685b7302b4b26bb4d985b081297e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: 0
-  id: 0
-  _renderer: {fileID: 2601140242404261802}
-  deSpawnTime: 5
+  m_Radius: 0.32959533

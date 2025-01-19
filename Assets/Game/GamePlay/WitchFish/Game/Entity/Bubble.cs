@@ -41,7 +41,8 @@ namespace WitchFish
             }
             else
             {
-                var item = Instantiate(GameMgr.Singleton.itemPrefab, target.transform.position , Quaternion.identity);
+                var prefab = GameMgr.Singleton.id2ItemPrefab[Type];
+                var item = Instantiate(prefab, target.transform.position , Quaternion.identity);
                 // item.transform.SetParent(GameMgr.Singleton.basket);
                 item.GetComponent<Item>().Bind(Type);
             }

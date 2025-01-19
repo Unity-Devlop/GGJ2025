@@ -26,7 +26,12 @@ namespace WitchFish
         [SerializeField] private float fishSpawnInterval;
 
         [SerializeField] private List<GameObject> fishPrefabList;
+        [SerializeField] private List<GameObject> lakeFishPrefabList;
+        public float lakeFishSpawnInterval = 10f;
 
+        float _lakeSpawnTimer;
+
+        public float jumpDestroyTime = 70f;
 
         private List<Transform> _lakeFishSpawnPointList;
 
@@ -72,9 +77,9 @@ namespace WitchFish
         public int minFishCountToSpawnLakeFish = 6;
 
         public SerializableDictionary<ItemEnum, Sprite> id2Sprite = new SerializableDictionary<ItemEnum, Sprite>();
-
-
-        public Item itemPrefab;
+        
+        
+        public SerializableDictionary<ItemEnum,GameObject> id2ItemPrefab = new SerializableDictionary<ItemEnum, GameObject>();
 
         protected override void OnInit()
         {
@@ -113,7 +118,8 @@ namespace WitchFish
                     {
                         item.OnMouseDrag();
                     }
-                    if(hit.collider.TryGetComponent(out Soap soap))
+
+                    if (hit.collider.TryGetComponent(out Soap soap))
                     {
                         soap.OnMouseDrag();
                     }
@@ -136,7 +142,7 @@ namespace WitchFish
             {
                 fishSpawnInterval = 5;
             }
-            
+
             _spawnTimer += Time.deltaTime;
             if (_spawnTimer >= fishSpawnInterval)
             {
@@ -172,12 +178,6 @@ namespace WitchFish
             }
         }
 
-        public float lakeFishSpawnInterval = 10f;
-
-        float _lakeSpawnTimer;
-
-        public List<GameObject> lakeFishPrefabList;
-        public float jumpDestroyTime = 70f;
         // public Transform basket;
 
         [Sirenix.OdinInspector.Button]
@@ -318,7 +318,8 @@ namespace WitchFish
         public void DeSpawnLake(Fish owner)
         {
             lakeFishCount.Value += 1;
-            Core.Event.Send<EventFishJumpInLakePush>(new EventFishJumpInLakePush { pa = GameMgr.Singleton.lakeFishCount.ToString() });
+            Core.Event.Send<EventFishJumpInLakePush>(new EventFishJumpInLakePush
+                { pa = GameMgr.Singleton.lakeFishCount.ToString() });
 
             _currentLakeFishWaitList.Remove(owner);
             GameObject.Destroy(owner.gameObject, Time.deltaTime);
@@ -339,9 +340,8 @@ namespace WitchFish
         {
             lakeFishCount.Value += 1;
             DeSpawn(fish);
-            Core.Event.Send<EventFishJumpInLakePush>(new EventFishJumpInLakePush { pa = GameMgr.Singleton.lakeFishCount.ToString() });
-
-
+            Core.Event.Send<EventFishJumpInLakePush>(new EventFishJumpInLakePush
+                { pa = GameMgr.Singleton.lakeFishCount.ToString() });
         }
 
         async void OnSendFishPush(EventFishDiePush push)
