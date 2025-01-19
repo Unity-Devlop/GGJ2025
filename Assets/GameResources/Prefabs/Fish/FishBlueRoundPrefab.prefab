@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 5207950890551490338}
   - component: {fileID: 3506433375545282384}
   - component: {fileID: 7892593338880514861}
+  - component: {fileID: 6566788389139432526}
   m_Layer: 3
   m_Name: FishBlueRoundPrefab
   m_TagString: Untagged
@@ -235,6 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c19c56bd39cb497e98d4391883071afd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSFX: {fileID: 6566788389139432526}
   spawnWaitTime: 0.5
   moveSpeed: 4
   beginAngryWaitTime: 5
@@ -334,6 +336,37 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6566788389139432526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4573932786295303094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1364842262
+      Data2: 1306136121
+      Data3: -1142975596
+      Data4: -1615770321
+    Path: "event:/SFX/SoundEffect_0_\u8D70\u8DEF\u7B2C\u4E00\u6B65"
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &5629710017876729930
 GameObject:
   m_ObjectHideFlags: 0

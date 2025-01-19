@@ -11,7 +11,7 @@ namespace WitchFish
 
         public void OnEnter(Fish owner, IStateMachine<Fish> stateMachine)
         {
-            
+            owner.moveSFX.Play();
             owner.animator.Play("FishIdle");
         }
 
@@ -26,6 +26,10 @@ namespace WitchFish
 
         public void OnUpdate(Fish owner, IStateMachine<Fish> stateMachine)
         {
+            if (!owner.moveSFX.IsPlaying())
+            {
+                owner.moveSFX.Play();
+            }
             bool frontHasOtherFish = false;
             foreach (var raycastHit2D in owner.hit2Ds)
             {
@@ -58,6 +62,7 @@ namespace WitchFish
 
         public void OnExit(Fish owner, IStateMachine<Fish> stateMachine)
         {
+            owner.moveSFX.Stop();
         }
     }
 }

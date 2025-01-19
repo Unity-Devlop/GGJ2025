@@ -1,3 +1,6 @@
+using FMOD;
+using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
 using UnityToolkit;
 
@@ -12,7 +15,7 @@ namespace WitchFish
 
         public void OnEnter(Fish owner, IStateMachine<Fish> stateMachine)
         {
-            
+            owner.moveSFX.Play();
             owner.animator.Play("FishIdle");
             _targetPos = GameMgr.Singleton.GetJumpPosition();
         }
@@ -27,6 +30,10 @@ namespace WitchFish
 
         public void OnUpdate(Fish owner, IStateMachine<Fish> stateMachine)
         {
+            if (!owner.moveSFX.IsPlaying())
+            {
+                owner.moveSFX.Play();
+            }
             Vector3 diff = _targetPos - owner.transform.position;
             Vector3 vec = diff.normalized * (owner.moveSpeed * Time.deltaTime);
             owner.transform.Translate(vec, Space.World);
@@ -34,6 +41,8 @@ namespace WitchFish
 
         public void OnExit(Fish owner, IStateMachine<Fish> stateMachine)
         {
+            
+            owner.moveSFX.Stop();
         }
     }
 }

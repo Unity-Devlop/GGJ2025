@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using FMOD;
 using FMODUnity;
 using UnityEngine;
+
 namespace WitchFish
 {
     public class Bubble : MonoBehaviour
     {
         public ItemEnum Type;
         public float speed = 1f;
-       
+
         public float maxTop = 8.0f;
         public bool Enabled = false;
         public Transform target;
@@ -16,17 +18,16 @@ namespace WitchFish
         private Sprite itemIcon;
 
         Animator animator;
+
         private void Awake()
         {
             animator = gameObject.GetComponent<Animator>();
         }
 
 
-
         // Start is called before the first frame update
         void Start()
         {
-
         }
 
         // Update is called once per frame
@@ -39,28 +40,25 @@ namespace WitchFish
 
         void Explore()
         {
-            if (Type == ItemEnum.空白 )
+            RuntimeManager.PlayOneShotAttached(FMODName.Event.SFX_SoundEffect_6____, gameObject);
+            if (Type == ItemEnum.空白)
             {
-
-            }else if(Type == ItemEnum.语音)
+            }
+            else if (Type == ItemEnum.语音)
             {
                 string path = "event:/SFX/生气";
-                var instance =  RuntimeManager.CreateInstance(path);
-                if (instance.isValid())
-                {
-                    instance.start();
-                }
+                RuntimeManager.PlayOneShotAttached(path, gameObject);
             }
             else
             {
                 var prefab = GameMgr.Singleton.id2ItemPrefab[Type];
-                var item = Instantiate(prefab, target.transform.position , Quaternion.identity);
+                var item = Instantiate(prefab, target.transform.position, Quaternion.identity);
                 // item.transform.SetParent(GameMgr.Singleton.basket);
                 item.GetComponent<Item>().Bind(Type);
                 animator.Play("booow");
-               
             }
-            Destroy(gameObject,0.2f);
+
+            Destroy(gameObject, 0.2f);
         }
 
         private void Move()
@@ -75,20 +73,18 @@ namespace WitchFish
             var direction = Vector3.up;
             transform.Translate(deltaTime * speed * direction);
         }
-        
+
 
         public void SetItemType(ItemEnum itemEnum)
         {
             Type = itemEnum;
-            
         }
-
 
 
         private void OnMouseDown()
         {
             Explore();
-            if(Type == ItemEnum.语音)
+            if (Type == ItemEnum.语音)
             {
                 PlayVideo();
             }
@@ -99,7 +95,5 @@ namespace WitchFish
             // play
             GameMgr.Singleton.PlayVideoIndex++;
         }
-
     }
-
 }
