@@ -116,13 +116,13 @@ namespace WitchFish
             if (Global.SingletonNullable != null)
             {
                 Global.Get<AudioSystem>().DisposeBGM(FMODName.Event.BGM_BackgroundMusic);
+                Global.Get<AudioSystem>().DisposeAllBGM();
             }
         }
 
         public void OnCloseToHall()
         {
             
-            Global.Get<AudioSystem>().DisposeAllBGM();
             Global.Get<GameFlow>().Change<GameHomeState>();
         }
 
