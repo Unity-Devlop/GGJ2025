@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
@@ -15,7 +16,9 @@ namespace WitchFish
         public async void OnEnter(Fish owner, IStateMachine<Fish> stateMachine)
         {
             Vector3 vec = new Vector3(0, -5, 0);
-            await owner.transform.DOLocalMoveY(owner.transform.position.y + vec.y, .2f).SetEase(Ease.Linear);
+            owner.transform.DOLocalMoveY(owner.transform.position.y + vec.y, .2f).SetEase(Ease.Linear);
+
+            await UniTask.Delay(TimeSpan.FromSeconds(0.2f));
             GameMgr.Singleton.DeSpawnLake(owner);
             Core.Event.Send<EventFishDiePush>();
             Core.Event.Send<EventFishDieInLakePush>();
@@ -27,7 +30,6 @@ namespace WitchFish
 
         public void OnUpdate(Fish owner, IStateMachine<Fish> stateMachine)
         {
-        
         }
 
         public void OnExit(Fish owner, IStateMachine<Fish> stateMachine)

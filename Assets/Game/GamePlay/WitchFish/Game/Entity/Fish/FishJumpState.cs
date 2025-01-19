@@ -23,9 +23,10 @@ namespace WitchFish
                 owner.rb2D.excludeLayers |= LayerMask.GetMask("Item");
                 _animOver = false;
                 float y = owner.transform.position.y;
-                await owner.transform.DOLocalMoveY(y + 1f, 0.5f)
-                    .ToUniTask(cancellationToken: owner.destroyCancellationToken);
-                await owner.transform.DOMoveY(y, 0.5f).ToUniTask(cancellationToken: owner.destroyCancellationToken);
+                 owner.transform.DOLocalMoveY(y + 1f, 0.5f);
+                 await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
+                 owner.transform.DOMoveY(y, 0.5f);
+                 await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
 
                 owner.rb2D.isKinematic = false;
                 owner.rb2D.AddForce(owner.jumpForceList.RandomTakeWithoutRemove(), ForceMode2D.Impulse);
