@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using WitchFish;
 
@@ -25,10 +27,12 @@ public class FishReturnPanel : MonoBehaviour
         
     }
 
-    void OnSendFishDie(EventFishDiePush push)
+    async void  OnSendFishDie(EventFishDiePush push)
     {
         if (panel.childCount > 0)
         {
+            panel.GetChild(0).gameObject.GetComponent<Animator>().enabled = true;
+            await UniTask.Delay(TimeSpan.FromSeconds(0.25f), cancellationToken: destroyCancellationToken);
             Destroy( panel.GetChild(panel.childCount - 1).gameObject);
         }
     }
