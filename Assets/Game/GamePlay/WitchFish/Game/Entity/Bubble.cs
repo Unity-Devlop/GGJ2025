@@ -84,6 +84,17 @@ namespace WitchFish
         public void SetItemType(ItemEnum itemEnum)
         {
             Type = itemEnum;
+
+            if(Type == ItemEnum.语音)
+            {
+                var count = gameObject.transform.childCount;
+                for(int i = 0;i < count; i++)
+                {
+                     var obj = transform.GetChild(i);
+                    obj.gameObject.SetActive(obj.name == "Icon");
+                }
+            }
+
         }
 
 
