@@ -29,11 +29,19 @@ public class FishReturnPanel : MonoBehaviour
 
     async void  OnSendFishDie(EventFishDiePush push)
     {
-        if (panel.childCount > 0)
+        try
         {
-            panel.GetChild(panel.childCount - 1).gameObject.GetComponent<Animator>().enabled = true;
-            await UniTask.Delay(TimeSpan.FromSeconds(0.25f), cancellationToken: destroyCancellationToken);
-            Destroy( panel.GetChild(panel.childCount - 1).gameObject);
+            if (panel.childCount > 0)
+            {
+                panel.GetChild(panel.childCount - 1).gameObject.GetComponent<Animator>().enabled = true;
+                await UniTask.Delay(TimeSpan.FromSeconds(0.25f), cancellationToken: destroyCancellationToken);
+                Destroy( panel.GetChild(panel.childCount - 1).gameObject);
+            }
+
+        }
+        catch
+        {
+
         }
     }
     private void OnDestroy()

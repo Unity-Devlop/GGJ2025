@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Cysharp.Threading.Tasks;
 using FMOD;
+using FMODUnity;
 using Game;
 using Game.Flow;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 using UnityToolkit;
 
 namespace WitchFish
@@ -87,6 +89,8 @@ namespace WitchFish
         
         public List<GameObject> soupEffectList;
 
+        public Button  closeButton;
+
         protected override void OnInit()
         {
             lakeFishCount = new BindableProperty<int>();
@@ -104,6 +108,7 @@ namespace WitchFish
             Global.Get<AudioSystem>().PlayBGM(FMODName.Event.BGM_BackgroundMusic, out _);
 
             _spawnTimer = float.MaxValue;
+            closeButton.onClick.AddListener(OnCloseToHall);
         }
 
         protected override void OnDispose()
@@ -112,6 +117,13 @@ namespace WitchFish
             {
                 Global.Get<AudioSystem>().DisposeBGM(FMODName.Event.BGM_BackgroundMusic);
             }
+        }
+
+        public void OnCloseToHall()
+        {
+            
+            Global.Get<AudioSystem>().DisposeAllBGM();
+            Global.Get<GameFlow>().Change<GameHomeState>();
         }
 
         private void Update()
@@ -372,6 +384,10 @@ namespace WitchFish
             if (maxHp > 1) maxHp--;
             else
             {
+                Global.Get<AudioSystem>().DisposeAllBGM();
+                RuntimeManager.PlayOneShotAttached(FMODName.Event.SFX_SoundEffect_8_____, gameObject);
+
+
                 Time.timeScale = 0;
                 GameOver.SetActive(true);
                 StartCoroutine(waitForSecond());
@@ -382,7 +398,7 @@ namespace WitchFish
         {
             yield return new WaitForSecondsRealtime(3);
             Time.timeScale = 1;
-            Global.Get<GameFlow>().Change<GameHomeState>();
+  
         }
     }
 }
