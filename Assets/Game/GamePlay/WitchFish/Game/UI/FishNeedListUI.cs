@@ -56,6 +56,15 @@ namespace WitchFish.UI
                 Destroy(lastUI.gameObject);
             }
 
+            if (_fish.needList.Count ==0)
+            {
+                _canvas.enabled = false;
+            }
+            else
+            {
+                _canvas.enabled = true;
+            }
+
             for (int i = 0; i < _fish.needList.Count; i++)
             {
                 var need = _fish.needList[i];
